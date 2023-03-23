@@ -14,7 +14,6 @@ const GlobalStyle = createGlobalStyle`
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    overflow-y: overlay;
     scrollbar-width: thin;
     scrollbar-color: var(--dark) transparent;
   }
