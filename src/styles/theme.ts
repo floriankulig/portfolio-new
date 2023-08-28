@@ -3,7 +3,7 @@ import { css } from "styled-components";
 
 //ALL STYLES INHERIT FROM THIS FILE
 const theme = {
-  dark: `#242424`,
+  dark: `#181818`,
   light: `#f9f9f9`,
   grey: `#e4e4e4`,
   easing: [0.6, 0.01, -0.05, 0.95],
