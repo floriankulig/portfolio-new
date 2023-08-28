@@ -1,6 +1,6 @@
 import { SectionHeading } from "components/layout";
 import { CopyToClipboard, ExternalButton } from "components/shared";
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform, Variants } from "framer-motion";
 import { copyToClipboard } from "helpers";
 import { useViewport } from "hooks";
 import React, { useRef } from "react";
@@ -10,17 +10,17 @@ import { EMAIL } from "ts";
 
 const StyledContactSection = styled.section`
   width: 100%;
-  min-height: 200vh;
+  min-height: 250vh;
   background: var(--dark);
   position: relative;
 `;
 
 const Heading = styled(motion.h3)`
-  position: absolute;
+position: absolute;
   text-align: center;
   width: 100%;
   color: var(--light);
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 8dvw, 4rem);
   margin-top: 750px;
 `;
 
@@ -28,12 +28,13 @@ const StyledEmailMockup = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
   background: var(--light);
-  padding: 50px;
+  padding: 40px 35px;
   display: flex;
   flex-direction: column;
+  gap: clamp(30px, 8dvw, 50px);
   align-items: flex-start;
   justify-content: space-between;
-
+  
   @media (${({ theme }) => theme.bp.small}) {
     padding: 75px;
   }
@@ -49,17 +50,20 @@ const StyledEmailMockup = styled(motion.div)`
     @media (${({ theme }) => theme.bp.medium}) {
       border-radius: 0.8rem;
     }
+    text-overflow: ellipsis;
     flex-grow: 1;
     p {
+      text-overflow: ellipsis;
+      overflow: hidden;
       font-weight: 500;
+      white-space: nowrap;
       font-family: var(--poppins);
-      font-size: 1.3rem;
+      font-size: clamp(1.1rem, 4dvw, 1.3rem);
     }
 
     &:not(:last-of-type) {
       flex-grow: 0;
       padding: 12px 40px;
-      margin-bottom: 50px;
       @media (${({ theme }) => theme.bp.medium}) {
         width: 45%;
       }
@@ -76,7 +80,7 @@ const Text = styled(motion.div)`
   gap: 1.25rem;
 `;
 
-const TextMock = styled(motion.div)<{ $margTop?: boolean; $width: string }>`
+const TextMock = styled(motion.div) <{ $margTop?: boolean; $width: string }>`
   height: 1.25rem;
   width: ${(p) => p.$width};
   background: #d9d9d9;
@@ -141,19 +145,20 @@ export const Contact: React.FC = () => {
     offset: ["start start", "end end"],
   });
 
-  const scale = useTransform(scrollYProgress, [0.05, 0.4], [1, 0.8]);
-  const y = useTransform(scrollYProgress, [0, 0.05, 0.35], [0, 50, 800]);
+  const scale = useTransform(scrollYProgress, [0.05, 0.4], [1, 0.8])
+  const y = useTransform(scrollYProgress, [0, 0.05, 0.35], [0, 100, 800])
   const borderRadius = useTransform(
     scrollYProgress,
     [0, 0.35],
     [0, isMobile ? 20 : 30]
-  );
-
+    );
+    
+    const headerY = useTransform(scrollYProgress, [0.4, 0.6], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0.3, 0.4], [0, 1]);
 
   return (
     <StyledContactSection ref={sectionRef}>
-      <Heading style={{ opacity }}>convinced?</Heading>
+      <Heading style={{ opacity, y: headerY }}>convinced?</Heading>
       <StyledEmailMockup
         style={{ y, scale, borderRadius }}
         initial="initial"
