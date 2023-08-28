@@ -18,8 +18,8 @@ const Home = () => {
       <Header />
       <Hero />
       <Quote />
-      <Motivation />
-      <Approach />
+      {/*<Motivation />
+      <Approach />*/}
       <Contact />
       <Footer />
     </>
