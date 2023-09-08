@@ -1,4 +1,3 @@
-import { Intro } from "components/layout";
 import { StyledCurtain } from "components/layout/Curtain";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import type { AppProps } from "next/app";
@@ -80,21 +79,17 @@ export default function App({ Component, pageProps, router }: AppProps) {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <AnimatePresence mode="wait">
-          {introHasFinished ? (
-            <PageLoader
-              initial="pageEntry"
-              animate="pageLoad"
-              exit="pageExit"
-              variants={!appHasLoaded ? pageLoadingVariants : undefined}
-              onAnimationComplete={() => setAppHasLoaded(true)}
-              $appHasLoaded={appHasLoaded}
-              key={router.route}
-            >
-              <Component {...pageProps} />
-            </PageLoader>
-          ) : (
-            <Intro setHasFinished={setIntroHasFinished} />
-          )}
+          <PageLoader
+            initial="pageEntry"
+            animate="pageLoad"
+            exit="pageExit"
+            variants={!appHasLoaded ? pageLoadingVariants : undefined}
+            onAnimationComplete={() => setAppHasLoaded(true)}
+            $appHasLoaded={appHasLoaded}
+            key={router.route}
+          >
+            <Component {...pageProps} />
+          </PageLoader>
         </AnimatePresence>
       </ThemeProvider>
     </>

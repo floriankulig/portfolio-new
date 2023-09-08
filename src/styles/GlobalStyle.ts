@@ -8,7 +8,6 @@ const GlobalStyle = createGlobalStyle`
     --light: ${theme.light};
     --grey: ${theme.grey};
     --easing: ${theme.easing};
-    font-size: 18px;
   }
   html {
     -webkit-box-sizing: border-box;
@@ -51,9 +50,7 @@ const GlobalStyle = createGlobalStyle`
   }
   p {
     font-family: var(--inter);
-    font-size: 18px;
-    line-height: 180%;
-    max-width: 40ch;
+    line-height: 150%;
   }
 `;
 

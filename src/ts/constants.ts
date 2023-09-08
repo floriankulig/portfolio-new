@@ -1,11 +1,4 @@
-import { Transition, Easing } from "framer-motion";
-
-export const NAV_LINKS = [
-  { path: "/", name: "home" },
-  { path: "/about", name: "about" },
-  { path: "/work", name: "work" },
-  { path: "/contact", name: "contact" },
-] as const;
+import { Transition } from "framer-motion";
 
 export const EMAIL = "florian.kulig@web.de" as const;
 
