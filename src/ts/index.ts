@@ -1,3 +1,3 @@
-import { NAV_LINKS, EMAIL, BASE_TRANSITION, EASING } from "./constants";
+import { EMAIL, BASE_TRANSITION, EASING } from "./constants";
 
-export { NAV_LINKS, EMAIL, BASE_TRANSITION, EASING };
+export { EMAIL, BASE_TRANSITION, EASING };
