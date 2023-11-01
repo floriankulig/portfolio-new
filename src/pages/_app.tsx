@@ -3,9 +3,10 @@ import { AnimatePresence, motion, Variants } from "framer-motion";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { rgba } from "polished";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled, { ThemeProvider, css } from "styled-components";
-import { GlobalStyle, INTER, POPPINS, theme } from "styles";
+import { GlobalStyle, POPPINS, theme } from "styles";
+import { JAKARTA } from "styles/fonts";
 
 interface PageLoaderProps {
   $appHasLoaded: boolean;
@@ -15,7 +16,7 @@ const PageLoader = styled(motion.div)<PageLoaderProps>`
   display: block;
   animation: shadow 1.8s 4.5s forwards;
   animation-timing-function: cubic-bezier(0.6, 0.01, -0.05, 0.95);
-  box-shadow: 0px 0px 0px 6px ${({ theme }) => rgba(theme.dark, 1)};
+  box-shadow: 0px 0px 0px 6px ${({ theme }) => rgba(theme.text1, 1)};
   ${({ $appHasLoaded }) =>
     !$appHasLoaded
       ? css`
@@ -34,10 +35,10 @@ const PageLoader = styled(motion.div)<PageLoaderProps>`
 
   @keyframes shadow {
     from {
-      box-shadow: 0px 0px 0px 6px ${({ theme }) => rgba(theme.dark, 1)};
+      box-shadow: 0px 0px 0px 6px ${({ theme }) => rgba(theme.text1, 1)};
     }
     to {
-      box-shadow: 0px 0px 0px 0px ${({ theme }) => rgba(theme.dark, 0.5)};
+      box-shadow: 0px 0px 0px 0px ${({ theme }) => rgba(theme.text1, 0.5)};
     }
   }
 `;
@@ -73,7 +74,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
       <style jsx global>{`
         :root {
           --poppins: ${POPPINS.style.fontFamily};
-          --inter: ${INTER.style.fontFamily};
+          --jakarta: ${JAKARTA.style.fontFamily};
         }
       `}</style>
       <ThemeProvider theme={theme}>

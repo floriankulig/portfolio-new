@@ -7,7 +7,7 @@ export const StyledCurtain = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   z-index: 9999;
-  background: ${(theme) => theme.theme.dark};
+  background: ${(theme) => theme.theme.text1};
 `;
 
 const curtainTransition: Transition = {

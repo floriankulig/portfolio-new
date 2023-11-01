@@ -3,9 +3,12 @@ import { css } from "styled-components";
 
 //ALL STYLES INHERIT FROM THIS FILE
 const theme = {
-  dark: `#181818`,
-  light: `#f9f9f9`,
-  grey: `#e4e4e4`,
+  text1: `#181818`,
+  text2: `#242424`,
+  text3: `#a1a4a8`,
+  bg1: `#f9f9f9`,
+  bg2: `#ffffff`,
+  bg3: `#e3e5e8`,
   easing: [0.6, 0.01, -0.05, 0.95],
   bp: {
     small: `min-width: 721px`,

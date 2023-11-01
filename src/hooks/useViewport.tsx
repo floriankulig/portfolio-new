@@ -17,8 +17,8 @@ export const useViewport = (
 } => {
   const [isMobile, setIsMobile] = useState<boolean>(def);
   const [viewport, setViewport] = useState<ViewportData>({
-    viewPortHeight: window?.innerHeight,
-    viewPortWidth: window?.innerWidth,
+    viewPortHeight: 1080,
+    viewPortWidth: def ? 960 : 1920,
   });
   const [orientation, setOrientation] =
     useState<ViewportOrientation>("landscape");

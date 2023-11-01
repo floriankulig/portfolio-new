@@ -4,9 +4,12 @@ import { rgba } from "polished";
 
 const GlobalStyle = createGlobalStyle`
   :root{
-    --dark: ${theme.dark};
-    --light: ${theme.light};
-    --grey: ${theme.grey};
+    --text1: ${theme.text1};
+    --text2: ${theme.text2};
+    --text3: ${theme.text3};
+    --bg1: ${theme.bg1};
+    --bg2: ${theme.bg2};
+    --bg3: ${theme.bg3};
     --easing: ${theme.easing};
   }
   html {
@@ -31,7 +34,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     line-height: 1;
-    font-family: var(--poppins), var(--inter), sans-serif;
+    background-color: var(--bg1);
+    color: var(--text1);
+    font-size: 16px;
+    font-family: var(--poppins), var(--jakarta), sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
