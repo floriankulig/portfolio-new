@@ -25,6 +25,8 @@ const BannerText = () => {
     <>
       {!isMobile ? (
         <svg
+          width={1427}
+          height={401}
           viewBox="0 0 1427 401"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
