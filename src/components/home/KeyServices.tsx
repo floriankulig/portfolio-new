@@ -20,6 +20,7 @@ const StyledService = styled.div`
   font-family: var(--jakarta);
   font-weight: 600;
   letter-spacing: 2%;
+  color: var(--text2);
   font-size: 1.5rem;
 `;
 
