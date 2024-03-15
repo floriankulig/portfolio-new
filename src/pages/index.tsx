@@ -1,4 +1,4 @@
-import { Hero } from "components/home";
+import { Hero, KeyServices } from "components/home";
 import { Curtain } from "components/layout/Curtain";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -16,6 +16,7 @@ const Home = () => {
       <Curtain />
       <Header />
       <Hero />
+      <KeyServices></KeyServices>
     </>
   );
 };
