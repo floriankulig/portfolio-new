@@ -43,7 +43,13 @@ export const useViewport = (
 
   useEffect(() => {
     // set this as an initial value without having to resize first
-    setIsMobile(window.innerWidth <= breakpoint);
+    if (window) {
+      setIsMobile(window.innerWidth <= breakpoint);
+      setViewport({
+        viewPortHeight: window.innerHeight,
+        viewPortWidth: window.innerWidth,
+      });
+    }
 
     // handle on resize
     window.addEventListener("resize", onResize);
