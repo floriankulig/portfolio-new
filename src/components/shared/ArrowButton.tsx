@@ -111,6 +111,6 @@ const textVariants: Variants = {
     x: 0,
   },
   hovered: {
-    x: -5,
+    x: -6,
   },
 };

@@ -11,11 +11,12 @@ import { rgba } from "polished";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { FEATURED_PROJECTS, FeaturedProject } from "ts/content";
+import { SlidingProject } from "./SlidingProject";
 
 const StickyProjectsSlideContainer = styled.div`
   position: relative;
   display: flex;
-  height: 330vh;
+  height: 350vh;
   background-color: var(--bg2);
 `;
 
@@ -26,11 +27,13 @@ const StickyProjectsSlide = styled(motion.div)`
   left: 0;
   background: ${rgba("#000", 0.5)};
   display: flex;
-  gap: 1rem;
+  overflow: hidden;
+  /* gap: 1rem; */
   height: 100vh;
+  min-width: fit-content;
   justify-content: flex-start;
 `;
-const SCROLL_END_RANGE = [0.93, 1];
+const SCROLL_END_RANGE = [0.95, 1];
 export const ProjectsSlide = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -100,22 +103,6 @@ export const ProjectsSlide = () => {
   );
 };
 
-const StyledSlidingProject = styled.div`
-  width: 90dvw;
-  height: 100%;
-  background: ${rgba("#f00", 0.1)};
-`;
-
-interface SlidingProjectProps {
-  project: FeaturedProject;
-}
-
-const SlidingProject: React.FC<SlidingProjectProps> = ({ project }) => {
-  const { id, title, description, technologies, technologiesFeatured } =
-    project;
-  return <StyledSlidingProject>{title}</StyledSlidingProject>;
-};
-
 const StyledProjectsCTA = styled.div`
   position: sticky;
   top: 0;
@@ -156,12 +143,11 @@ interface ProjectsCTAProps {
   scrollYProgress: MotionValue<number>;
 }
 const ProjectsCTA: React.FC<ProjectsCTAProps> = ({ scrollYProgress }) => {
-  const opacity = useTransform(scrollYProgress, [0.975, 1], [0, 1]);
-  const x = useTransform(scrollYProgress, [0.975, 1], [0, 0]);
-  const y = useTransform(scrollYProgress, [0.975, 1], [20, 0]);
+  const opacity = useTransform(scrollYProgress, [0.985, 1], [0, 1]);
+  const y = useTransform(scrollYProgress, [0.985, 1], [20, 0]);
   return (
     <StyledProjectsCTA>
-      <StyledProjectsCTAContent style={{ x, y, opacity }}>
+      <StyledProjectsCTAContent style={{ y, opacity }}>
         <h3>Want more?</h3>
         <p>that&lsquo;s not everything...</p>
         <ArrowButton>View Project Showcase</ArrowButton>

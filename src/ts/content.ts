@@ -15,6 +15,7 @@ const PROJECTS: Project[] = [
   {
     id: "jvis",
     title: "Job Manager",
+    image: "JvisMock.png",
     description:
       "A tool for managing and planning contracting work in the forestry business.",
     technologies: ["React", "Firebase"],
@@ -23,6 +24,7 @@ const PROJECTS: Project[] = [
   {
     id: "testiply",
     title: "Testiply",
+    image: "TestiplyMock.png",
     description:
       "A platform for sharing beta applications with a feedback mechanism connecting testers and developers.",
     technologies: ["Interaction", "React", "MongoDB", "NodeJS"],
@@ -33,6 +35,7 @@ const PROJECTS: Project[] = [
   {
     id: "sorting-algorithms",
     title: "Sorting Algorithms",
+    image: "TestiplyMock.png",
     description:
       "An application that visualizes the most popular sorting algorithms, including documentation of their methodology.",
     technologies: ["Visualization", "Python"],
