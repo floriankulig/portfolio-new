@@ -81,7 +81,7 @@ export const ProjectsSlide = () => {
     () => windowDimensions.viewPortHeight - slideHeightOffset.get()
   );
   const slideY = useTransform(dampedScrollY, () => slideHeightOffset.get() / 2);
-  const slideBR = useTransform(dampedScrollY, SCROLL_END_RANGE, [0, 48]);
+  const slideBR = useTransform(dampedScrollY, [0.93, 0.97], [0, 48]);
 
   return (
     <StickyProjectsSlideContainer ref={sectionRef}>
