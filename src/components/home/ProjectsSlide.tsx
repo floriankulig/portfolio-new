@@ -10,7 +10,7 @@ import { useViewport } from "hooks";
 import { rgba } from "polished";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { FEATURED_PROJECTS, FeaturedProject } from "ts/content";
+import { FEATURED_PROJECTS } from "ts/content";
 import { SlidingProject } from "./SlidingProject";
 
 const StickyProjectsSlideContainer = styled.div`
@@ -81,7 +81,7 @@ export const ProjectsSlide = () => {
     () => windowDimensions.viewPortHeight - slideHeightOffset.get()
   );
   const slideY = useTransform(dampedScrollY, () => slideHeightOffset.get() / 2);
-  const slideBR = useTransform(dampedScrollY, [0.93, 0.97], [0, 48]);
+  const slideBR = useTransform(dampedScrollY, [0.93, 0.98], [0, 48]);
 
   return (
     <StickyProjectsSlideContainer ref={sectionRef}>
@@ -92,8 +92,7 @@ export const ProjectsSlide = () => {
           y: slideY,
           height: slideHeight,
           borderRadius: slideBR,
-        }}
-      >
+        }}>
         {FEATURED_PROJECTS.map((project) => (
           <SlidingProject key={project.id} project={project} />
         ))}
