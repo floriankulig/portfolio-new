@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { MotionValue, motion, useTransform } from "framer-motion";
 import { rgba } from "polished";
+import { memo } from "react";
 import styled from "styled-components";
 import { FeaturedProject } from "ts/content";
 
@@ -12,8 +13,8 @@ const StyledSlidingProject = styled.div`
   justify-content: flex-start;
 `;
 
-const StyledBG = styled(motion.img)`
-  width: calc(100% + 32px);
+const StyledBG = styled(motion.img)<{ imageOverflow: number }>`
+  min-width: calc(100% + ${(p) => p.imageOverflow}px);
   height: 100%;
   object-fit: cover;
 `;
@@ -90,14 +91,38 @@ const BGOverlay = styled.div`
 
 interface SlidingProjectProps {
   project: FeaturedProject;
+  index: number;
+  images: number;
+  scrollProgress: MotionValue<number>;
 }
 
-export const SlidingProject: React.FC<SlidingProjectProps> = ({ project }) => {
+const PROJECT_IMAGE_OVERFLOW = 200;
+const PROJECT_IMAGE_OVERLAP = 0.25;
+const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
+  project,
+  index,
+  images,
+  scrollProgress,
+}) => {
   const { id, title, image, description, technologies, technologiesFeatured } =
     project;
+  const slideRange = 1 / images;
+  const imageX = useTransform(
+    scrollProgress,
+    [
+      Math.max(index * slideRange - PROJECT_IMAGE_OVERLAP, 0),
+      Math.min((index + 1) * slideRange + PROJECT_IMAGE_OVERLAP, 1),
+    ],
+    [-PROJECT_IMAGE_OVERFLOW, 0]
+  );
   return (
     <StyledSlidingProject>
-      <StyledBG src={image} alt="test" />
+      <StyledBG
+        src={image}
+        style={{ x: imageX }}
+        imageOverflow={PROJECT_IMAGE_OVERFLOW}
+        alt="test"
+      />
       <BGOverlay>
         <h2>{title}</h2>
         <div className="row">
@@ -112,3 +137,5 @@ export const SlidingProject: React.FC<SlidingProjectProps> = ({ project }) => {
     </StyledSlidingProject>
   );
 };
+
+export const SlidingProject = memo(MemoSlidingProject);

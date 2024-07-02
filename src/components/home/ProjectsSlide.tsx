@@ -36,7 +36,7 @@ const StickyProjectsSlide = styled(motion.div)`
 const SCROLL_END_RANGE = [0.95, 1];
 export const ProjectsSlide = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress, scrollXProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
@@ -93,8 +93,14 @@ export const ProjectsSlide = () => {
           height: slideHeight,
           borderRadius: slideBR,
         }}>
-        {FEATURED_PROJECTS.map((project) => (
-          <SlidingProject key={project.id} project={project} />
+        {FEATURED_PROJECTS.map((project, i) => (
+          <SlidingProject
+            key={project.id}
+            index={i}
+            images={FEATURED_PROJECTS.length}
+            scrollProgress={dampedScrollY}
+            project={project}
+          />
         ))}
       </StickyProjectsSlide>
       <ProjectsCTA scrollYProgress={dampedScrollY}></ProjectsCTA>
