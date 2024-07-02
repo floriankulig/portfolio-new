@@ -1,5 +1,5 @@
-import { rgba } from "polished";
 import { motion } from "framer-motion";
+import { rgba } from "polished";
 import styled from "styled-components";
 import { FeaturedProject } from "ts/content";
 
@@ -55,7 +55,8 @@ const BGOverlay = styled.div`
       font-size: 1.5rem;
       font-weight: 400;
       line-height: 1.3;
-      max-width: 36ch;
+      max-width: 40ch;
+      white-space: pre-line;
       color: var(--bg1);
       text-shadow: 0 0 124px ${rgba("#000", 0.5)};
     }
