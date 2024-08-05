@@ -78,11 +78,6 @@ const BGOverlay = styled.div`
         color: white;
         border: 1px solid ${rgba("#fff", 0.05)};
         background: ${({ theme }) => rgba("#5c5a5a", 0.2)};
-        /* background: linear-gradient(
-          175deg,
-          rgba(24, 24, 24, 0.1) 0%,
-          rgba(240, 240, 240, 0.2) 100%
-        ); */
         backdrop-filter: blur(20px);
       }
     }

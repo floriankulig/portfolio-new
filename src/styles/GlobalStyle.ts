@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 import theme from "./theme";
-import { rgba } from "polished";
 
 const GlobalStyle = createGlobalStyle`
   :root{

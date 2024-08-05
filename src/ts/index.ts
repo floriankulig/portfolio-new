@@ -1,4 +1,2 @@
-import { EMAIL, BASE_TRANSITION, EASING } from "./constants";
-import { FeaturedProject, FEATURED_PROJECTS } from "./content";
+export { BASE_TRANSITION, EASING, EMAIL, SCROLL_SPRING } from "./constants";
 
-export { EMAIL, BASE_TRANSITION, EASING };

@@ -1,5 +1,9 @@
-import { Hero, KeyServices } from "components/home";
-import { ProjectsSlide } from "components/home/ProjectsSlide";
+import {
+  Hero,
+  KeyServices,
+  ProjectsIntro,
+  ProjectsSlide,
+} from "components/home";
 import { Curtain } from "components/layout/Curtain";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -17,8 +21,9 @@ const Home = () => {
       <Curtain />
       <Header />
       <Hero />
-      <KeyServices></KeyServices>
-      <ProjectsSlide></ProjectsSlide>
+      <KeyServices />
+      <ProjectsIntro />
+      <ProjectsSlide />
     </>
   );
 };

@@ -10,13 +10,14 @@ import { useViewport } from "hooks";
 import { rgba } from "polished";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { SCROLL_SPRING } from "ts";
 import { FEATURED_PROJECTS } from "ts/content";
 import { SlidingProject } from "./SlidingProject";
 
 const StickyProjectsSlideContainer = styled.div`
   position: relative;
   display: flex;
-  height: 350vh;
+  height: 380vh;
   background-color: var(--bg2);
 `;
 
@@ -38,14 +39,9 @@ export const ProjectsSlide = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress, scrollXProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end end"],
+    offset: ["start -7.5%", "end end"],
   });
-  const dampedScrollY = useSpring(scrollYProgress, {
-    stiffness: 70,
-    damping: 20,
-    mass: 1.1,
-    restDelta: 0.0001,
-  });
+  const dampedScrollY = useSpring(scrollYProgress, SCROLL_SPRING);
   const slideContent = useRef<HTMLDivElement>(null);
   const [slideContentWidth, setSlideContentWidth] = useState(0);
   const { viewport: windowDimensions } = useViewport();
