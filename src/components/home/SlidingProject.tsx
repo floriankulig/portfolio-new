@@ -13,8 +13,8 @@ const StyledSlidingProject = styled.div`
   justify-content: flex-start;
 `;
 
-const StyledBG = styled(motion.img)<{ imageOverflow: number }>`
-  min-width: calc(100% + ${(p) => p.imageOverflow}px);
+const StyledBG = styled(motion.img)<{ $imageOverflow: number }>`
+  min-width: calc(100% + ${(p) => p.$imageOverflow}px);
   height: 100%;
   object-fit: cover;
 `;
@@ -115,7 +115,7 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
       <StyledBG
         src={image}
         style={{ x: imageX }}
-        imageOverflow={PROJECT_IMAGE_OVERFLOW}
+        $imageOverflow={PROJECT_IMAGE_OVERFLOW}
         alt="test"
       />
       <BGOverlay>
