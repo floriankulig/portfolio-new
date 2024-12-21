@@ -89,6 +89,7 @@ interface SlidingProjectProps {
   index: number;
   images: number;
   scrollProgress: MotionValue<number>;
+  endRange: number[];
 }
 
 const PROJECT_IMAGE_OVERFLOW = 200;
@@ -98,6 +99,7 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
   index,
   images,
   scrollProgress,
+  endRange,
 }) => {
   const { id, title, image, description, technologies, technologiesFeatured } =
     project;
@@ -110,11 +112,14 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
     ],
     [-PROJECT_IMAGE_OVERFLOW, 0]
   );
+  // Counter scale down at the end of the scroll
+  const imageScale = useTransform(scrollProgress, endRange, [1, 1.1]);
+
   return (
     <StyledSlidingProject>
       <StyledBG
         src={image}
-        style={{ x: imageX }}
+        style={{ x: imageX, scale: imageScale }}
         $imageOverflow={PROJECT_IMAGE_OVERFLOW}
         alt="test"
       />

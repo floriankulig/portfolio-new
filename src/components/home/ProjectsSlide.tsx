@@ -2,6 +2,7 @@ import { ArrowButton } from "components/shared";
 import {
   MotionValue,
   motion,
+  useMotionValue,
   useScroll,
   useSpring,
   useTransform,
@@ -43,13 +44,13 @@ export const ProjectsSlide = () => {
   });
   const dampedScrollY = useSpring(scrollYProgress, SCROLL_SPRING);
   const slideContent = useRef<HTMLDivElement>(null);
-  const [slideContentWidth, setSlideContentWidth] = useState(0);
+  const slideContentWidth = useMotionValue(0);
   const { viewport: windowDimensions } = useViewport();
 
   useEffect(() => {
     const handleResize = () => {
       if (slideContent.current && window) {
-        setSlideContentWidth(slideContent.current.offsetWidth);
+        slideContentWidth.set(slideContent.current.offsetWidth);
       }
     };
 
@@ -62,21 +63,27 @@ export const ProjectsSlide = () => {
   }, []);
 
   //Erklärung: Rechnen SlideShow Width + 400px Teaser/CTA
-  const slideX = useTransform(
+  const slideXMain = useTransform(
     dampedScrollY,
     [0, 1],
-    [0, (slideContentWidth - windowDimensions.viewPortWidth + 400) * -1]
+    [0, (slideContentWidth.get() - windowDimensions.viewPortWidth + 400) * -1]
   );
-  const slideHeightOffset = useTransform(
+  const scaleDownEnd = 0.925;
+  const slideScale = useTransform(dampedScrollY, SCROLL_END_RANGE, [
+    1,
+    scaleDownEnd,
+  ]);
+  const slideXEnd = useTransform(
     dampedScrollY,
-    SCROLL_END_RANGE,
-    [0, 100]
+    () =>
+      ((slideContentWidth.get() - slideContentWidth.get() / slideScale.get()) *
+        -1) /
+      2
   );
-  const slideHeight = useTransform(
+  const slideX = useTransform(
     dampedScrollY,
-    () => windowDimensions.viewPortHeight - slideHeightOffset.get()
+    () => slideXMain.get() + slideXEnd.get()
   );
-  const slideY = useTransform(dampedScrollY, () => slideHeightOffset.get() / 2);
   const slideBR = useTransform(dampedScrollY, [0.93, 0.98], [0, 48]);
 
   return (
@@ -85,10 +92,10 @@ export const ProjectsSlide = () => {
         ref={slideContent}
         style={{
           x: slideX,
-          y: slideY,
-          height: slideHeight,
+          scale: slideScale,
           borderRadius: slideBR,
-        }}>
+        }}
+      >
         {FEATURED_PROJECTS.map((project, i) => (
           <SlidingProject
             key={project.id}
@@ -96,6 +103,7 @@ export const ProjectsSlide = () => {
             images={FEATURED_PROJECTS.length}
             scrollProgress={dampedScrollY}
             project={project}
+            endRange={SCROLL_END_RANGE}
           />
         ))}
       </StickyProjectsSlide>
