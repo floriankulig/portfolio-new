@@ -8,8 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { useViewport } from "hooks";
-import { rgba } from "polished";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { SCROLL_SPRING } from "ts";
 import { FEATURED_PROJECTS } from "ts/content";
@@ -27,20 +26,20 @@ const StickyProjectsSlide = styled(motion.div)`
   top: 0;
   z-index: 9;
   left: 0;
-  background: ${rgba("#000", 0.5)};
   display: flex;
-  overflow: hidden;
-  /* gap: 1rem; */
+  background-color: var(--text1);
   height: 100vh;
   min-width: fit-content;
   justify-content: flex-start;
 `;
+const START_SCROLL_RANGE = [0, 0.2];
+const MAIN_SCROLL_RANGE = [0.2, 1];
 const SCROLL_END_RANGE = [0.95, 1];
 export const ProjectsSlide = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress, scrollXProgress } = useScroll({
     target: sectionRef,
-    offset: ["start -7.5%", "end end"],
+    offset: ["start 50%", "end end"],
   });
   const dampedScrollY = useSpring(scrollYProgress, SCROLL_SPRING);
   const slideContent = useRef<HTMLDivElement>(null);
@@ -61,13 +60,14 @@ export const ProjectsSlide = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  //Erklärung: Rechnen SlideShow Width + 400px Teaser/CTA
-  const slideXMain = useTransform(
-    dampedScrollY,
-    [0, 1],
-    [0, (slideContentWidth.get() - windowDimensions.viewPortWidth + 400) * -1]
+  const overflow = useTransform(scrollYProgress, (latestScrollY) =>
+    latestScrollY < 0.5 ? "visible" : "hidden"
   );
+  //Erklärung: Rechnen SlideShow Width + 400px Teaser/CTA
+  const slideXMain = useTransform(dampedScrollY, MAIN_SCROLL_RANGE, [
+    0,
+    (slideContentWidth.get() - windowDimensions.viewPortWidth + 400) * -1,
+  ]);
   const scaleDownEnd = 0.925;
   const slideScale = useTransform(dampedScrollY, SCROLL_END_RANGE, [
     1,
@@ -84,7 +84,7 @@ export const ProjectsSlide = () => {
     dampedScrollY,
     () => slideXMain.get() + slideXEnd.get()
   );
-  const slideBR = useTransform(dampedScrollY, [0.93, 0.98], [0, 48]);
+  const slideBR = useTransform(dampedScrollY, [0.93, 0.98], [0, 56]);
 
   return (
     <StickyProjectsSlideContainer ref={sectionRef}>
@@ -94,6 +94,7 @@ export const ProjectsSlide = () => {
           x: slideX,
           scale: slideScale,
           borderRadius: slideBR,
+          overflow,
         }}
       >
         {FEATURED_PROJECTS.map((project, i) => (
@@ -101,6 +102,7 @@ export const ProjectsSlide = () => {
             key={project.id}
             index={i}
             images={FEATURED_PROJECTS.length}
+            introAnimationRange={START_SCROLL_RANGE}
             scrollProgress={dampedScrollY}
             project={project}
             endRange={SCROLL_END_RANGE}
