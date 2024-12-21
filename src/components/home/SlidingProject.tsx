@@ -120,7 +120,7 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
       slideRangeStart,
       imageSlideRange: [
         Math.max(index * slideRangePerWindow - PROJECT_IMAGE_OVERLAP, 0) +
-          slideRangeStart,
+          (index === 0 ? 0 : slideRangeStart),
         Math.min((index + 1) * slideRangePerWindow + PROJECT_IMAGE_OVERLAP, 1) +
           slideRangeStart,
       ],
