@@ -59,7 +59,7 @@ export const ProjectsSlide = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [slideContentWidth]);
   const overflow = useTransform(scrollYProgress, (latestScrollY) =>
     latestScrollY < 0.5 ? "visible" : "hidden"
   );

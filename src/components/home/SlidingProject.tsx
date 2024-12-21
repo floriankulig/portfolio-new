@@ -207,5 +207,5 @@ const LocalTechList: React.FC<LocalTechListProps> = memo(
     );
   }
 );
-
+LocalTechList.displayName = "LocalTechList";
 export const SlidingProject = memo(MemoSlidingProject);
