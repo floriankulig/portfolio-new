@@ -1,4 +1,5 @@
 import {
+  Banner,
   Hero,
   KeyServices,
   ProjectsIntro,
@@ -24,6 +25,8 @@ const Home = () => {
       <KeyServices />
       <ProjectsIntro />
       <ProjectsSlide />
+      <Banner />
+      <div style={{ height: "300vh" }}></div>
     </>
   );
 };
