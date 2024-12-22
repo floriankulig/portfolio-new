@@ -80,7 +80,7 @@ const BannerText: React.FC<BannerTextProps> = ({ text, direction }) => {
         direction *
           Math.max(
             MIN_SCROLL_SPEED,
-            Math.abs(Math.min(scrollVelocity.get(), 200)) / 150
+            Math.min(Math.abs(scrollVelocity.get()), 1250) / 150
           )
     );
   });
