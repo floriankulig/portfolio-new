@@ -100,7 +100,7 @@ interface SlidingProjectProps {
 
 const PROJECT_IMAGE_OVERFLOW = 200;
 const PROJECT_IMAGE_OVERLAP = 0.25;
-const PROJECT_INTRO_DISTANCE = 150;
+const PROJECT_INTRO_DISTANCE = 200;
 const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
   project,
   index,
