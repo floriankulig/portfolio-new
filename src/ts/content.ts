@@ -35,7 +35,7 @@ const PROJECTS: Project[] = [
   {
     id: "sorting-algorithms",
     title: "Sorting Algorithms",
-    image: "TestiplyMock.png",
+    image: "SortVisMock.png",
     description:
       "An application that visualizes the most popular sorting \n algorithms, including documentation of their methodology.",
     technologies: ["Visualization", "Python"],
