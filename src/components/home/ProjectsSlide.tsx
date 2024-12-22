@@ -33,8 +33,8 @@ const StickyProjectsSlide = styled(motion.div)`
   justify-content: flex-start;
 `;
 const START_SCROLL_RANGE = [0, 0.2];
-const MAIN_SCROLL_RANGE = [0.2, 1];
-const SCROLL_END_RANGE = [0.95, 1];
+const MAIN_SCROLL_RANGE = [0.2, 0.95];
+const SCROLL_END_RANGE = [0.9, 0.95];
 export const ProjectsSlide = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress, scrollXProgress } = useScroll({
@@ -84,7 +84,7 @@ export const ProjectsSlide = () => {
     dampedScrollY,
     () => slideXMain.get() + slideXEnd.get()
   );
-  const slideBR = useTransform(dampedScrollY, [0.93, 0.98], [0, 56]);
+  const slideBR = useTransform(dampedScrollY, [0.88, 0.93], [0, 56]);
 
   return (
     <StickyProjectsSlideContainer ref={sectionRef}>
@@ -154,8 +154,8 @@ interface ProjectsCTAProps {
   scrollYProgress: MotionValue<number>;
 }
 const ProjectsCTA: React.FC<ProjectsCTAProps> = ({ scrollYProgress }) => {
-  const opacity = useTransform(scrollYProgress, [0.985, 1], [0, 1]);
-  const y = useTransform(scrollYProgress, [0.985, 1], [20, 0]);
+  const opacity = useTransform(scrollYProgress, [0.935, 1], [0, 1]);
+  const y = useTransform(scrollYProgress, [0.935, 1], [30, 0]);
   return (
     <StyledProjectsCTA>
       <StyledProjectsCTAContent style={{ y, opacity }}>
