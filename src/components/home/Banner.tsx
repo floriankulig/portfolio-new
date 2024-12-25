@@ -96,14 +96,12 @@ const BannerText: React.FC<BannerTextProps> = ({ text, direction }) => {
   useEffect(() => {
     if (!ref.current) return;
 
-    console.log(ref.current.getBoundingClientRect().width);
-    console.log(ref.current.offsetWidth);
-    setTextWidth(ref.current.getBoundingClientRect().width);
+    setTextWidth(ref.current.offsetWidth);
   }, [ref]);
 
   return (
     <StyledBannerText style={{ x: textX }}>
-      {Array.from({ length: 7 }).map((_, i) => (
+      {Array.from({ length: 8 }).map((_, i) => (
         <React.Fragment key={i}>{singleText}</React.Fragment>
       ))}
     </StyledBannerText>
