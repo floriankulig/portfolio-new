@@ -64,7 +64,7 @@ const BGOverlay = styled.div`
       max-width: 40ch;
       white-space: pre-line;
       color: var(--bg1);
-      text-shadow: 0 0 124px ${rgba("#000", 0.5)};
+      text-shadow: 0 0 64px ${rgba("#000", 0.8)};
     }
 
     .chips {
@@ -81,9 +81,14 @@ const BGOverlay = styled.div`
         font-size: 1rem;
         font-weight: 500;
         color: white;
-        border: 1px solid ${rgba("#fff", 0.05)};
-        background: ${({ theme }) => rgba("#5c5a5a", 0.2)};
+        box-sizing: content-box;
+        background: ${({ theme }) => rgba("#5c5a5a", 0.25)};
         backdrop-filter: blur(20px);
+        box-shadow: 0 0 32px ${rgba("#000", 0.15)},
+          inset 0px 0px 8px ${rgba("#fff", 0.05)},
+          inset 1px 2px 3px ${rgba("#fff", 0.1)},
+          inset -1px -1px 4px ${rgba("#000", 0.125)},
+          inset 0px 0px 1px ${rgba("#fff", 0.1)};
       }
     }
   }
