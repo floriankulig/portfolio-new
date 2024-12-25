@@ -1,4 +1,5 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { rgba } from "polished";
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
@@ -26,9 +27,20 @@ const StyledIntroHeader = styled(motion.header)`
     font-size: 6rem;
     text-transform: uppercase;
     font-weight: 500;
-    letter-spacing: -4.75px;
+    letter-spacing: -5px;
     line-height: 1.5;
-    color: var(--bg2);
+    background: ${({ theme }) =>
+      `linear-gradient(177deg, ${rgba(theme.bg2, 0.7)}, ${rgba(
+        theme.bg2,
+        0.2
+      )}),
+      linear-gradient(to right, ${rgba(theme.bg2, 0.1)} 0%, ${rgba(
+        theme.bg2,
+        0.85
+      )} 30%, ${rgba(theme.bg2, 0.6)} 45%,  ${rgba(theme.bg2, 0.1)} 100%)
+      `};
+    background-clip: text;
+    color: transparent;
   }
 
   span {
@@ -62,7 +74,8 @@ export const ProjectsIntro: React.FC<ProjectsIntroProps> = () => {
   return (
     <StyledProjectsIntroContainer
       ref={sectionRef}
-      style={{ backgroundColor: backgroundColor1 }}>
+      style={{ backgroundColor: backgroundColor1 }}
+    >
       <StyledProjectsIntro>
         <StyledIntroHeader>
           <h2>MY PROJECTS</h2>
