@@ -142,7 +142,7 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
   const projectX = index === 0 ? projectIntroX : projectOthersX;
   const projectIntroY = useTransform(
     scrollProgress,
-    [0, slideRangeStart - 0.1],
+    [0, slideRangeStart - 0.075],
     [-PROJECT_INTRO_DISTANCE, 0]
   );
   const projectY = index === 0 ? projectIntroY : 0;
