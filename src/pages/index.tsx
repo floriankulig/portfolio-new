@@ -4,6 +4,7 @@ import {
   KeyServices,
   ProjectsIntro,
   ProjectsSlide,
+  ThinkDifferent,
 } from "components/home";
 import { Curtain } from "components/layout/Curtain";
 import dynamic from "next/dynamic";
@@ -26,7 +27,8 @@ const Home = () => {
       <ProjectsIntro />
       <ProjectsSlide />
       <Banner />
-      <div style={{ height: "300vh" }}></div>
+      <ThinkDifferent />
+      <div style={{ background: "red", height: "300vh" }}></div>
     </>
   );
 };
