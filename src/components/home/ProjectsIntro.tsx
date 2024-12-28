@@ -7,7 +7,6 @@ import { SCROLL_SPRING } from "ts";
 
 const StyledProjectsIntroContainer = styled(motion.div)`
   position: relative;
-  /* height: 150dvh; */
   background: var(--bg2);
   padding-bottom: 3rem;
 `;
@@ -29,6 +28,7 @@ const StyledIntroHeader = styled(motion.header)`
     font-weight: 500;
     letter-spacing: -5px;
     line-height: 1.5;
+    -webkit-text-stroke: 1px ${({ theme }) => rgba(theme.bg1, 0.25)};
     background: ${({ theme }) =>
       `linear-gradient(177deg, ${rgba(theme.bg2, 0.7)}, ${rgba(
         theme.bg2,
