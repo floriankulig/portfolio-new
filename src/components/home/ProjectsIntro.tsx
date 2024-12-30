@@ -64,8 +64,8 @@ export const ProjectsIntro: React.FC<ProjectsIntroProps> = () => {
     offset: ["start 50%", "end 50%"],
   });
 
-  const gradientX = useTransform(scrollYProgress, [0, 1], [10, 85]);
-  const gradientY = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const gradientX = useTransform(scrollYProgress, [0, 0.9], [10, 85]);
+  const gradientY = useTransform(scrollYProgress, [0, 0.9], [0, 20]);
   const gradientOpacity = useTransform(
     scrollYProgress,
     [0, 0.4, 1],
