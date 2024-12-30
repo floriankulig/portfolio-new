@@ -1,4 +1,10 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { rgba } from "polished";
 import React, { useRef } from "react";
 import styled from "styled-components";
@@ -7,7 +13,7 @@ import { SCROLL_SPRING } from "ts";
 
 const StyledProjectsIntroContainer = styled(motion.div)`
   position: relative;
-  background: var(--bg2);
+  background: var(--text1);
   padding-bottom: 3rem;
 `;
 const StyledProjectsIntro = styled(motion.div)`
@@ -33,12 +39,7 @@ const StyledIntroHeader = styled(motion.header)`
       `linear-gradient(177deg, ${rgba(theme.bg2, 0.7)}, ${rgba(
         theme.bg2,
         0.2
-      )}),
-      linear-gradient(to right, ${rgba(theme.bg2, 0.1)} 0%, ${rgba(
-        theme.bg2,
-        0.85
-      )} 30%, ${rgba(theme.bg2, 0.6)} 45%,  ${rgba(theme.bg2, 0.1)} 100%)
-      `};
+      )})`};
     background-clip: text;
     color: transparent;
   }
@@ -60,25 +61,33 @@ export const ProjectsIntro: React.FC<ProjectsIntroProps> = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 60%", "end start"],
+    offset: ["start 50%", "end 50%"],
   });
-  const dampedScrollY = useSpring(scrollYProgress, SCROLL_SPRING);
-  const backgroundColor1 = useTransform(
+
+  const gradientX = useTransform(scrollYProgress, [0, 1], [10, 85]);
+  const gradientY = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const gradientOpacity = useTransform(
     scrollYProgress,
-    [0, 0],
-    [theme.bg2, theme.text1]
+    [0, 0.4, 1],
+    [0.4, 1, 0.3]
   );
-  const textOpacity = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
+  const backgroundImage = useMotionTemplate`linear-gradient(177deg, ${rgba(
+    theme.bg2,
+    0.7
+  )}, ${rgba(
+    theme.bg2,
+    0.2
+  )}), radial-gradient(circle at ${gradientX}% ${gradientY}%, ${rgba(
+    theme.bg1,
+    gradientOpacity.get()
+  )}, transparent 35%)`;
 
   const currentYear = new Date().getFullYear().toString().slice(2);
   return (
-    <StyledProjectsIntroContainer
-      ref={sectionRef}
-      style={{ backgroundColor: backgroundColor1 }}
-    >
+    <StyledProjectsIntroContainer ref={sectionRef}>
       <StyledProjectsIntro>
         <StyledIntroHeader>
-          <h2>MY PROJECTS</h2>
+          <motion.h2 style={{ backgroundImage }}>MY PROJECTS</motion.h2>
           <span>©2019-{currentYear}</span>
         </StyledIntroHeader>
       </StyledProjectsIntro>
