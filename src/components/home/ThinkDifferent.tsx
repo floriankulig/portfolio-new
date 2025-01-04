@@ -9,7 +9,6 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { useViewport } from "hooks";
 import { rgba } from "polished";
 import React, { memo, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
@@ -281,7 +280,7 @@ const lastWordAnimationVariants = {
     left: "5%",
     background: theme.text1,
   },
-  visible: (isMobile: any) => ({
+  visible: {
     height: "120%",
     width: "130%",
     left: "-8%",
@@ -305,7 +304,7 @@ const lastWordAnimationVariants = {
       duration: 0.5,
       ease: "easeOut",
     },
-  }),
+  },
   exit: {
     opacity: 0,
     scale: 1.05,
@@ -343,14 +342,12 @@ const lightBulbAnimationVariants = {
 };
 
 const LastWordAnimation: React.FC = memo(() => {
-  const { isMobile } = useViewport(480);
   return (
     <>
       <StyledLastWordAnimation
         initial="hidden"
         animate="visible"
         exit="exit"
-        custom={isMobile}
         variants={lastWordAnimationVariants}
       ></StyledLastWordAnimation>
       <motion.span
