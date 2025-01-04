@@ -61,7 +61,7 @@ export const ProjectsIntro: React.FC<ProjectsIntroProps> = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 50%", "end 50%"],
+    offset: ["start 80%", "end 50%"],
   });
 
   const gradientX = useTransform(scrollYProgress, [0, 0.9], [10, 85]);
