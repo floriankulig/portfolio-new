@@ -203,7 +203,7 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
   const { wordFadeInRange, animationTriggerThreshold } = useMemo(() => {
     const slideRangePerWindow = introAnimationEnd / numberOfWords;
     const wordOverlap = index >= 2 ? slideRangePerWindow / 7 : 0;
-    const animationTriggerThreshold = 0.8;
+    const animationTriggerThreshold = 0.7;
     return {
       slideRangePerWindow,
       animationTriggerThreshold,
