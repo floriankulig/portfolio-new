@@ -1,33 +1,28 @@
 import {
   AnimatePresence,
-  delay,
   LayoutGroup,
   motion,
   MotionValue,
   useMotionTemplate,
-  useMotionValue,
   useMotionValueEvent,
   useScroll,
   useSpring,
   useTransform,
 } from "framer-motion";
 import { useViewport } from "hooks";
-import { borderRadius, borderWidth, opacify, rgba } from "polished";
-import { exit } from "process";
-import React, { memo, useEffect, useMemo, useRef, useState } from "react";
+import { rgba } from "polished";
+import React, { memo, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
 import { SCROLL_SPRING } from "ts";
-import { transform } from "typescript";
 
 // for paddings on top and bottom
 const StyledThinkDifferentSection = styled(motion.section)`
   display: flex;
-  padding-block: 25vh;
   align-items: center;
 `;
 const StyledThinkDifferentAnimation = styled.div`
-  height: 500vh;
+  height: 600vh;
   position: relative;
   width: 100%;
 `;
@@ -61,9 +56,9 @@ export const ThinkDifferent: React.FC = () => {
     offset: ["start start", "end end"],
   });
   const dampedScrollY = useSpring(scrollYProgress, SCROLL_SPRING);
-  const partOneSection = [0, 0.3];
+  const partOneSection = [0, 0.25];
   const partOneProgress = useTransform(scrollYProgress, partOneSection, [0, 1]);
-  const partTwoSection = [0.3, 0.75];
+  const partTwoSection = [0.25, 0.95];
   const partTwoProgress = useTransform(scrollYProgress, partTwoSection, [0, 1]);
 
   const sectionBackground = useTransform(
@@ -123,21 +118,20 @@ const PartOne: React.FC<AnimationPartProps> = ({ scrollProgress }) => {
   );
 };
 
-const StyledPartTwoAnimation = styled(motion.div)`
+const StyledPartTwoAnimation = styled.div`
   font-size: clamp(24px, 7vw, 96px);
   letter-spacing: -0.06em;
   font-weight: 500;
 
   & > span {
     display: inline-flex;
+    gap: 0.2em;
   }
 `;
 
 const PartTwo: React.FC<AnimationPartProps> = ({ scrollProgress }) => {
-  const y = useTransform(scrollProgress, [0, 0.35, 0.85, 1], [75, 10, 0, -25]);
-  const opacity = useTransform(scrollProgress, [0, 0.2], [0, 1]);
   return (
-    <StyledPartTwoAnimation style={{ opacity }}>
+    <StyledPartTwoAnimation>
       <WordAnimation scrollProgress={scrollProgress}>
         let&apos;s think outside the box
       </WordAnimation>
@@ -155,11 +149,12 @@ const WordAnimation: React.FC<WordAnimationProps> = ({
 }) => {
   const words = children.split(" ");
   const numberOfWords = words.length;
-  const animationEnd = 0.5;
+  const introAnimationEnd = 0.35;
+  // intro
   const xProgress = useTransform(
     scrollProgress,
-    [animationEnd / numberOfWords, animationEnd], // start after the first word
-    [50, 0]
+    [introAnimationEnd / numberOfWords, introAnimationEnd].concat([0.55, 0.85]), // start after the first word
+    [50, 3].concat([-3, -40])
   );
   const x = useMotionTemplate`${xProgress}%`;
 
@@ -170,10 +165,10 @@ const WordAnimation: React.FC<WordAnimationProps> = ({
           key={index}
           index={index}
           scrollProgress={scrollProgress}
-          animationEnd={animationEnd}
+          introAnimationEnd={introAnimationEnd}
           numberOfWords={numberOfWords}
         >
-          {word}&nbsp;
+          {word}
         </WordFadeUp>
       ))}
     </motion.span>
@@ -192,20 +187,22 @@ interface WordFadeUpProps {
   children: React.ReactNode;
   index: number;
   numberOfWords: number;
-  animationEnd: number;
+  introAnimationEnd: number;
   scrollProgress: MotionValue<number>;
 }
 const WordFadeUp: React.FC<WordFadeUpProps> = ({
   children,
   index,
   numberOfWords,
-  animationEnd,
+  introAnimationEnd,
   scrollProgress,
 }) => {
+  const wordOutRange = [0.5, 0.75];
+
   const { imageSlideRange, animationTriggerThreshold } = useMemo(() => {
-    const slideRangePerWindow = animationEnd / numberOfWords;
+    const slideRangePerWindow = introAnimationEnd / numberOfWords;
     const wordOverlap = index >= 2 ? slideRangePerWindow / 7 : 0;
-    const animationTriggerThreshold = animationEnd + 0.075;
+    const animationTriggerThreshold = 0.8;
     return {
       slideRangePerWindow,
       animationTriggerThreshold,
@@ -213,11 +210,11 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
         Math.max(index * slideRangePerWindow - wordOverlap, 0),
         Math.min(
           (index + 1) * slideRangePerWindow + wordOverlap,
-          animationEnd - wordOverlap
+          introAnimationEnd - wordOverlap
         ),
       ],
     };
-  }, [numberOfWords, index, animationEnd]);
+  }, [numberOfWords, index, introAnimationEnd]);
 
   const [lastWordAnimationVisible, setLastWordAnimationVisible] =
     useState(false);
@@ -230,23 +227,28 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
   });
   const y = useTransform(scrollProgress, imageSlideRange, [100, 0]);
   const opacity = useTransform(scrollProgress, imageSlideRange, [0, 1]);
-
-  const x = useMotionValue(0);
-  const sx = useSpring(x);
-
-  useEffect(() => {
-    x.set(lastWordAnimationVisible ? 15 : 0);
-  }, [lastWordAnimationVisible, x]);
+  const x = useTransform(scrollProgress, wordOutRange, [
+    0,
+    -(numberOfWords - index) * 50,
+  ]);
 
   return (
     <LayoutGroup>
-      <StyledSingleWord style={{ x: sx, y, opacity }}>
-        {children}
-        <AnimatePresence>
-          {lastWordAnimationVisible && (
-            <LastWordAnimation key={String(children)} />
-          )}
-        </AnimatePresence>
+      <StyledSingleWord style={{ y, opacity, x }}>
+        {index === numberOfWords - 1 ? (
+          <>
+            {children}
+            <AnimatePresence>
+              {lastWordAnimationVisible && (
+                <LastWordAnimation key={String(children)} />
+              )}
+            </AnimatePresence>
+          </>
+        ) : (
+          <WordFadeOut scrollProgress={scrollProgress} range={wordOutRange}>
+            {children}
+          </WordFadeOut>
+        )}
       </StyledSingleWord>
     </LayoutGroup>
   );
@@ -256,6 +258,19 @@ const StyledLastWordAnimation = styled(motion.div)`
   border: clamp(2px, 0.5vw, 3px) solid var(--text1);
   transform-origin: 0 50%;
   backdrop-filter: blur(3px);
+  position: absolute;
+  border-radius: clamp(4px, 1vw, 8px);
+
+  & + .light-bulb {
+    position: absolute;
+    top: calc(-50% - 8px);
+    right: -20%;
+    font-size: clamp(
+      12px,
+      3vw,
+      48px
+    ); // half of defined font size in WordAnimation
+  }
 `;
 
 const lastWordAnimationVariants = {
@@ -264,14 +279,12 @@ const lastWordAnimationVariants = {
     width: "4%",
     left: "5%",
     background: theme.text1,
-    borderRadius: 0,
   },
   visible: (isMobile: any) => ({
     height: "120%",
-    width: "120%",
+    width: "130%",
     left: "-8%",
     background: "transparent",
-    borderRadius: isMobile ? 6 : 8,
     transition: {
       width: {
         type: "spring",
@@ -298,19 +311,73 @@ const lastWordAnimationVariants = {
     transition: { duration: 0.2, ease: "easeOut" },
   },
 };
+const lightBulbAnimationVariants = {
+  hidden: {
+    scale: 0.9,
+    y: 20,
+    opacity: 0,
+  },
+  visible: {
+    scale: 1,
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      delay: 0.5,
+      ease: "easeOut",
+      y: {
+        ease: "easeOut",
+      },
+      opacity: {
+        ease: "linear",
+      },
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 1.05,
+    y: -10,
+    transition: { duration: 0.2, ease: "easeOut" },
+  },
+};
 
 const LastWordAnimation: React.FC = memo(() => {
   const { isMobile } = useViewport(480);
   return (
-    <StyledLastWordAnimation
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      custom={isMobile}
-      variants={lastWordAnimationVariants}
-      style={{ position: "absolute" }}
-    ></StyledLastWordAnimation>
+    <>
+      <StyledLastWordAnimation
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        custom={isMobile}
+        variants={lastWordAnimationVariants}
+      ></StyledLastWordAnimation>
+      <motion.span
+        className="light-bulb"
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={lightBulbAnimationVariants}
+      >
+        💡
+      </motion.span>
+    </>
   );
 });
 
 LastWordAnimation.displayName = "LastWordAnimation";
+
+interface WordAnimateOutProps {
+  children: React.ReactNode;
+  scrollProgress: MotionValue<number>;
+  range: number[];
+}
+const WordFadeOut: React.FC<WordAnimateOutProps> = ({
+  children,
+  scrollProgress,
+  range,
+}) => {
+  const scale = useTransform(scrollProgress, range, [1, 0.85]);
+  const opacity = useTransform(scrollProgress, range, [1, 0]);
+  return <motion.span style={{ scale, opacity }}>{children}</motion.span>;
+};
