@@ -22,7 +22,7 @@ const StyledThinkDifferentSection = styled(motion.section)`
   align-items: center;
 `;
 const StyledThinkDifferentAnimation = styled.div`
-  height: 600vh;
+  height: 550vh;
   position: relative;
   width: 100%;
 `;
@@ -53,7 +53,7 @@ export const ThinkDifferent: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end end"],
+    offset: ["start 25%", "end 20%"],
   });
   const dampedScrollY = useSpring(scrollYProgress, SCROLL_SPRING);
   const partOneSection = [0, 0.25];
@@ -157,9 +157,10 @@ const WordAnimation: React.FC<WordAnimationProps> = ({
     [50, 3].concat([-3, -40])
   );
   const x = useMotionTemplate`${xProgress}%`;
+  const y = useTransform(scrollProgress, [0.85, 1], ["0vh", "10vh"]);
 
   return (
-    <motion.span style={{ x }}>
+    <motion.span style={{ x, y }}>
       {words.map((word, index) => (
         <WordFadeUp
           key={index}
@@ -199,14 +200,14 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
 }) => {
   const wordOutRange = [0.5, 0.75];
 
-  const { imageSlideRange, animationTriggerThreshold } = useMemo(() => {
+  const { wordFadeInRange, animationTriggerThreshold } = useMemo(() => {
     const slideRangePerWindow = introAnimationEnd / numberOfWords;
     const wordOverlap = index >= 2 ? slideRangePerWindow / 7 : 0;
     const animationTriggerThreshold = 0.8;
     return {
       slideRangePerWindow,
       animationTriggerThreshold,
-      imageSlideRange: [
+      wordFadeInRange: [
         Math.max(index * slideRangePerWindow - wordOverlap, 0),
         Math.min(
           (index + 1) * slideRangePerWindow + wordOverlap,
@@ -225,8 +226,8 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
         index === numberOfWords - 1
     );
   });
-  const y = useTransform(scrollProgress, imageSlideRange, [100, 0]);
-  const opacity = useTransform(scrollProgress, imageSlideRange, [0, 1]);
+  const y = useTransform(scrollProgress, wordFadeInRange, [100, 0]);
+  const opacity = useTransform(scrollProgress, wordFadeInRange, [0, 1]);
   const x = useTransform(scrollProgress, wordOutRange, [
     0,
     -(numberOfWords - index) * 50,
