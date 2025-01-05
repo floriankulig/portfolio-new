@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useCallback, memo } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { LINKS } from "ts";
+import Link from "next/link";
+import { NavLink } from "./NavLink";
 
 const StyledHeader = styled.nav`
   width: 100%;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 8vw, 8rem) 0;
   letter-spacing: 2%;
   font-size: 14px;
@@ -16,12 +19,22 @@ const StyledHeader = styled.nav`
 
 const StyledMeta = styled.div`
   color: var(--text3);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25em;
+  text-align: right;
   & > span {
     font-weight: 600;
     width: 2.5rem;
     text-align: right;
     color: var(--text1);
   }
+`;
+
+const StyledLinks = styled.ul`
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
 `;
 
 // Memoized Colon component to prevent unnecessary re-renders
@@ -93,6 +106,11 @@ export const Header: React.FC = () => {
   return (
     <StyledHeader>
       <div>Florian Kulig</div>
+      <StyledLinks>
+        {LINKS.map((link) => (
+          <NavLink key={link.name} link={link}></NavLink>
+        ))}
+      </StyledLinks>
       <StyledMeta>
         Bavaria, Germany{" "}
         <span>

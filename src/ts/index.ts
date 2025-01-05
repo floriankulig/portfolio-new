@@ -1,2 +1,7 @@
-export { BASE_TRANSITION, EASING, EMAIL, SCROLL_SPRING } from "./constants";
-
+export {
+  BASE_TRANSITION,
+  EASING,
+  EMAIL,
+  SCROLL_SPRING,
+  LINKS,
+} from "./constants";

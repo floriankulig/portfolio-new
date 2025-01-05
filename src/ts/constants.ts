@@ -1,4 +1,5 @@
 import { Spring, Transition } from "framer-motion";
+import { url } from "inspector";
 
 export const EMAIL = "florian.kulig@web.de" as const;
 
@@ -17,3 +18,22 @@ export const BASE_TRANSITION: Transition = {
   ease: [0.6, 0.01, -0.05, 0.95] as any,
   duration: 0.8,
 };
+
+export const LINKS = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  {
+    name: "Work",
+    url: "/projects",
+  },
+  {
+    name: "About",
+    url: "/about",
+  },
+  {
+    name: "Contact",
+    url: "/contact",
+  },
+];
