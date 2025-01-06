@@ -13,6 +13,7 @@ export interface Project {
 export interface ProjectCategory {
   id: string;
   title: string;
+  legerTitle: string;
   color: string;
 }
 
@@ -61,16 +62,19 @@ const PROJECT_CATEGORIES: ProjectCategory[] = [
     id: "development",
     title: "Development",
     color: "#87CEEB",
+    legerTitle: "Shit that works.",
   },
   {
     id: "data-science",
     title: "Data Science & AI",
     color: "#FF6347",
+    legerTitle: "Data digging.",
   },
   {
     id: "design",
     title: "Design",
     color: "#20B2AA",
+    legerTitle: "Beautiful stuff.",
   },
 ];
 

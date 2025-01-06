@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ProjectsCategoryChip } from "./ProjectsCategoryChip";
 import { PROJECT_CATEGORIES } from "ts/content";
+import { motion } from "framer-motion";
+import { WordExchange } from "components/shared";
 
 const StyledProjectsHeader = styled.header`
-  padding: max(14vh, 100px) ${({ theme }) => theme.mainColPadding} 40px;
+  padding: min(max(12vw, 48px), 100px) ${({ theme }) => theme.mainColPadding}
+    40px;
   display: flex;
   flex-direction: column;
   h1 {
@@ -15,16 +18,18 @@ const StyledProjectsHeader = styled.header`
     display: flex;
     flex-wrap: wrap;
     gap: 0.2em;
-    span {
+    margin-bottom: 0.3em;
+    & > span {
       color: var(--text3);
+      filter: blur(0px);
     }
   }
 `;
 
-const StyledProjectsCategoryList = styled.ul`
+const StyledProjectsCategoryList = styled(motion.ul)`
   display: flex;
   gap: 0px;
-  margin-top: 40px;
+  flex-wrap: wrap;
 `;
 const PROJECT_CATEGORY_IDS = PROJECT_CATEGORIES.map((c) => c.id);
 interface ProjectsHeaderProps {
@@ -48,13 +53,26 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({
     }
   };
 
+  const selectedCategories = PROJECT_CATEGORIES.filter((c) =>
+    selectedChips.includes(c.id)
+  );
+
+  const secondaryText = useMemo(() => {
+    if (selectedCategories.length === 0) {
+      return "All of them.";
+    }
+    if (selectedCategories.length === 1) {
+      return selectedCategories[0]?.legerTitle;
+    }
+    return `Some of them.`;
+  }, [selectedCategories]);
+
   return (
     <StyledProjectsHeader>
       <h1>
-        👨🏽‍💻 Projects. <span>All of them. </span>
-        {/* 👨🏽‍💻 Projects. <span>See my work. </span> */}
+        👨🏽‍💻 Projects. <WordExchange>{secondaryText}</WordExchange>
       </h1>
-      <StyledProjectsCategoryList>
+      <StyledProjectsCategoryList layout>
         <ProjectsCategoryChip
           selected={selectedChips.length === 0}
           toggleSelected={() => setSelectedChips([])}

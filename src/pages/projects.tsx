@@ -1,5 +1,6 @@
 import { Curtain } from "components/layout/Curtain";
 import { ProjectsHeader, ProjectsList } from "components/projects";
+import { LayoutGroup } from "framer-motion";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
@@ -15,11 +16,13 @@ const ProjectsPage = () => {
     <>
       <Curtain />
       <Header />
-      <ProjectsHeader
-        selectedChips={selectedCategories}
-        setSelectedChips={setSelectedCategories}
-      />
-      <ProjectsList />
+      <LayoutGroup>
+        <ProjectsHeader
+          selectedChips={selectedCategories}
+          setSelectedChips={setSelectedCategories}
+        />
+        <ProjectsList />
+      </LayoutGroup>
     </>
   );
 };

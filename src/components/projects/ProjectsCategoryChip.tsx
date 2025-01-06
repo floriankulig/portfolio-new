@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {
-  AnimatePresence,
   easeIn,
   easeOut,
   motion,
@@ -88,8 +87,13 @@ export const ProjectsCategoryChip: React.FC<ProjectsCategoryChipProps> = ({
     mouseY.set(e.clientY);
   };
   const onMouseEnter = (e: React.MouseEvent) => {
-    mouseX.jump(e.clientX);
-    mouseY.jump(e.clientY);
+    const { clientX: x, clientY: y } = e;
+    mouseX.jump(x);
+    mouseY.jump(y);
+    if (!selected) {
+      backgroundX.jump(x - left - MOUSE_SIZE / 2);
+      backgroundY.jump(y - top - MOUSE_SIZE / 2);
+    }
     setHovered(true);
   };
   const onMouseLeave = (e: React.MouseEvent) => {
@@ -97,64 +101,54 @@ export const ProjectsCategoryChip: React.FC<ProjectsCategoryChipProps> = ({
   };
 
   const onClick = () => {
-    const newValue = !selected;
-    if (newValue) {
-      mouseBackgroundX.set(0);
-      mouseBackgroundY.set(0);
-    }
     toggleSelected();
   };
-
-  useEffect(() => {
-    if (!selected && !hovered) {
-      backgroundX.set(middle.x - MOUSE_SIZE / 2);
-      backgroundY.set(middle.y - MOUSE_SIZE / 2);
-    }
-  }, [selected]);
 
   const mouseElementX = useTransform(mouseX, (x) => x - left);
   const mouseElementY = useTransform(mouseY, (y) => y - top);
   const mouseBackgroundX = useTransform(mouseElementX, (x) =>
-    selected ? 0 : x - MOUSE_SIZE / 2
+    selected ? -2 : x - MOUSE_SIZE / 2
   );
   const mouseBackgroundY = useTransform(mouseElementY, (y) =>
-    selected ? 0 : y - MOUSE_SIZE / 2
+    selected ? -2 : y - MOUSE_SIZE / 2
   );
   const backgroundX = useSpring(mouseBackgroundX, MOUSE_SPRING);
   const backgroundY = useSpring(mouseBackgroundY, MOUSE_SPRING);
+
+  useEffect(() => {
+    // On unselect, move the mouse to the middle
+    if (!selected && !hovered) {
+      backgroundX.set(middle.x);
+      backgroundY.set(middle.y);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected]);
 
   const textRange = hovered ? [-1, 0, 1] : [0, 0, 0];
   const textX = useSpring(
     useTransform(mouseElementX, [0, width / 2, width], textRange, {
       ease: [easeIn, easeOut],
-    }),
-    MOUSE_SPRING
+    })
   );
   const textY = useSpring(
     useTransform(mouseElementY, [0, height / 2, height], textRange, {
       ease: [easeIn, easeOut],
-    }),
-    MOUSE_SPRING
+    })
   );
   const chipRange = hovered ? [-1, 0, 1] : [0, 0, 0];
   const chipX = useSpring(
     useTransform(mouseElementX, [0, width / 2, width], chipRange, {
       ease: [easeIn, easeOut],
-    }),
-    MOUSE_SPRING
+    })
   );
   const chipY = useSpring(
     useTransform(mouseElementY, [0, height / 2, height], chipRange, {
       ease: [easeIn, easeOut],
-    }),
-    MOUSE_SPRING
+    })
   );
 
   return (
     <StyledProjectsCategoryWrapper
-      whileHover="hover"
-      initial="initial"
-      animate="animate"
       onMouseMove={onMouseMove}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -171,14 +165,18 @@ export const ProjectsCategoryChip: React.FC<ProjectsCategoryChipProps> = ({
           </motion.span>
           <motion.div
             className="background"
-            // No animation for preselected values
             animate={{
-              width: selected ? width : MOUSE_SIZE,
-              height: selected ? height : MOUSE_SIZE,
+              width: selected ? width + 4 : MOUSE_SIZE,
+              height: selected ? height + 4 : MOUSE_SIZE,
               scale: selected || hovered ? 1 : 0,
               opacity: selected || hovered ? 1 : 0,
             }}
-            transition={{ delay: 0.025, damping: 50 }}
+            transition={{
+              delay: 0.025,
+              damping: 50,
+              // height: { duration: 0.4, ease: "easeOut" },
+              // width: { duration: 0.4, ease: "easeOut" },
+            }}
             style={{
               backgroundColor: color || "var(--text2)",
               x: backgroundX,
