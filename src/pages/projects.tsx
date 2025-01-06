@@ -1,6 +1,7 @@
 import { Curtain } from "components/layout/Curtain";
+import { ProjectsHeader, ProjectsList } from "components/projects";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Header = dynamic(
   () => import("components/shared").then((mod) => mod.Header),
@@ -8,13 +9,17 @@ const Header = dynamic(
 );
 
 const ProjectsPage = () => {
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
   return (
     <>
       <Curtain />
       <Header />
-      <div
-        style={{ background: "red", marginTop: "100px", height: "300vh" }}
-      ></div>
+      <ProjectsHeader
+        selectedChips={selectedCategories}
+        setSelectedChips={setSelectedCategories}
+      />
+      <ProjectsList />
     </>
   );
 };

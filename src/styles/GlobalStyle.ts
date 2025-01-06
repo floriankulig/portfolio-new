@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-family: var(--poppins), var(--jakarta), sans-serif;
     overflow-x: hidden;
+    min-height: 100dvh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

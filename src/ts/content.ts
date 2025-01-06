@@ -7,6 +7,13 @@ export interface Project {
   technologiesFeatured: number;
   externalLink?: string;
   github?: string;
+  categories?: string[];
+}
+
+export interface ProjectCategory {
+  id: string;
+  title: string;
+  color: string;
 }
 
 export interface FeaturedProject extends Project {}
@@ -49,4 +56,22 @@ const FEATURED_PROJECTS: FeaturedProject[] = PROJECTS.slice(
   3
 ) as FeaturedProject[];
 
-export { FEATURED_PROJECTS, PROJECTS };
+const PROJECT_CATEGORIES: ProjectCategory[] = [
+  {
+    id: "development",
+    title: "Development",
+    color: "#87CEEB",
+  },
+  {
+    id: "data-science",
+    title: "Data Science & AI",
+    color: "#FF6347",
+  },
+  {
+    id: "design",
+    title: "Design",
+    color: "#20B2AA",
+  },
+];
+
+export { FEATURED_PROJECTS, PROJECTS, PROJECT_CATEGORIES };

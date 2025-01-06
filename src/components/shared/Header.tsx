@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback, memo } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { LINKS } from "ts";
-import Link from "next/link";
 import { NavLink } from "./NavLink";
 
 const StyledHeader = styled.nav`
@@ -10,7 +9,7 @@ const StyledHeader = styled.nav`
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 8vw, 8rem) 0;
+  padding: clamp(1.5rem, 3vw, 2rem) ${({ theme }) => theme.mainColPadding} 0;
   letter-spacing: 2%;
   font-size: 14px;
   font-family: var(--jakarta);
