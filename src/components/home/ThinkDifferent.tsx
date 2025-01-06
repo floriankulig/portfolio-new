@@ -153,7 +153,7 @@ const WordAnimation: React.FC<WordAnimationProps> = ({
   const xProgress = useTransform(
     scrollProgress,
     [introAnimationEnd / numberOfWords, introAnimationEnd].concat([0.55, 0.85]), // start after the first word
-    [50, 3].concat([-3, -40])
+    [50, 3].concat([-3, -38.5])
   );
   const x = useMotionTemplate`${xProgress}%`;
   const y = useTransform(scrollProgress, [0.85, 1], ["0vh", "10vh"]);
