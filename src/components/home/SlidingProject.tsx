@@ -179,7 +179,7 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
         src={image}
         style={{ x: imageX, scale: imageScale }}
         $imageOverflow={PROJECT_IMAGE_OVERFLOW}
-        alt="test"
+        alt={`Image showing a software preview of the project "${title}"`}
       />
       <BGOverlay>
         <h2>{title}</h2>
