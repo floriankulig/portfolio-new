@@ -14,6 +14,7 @@ interface PageLoaderProps {
 
 const PageLoader = styled(motion.div)<PageLoaderProps>`
   display: block;
+  min-height: 100dvh;
   animation: shadow 1.8s 4.5s forwards;
   animation-timing-function: cubic-bezier(0.6, 0.01, -0.05, 0.95);
   box-shadow: 0px 0px 0px 6px ${({ theme }) => rgba(theme.text1, 1)};
