@@ -24,7 +24,7 @@ const StyledMeta = styled.div`
   text-align: right;
   & > span {
     font-weight: 600;
-    width: 2.5rem;
+    min-width: 2.5rem;
     text-align: right;
     color: var(--text1);
   }
