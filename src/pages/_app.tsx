@@ -61,8 +61,7 @@ const pageLoadingVariants: Variants = {
 };
 
 export default function App({ Component, pageProps, router }: AppProps) {
-  const [appHasLoaded, setAppHasLoaded] = useState<boolean>(false);
-  const [introHasFinished, setIntroHasFinished] = useState<boolean>(false);
+  const [appHasLoaded, setAppHasLoaded] = useState<boolean>(true);
 
   return (
     <>
@@ -85,8 +84,8 @@ export default function App({ Component, pageProps, router }: AppProps) {
             initial="pageEntry"
             animate="pageLoad"
             exit="pageExit"
-            variants={!appHasLoaded ? pageLoadingVariants : undefined}
-            onAnimationComplete={() => setAppHasLoaded(true)}
+            // variants={!appHasLoaded ? pageLoadingVariants : undefined}
+            // onAnimationComplete={() => setAppHasLoaded(true)}
             $appHasLoaded={appHasLoaded}
             key={router.route}
           >
