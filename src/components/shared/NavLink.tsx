@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
+import { TransitionLink } from "./TransitionLink";
 
 const StyledNavLinkItem = styled.li`
   position: relative;
@@ -28,9 +28,9 @@ export const NavLink: React.FC<NavLinkProps> = ({ link: { url, name } }) => {
 
   return (
     <StyledNavLinkItem>
-      <Link href={url} key={name}>
+      <TransitionLink href={url} key={name}>
         <span>{name}</span>
-      </Link>
+      </TransitionLink>
       <AnimatePresence>
         {isActive && (
           <motion.div
