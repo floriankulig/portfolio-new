@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
+import { motion } from "framer-motion";
 
 interface TransitionLinkProps {
   children: React.ReactNode;
@@ -15,14 +16,14 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
     router.push(href, undefined, { scroll: false });
   };
   return (
-    <div
+    <motion.div
       style={{
         display: "contents",
         cursor: "pointer",
       }}
-      onClick={() => handleClick()}
+      onTap={() => handleClick()}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };

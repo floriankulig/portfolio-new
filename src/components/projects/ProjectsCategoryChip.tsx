@@ -153,7 +153,7 @@ export const ProjectsCategoryChip: React.FC<ProjectsCategoryChipProps> = ({
       onMouseMove={onMouseMove}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={onClick}
+      onTap={onClick}
     >
       <div ref={ref}>
         <StyledProjectsCategory
