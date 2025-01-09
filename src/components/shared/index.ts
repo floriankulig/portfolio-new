@@ -4,3 +4,7 @@ export { ArrowButton } from "./ArrowButton";
 export { MainColumn } from "./MainColumn";
 export { WordExchange } from "./WordExchange";
 export { TransitionLink } from "./TransitionLink";
+export { ExternalButton } from "./ExternalButton";
+export { CopyToClipboard } from "./CopyToClipboard";
+export { Snackbar } from "./Snackbar";
+export { Underline, ContactCircle } from "./Shapes";

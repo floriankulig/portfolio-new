@@ -2,19 +2,19 @@ import { motion, AnimatePresence, LayoutGroup, Variants } from "framer-motion";
 import React from "react";
 
 const wordVariants: Variants = {
-  initial: {
+  wordInitial: {
     opacity: 0,
     scale: 0.8,
     y: 40,
     filter: "blur(6px)",
   },
-  animate: {
+  wordAnimate: {
     opacity: 1,
     scale: 1,
     filter: "blur(0px)",
     y: 0,
   },
-  exit: {
+  wordExit: {
     opacity: 0,
     y: 40,
     transition: {
@@ -40,9 +40,9 @@ export const WordExchange: React.FC<WordExchangeProps> = ({
       {words.map((word, i) => (
         <motion.span
           key={word}
-          initial="initial"
-          animate="animate"
-          exit="exit"
+          initial="wordInitial"
+          animate="wordAnimate"
+          exit="wordExit"
           variants={wordVariants}
           transition={{
             delay: i * 0.05,
