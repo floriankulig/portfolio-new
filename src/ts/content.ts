@@ -27,6 +27,7 @@ const PROJECTS: Project[] = [
     description:
       "A tool for managing and planning contracting \n work in the forestry business.",
     technologies: ["React", "Firebase"],
+    categories: ["development", "design"],
     technologiesFeatured: 2,
   },
   {
@@ -37,6 +38,7 @@ const PROJECTS: Project[] = [
       "A platform for sharing beta applications with a feedback \n mechanism connecting testers and developers.",
     technologies: ["Interaction", "React", "MongoDB", "NodeJS"],
     technologiesFeatured: 2,
+    categories: ["development", "design"],
     externalLink: "https://testiply.vercel.app",
     github: "",
   },
@@ -47,6 +49,7 @@ const PROJECTS: Project[] = [
     description:
       "An application that visualizes the most popular sorting \n algorithms, including documentation of their methodology.",
     technologies: ["Visualization", "Python"],
+    categories: ["development"],
     technologiesFeatured: 2,
     github: "",
   },

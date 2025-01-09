@@ -2,7 +2,8 @@ import { Curtain } from "components/layout/Curtain";
 import { ProjectsHeader, ProjectsList } from "components/projects";
 import { LayoutGroup } from "framer-motion";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { PROJECTS } from "ts/content";
 
 const Header = dynamic(
   () => import("components/shared").then((mod) => mod.Header),
@@ -11,6 +12,17 @@ const Header = dynamic(
 
 const ProjectsPage = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const selectedProjects = useMemo(
+    () =>
+      PROJECTS.filter(
+        (project) =>
+          selectedCategories.some((category) =>
+            project.categories?.includes(category)
+          ) || selectedCategories.length === 0
+      ),
+    [selectedCategories]
+  );
 
   return (
     <>
@@ -21,7 +33,7 @@ const ProjectsPage = () => {
           selectedChips={selectedCategories}
           setSelectedChips={setSelectedCategories}
         />
-        <ProjectsList />
+        <ProjectsList selectedProjects={selectedProjects} />
       </LayoutGroup>
     </>
   );
