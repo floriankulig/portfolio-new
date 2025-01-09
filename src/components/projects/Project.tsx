@@ -154,21 +154,21 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
   );
   // TODO: Build animation to Project Detail
   return (
-    <StyledProject
-      layout
-      initial="initial"
-      animate="animate"
-      whileInView="inView"
-      whileHover="hover"
-      exit="exit"
-      transition={{
-        layout: { type: "spring", stiffness: 115, damping: 18 },
-        staggerChildren: 0.05,
-      }}
-      onLayoutMeasure={(layout) => console.log(layout)}
-      viewport={{ once: true }}
-    >
-      <TransitionLink href={`/projects/${id}`}>
+    <TransitionLink href={`/projects/${id}`}>
+      <StyledProject
+        layout
+        initial="initial"
+        animate="animate"
+        whileInView="inView"
+        whileHover="hover"
+        exit="exit"
+        transition={{
+          layout: { type: "spring", stiffness: 115, damping: 18 },
+          staggerChildren: 0.05,
+        }}
+        onLayoutMeasure={(layout) => console.log(layout)}
+        viewport={{ once: true }}
+      >
         <StyledProjectFeatureImageWrapper
           variants={fadeInUpVariants}
           custom={true}
@@ -201,7 +201,7 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
             </div>
           </StyledProjectHeader>
         </StyledProjectContent>
-      </TransitionLink>
-    </StyledProject>
+      </StyledProject>
+    </TransitionLink>
   );
 };
