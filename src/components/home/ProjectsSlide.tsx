@@ -1,4 +1,4 @@
-import { ArrowButton } from "components/shared";
+import { ArrowButton, TransitionLink } from "components/shared";
 import {
   MotionValue,
   motion,
@@ -162,7 +162,9 @@ const ProjectsCTA: React.FC<ProjectsCTAProps> = ({ scrollYProgress }) => {
       <StyledProjectsCTAContent style={{ y, opacity }}>
         <h3>Want more?</h3>
         <p>that&lsquo;s not everything...</p>
-        <ArrowButton>View Project Showcase</ArrowButton>
+        <TransitionLink href="/projects">
+          <ArrowButton>View Project Showcase</ArrowButton>
+        </TransitionLink>
       </StyledProjectsCTAContent>
     </StyledProjectsCTA>
   );
