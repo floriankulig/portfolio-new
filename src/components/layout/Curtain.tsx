@@ -1,6 +1,7 @@
 import { theme } from "styles";
 import { motion, Variants, Transition } from "framer-motion";
 import styled from "styled-components";
+import { useEffect } from "react";
 
 export const StyledCurtain = styled(motion.div)`
   position: fixed;
@@ -38,6 +39,10 @@ interface CurtainProps {
 }
 
 export const Curtain: React.FC<CurtainProps> = ({ noEnter, noExit }) => {
+  useEffect(() => {
+    document.documentElement.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
   if (noEnter) {
     return (
       <StyledCurtain
