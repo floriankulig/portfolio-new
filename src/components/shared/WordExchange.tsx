@@ -6,7 +6,7 @@ const wordVariants: Variants = {
     opacity: 0,
     scale: 0.8,
     y: 40,
-    filter: "blur(8px)",
+    filter: "blur(6px)",
   },
   animate: {
     opacity: 1,
@@ -27,12 +27,16 @@ const wordVariants: Variants = {
 
 interface WordExchangeProps {
   children: React.ReactNode;
+  withAnimatePresence?: boolean;
 }
-export const WordExchange: React.FC<WordExchangeProps> = ({ children }) => {
+export const WordExchange: React.FC<WordExchangeProps> = ({
+  children,
+  withAnimatePresence,
+}) => {
   const words = String(children).toString().split(" ");
 
-  return (
-    <AnimatePresence mode="popLayout">
+  const body = (
+    <>
       {words.map((word, i) => (
         <motion.span
           key={word}
@@ -56,6 +60,12 @@ export const WordExchange: React.FC<WordExchangeProps> = ({ children }) => {
           {word}
         </motion.span>
       ))}
-    </AnimatePresence>
+    </>
+  );
+
+  return withAnimatePresence ? (
+    <AnimatePresence mode="popLayout">{body}</AnimatePresence>
+  ) : (
+    body
   );
 };
