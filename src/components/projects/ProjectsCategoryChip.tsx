@@ -12,6 +12,7 @@ import { useMeasure } from "hooks";
 
 const StyledProjectsCategoryWrapper = styled(motion.div)`
   padding: 8px;
+  user-select: none;
   cursor: pointer;
 `;
 
