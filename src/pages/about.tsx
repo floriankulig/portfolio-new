@@ -1,6 +1,7 @@
 import { Curtain } from "components/layout/Curtain";
 import { InlineImageBubble } from "components/shared";
 import dynamic from "next/dynamic";
+import { rgba } from "polished";
 import styled from "styled-components";
 
 const Header = dynamic(
@@ -20,10 +21,21 @@ const StyledAboutPage = styled.section`
     font-weight: 600;
     letter-spacing: -5%;
     line-height: 1;
+    -webkit-text-stroke: 1px ${({ theme }) => rgba(theme.bg1, 0.2)};
+    background: var(--text1);
+    background-image: radial-gradient(
+      circle at 3.75em 5%,
+      ${({ theme }) => rgba(theme.bg3, 0.45)} 0%,
+      transparent 40%
+    );
+    color: transparent;
+    background-clip: text;
+    padding: 0.2em 0;
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.1em 0.25em;
+    gap: 0 0.25em;
   }
 `;
 
