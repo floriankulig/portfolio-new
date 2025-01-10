@@ -30,7 +30,7 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({
         {/* <LayoutGroup> */}
         <StyledProjectsList>
           <AnimatePresence initial={false}>
-            {selectedProjects.toReversed().map((project) => (
+            {selectedProjects.map((project) => (
               <ProjectComponent key={project.id} project={project} />
             ))}
           </AnimatePresence>
