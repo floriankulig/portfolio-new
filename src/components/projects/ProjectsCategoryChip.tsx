@@ -3,6 +3,7 @@ import {
   easeIn,
   easeOut,
   motion,
+  Spring,
   useMotionValue,
   useSpring,
   useTransform,
@@ -26,7 +27,7 @@ const StyledProjectsCategory = styled(motion.li)<{
   position: relative;
   color: var(--text3);
   border-radius: 99px;
-  overflow: hidden;
+  overflow: ${({ $selected }) => ($selected ? "visible" : "hidden")};
   padding: 0.5em 1em;
   border: 1px solid
     ${({ $selected }) => ($selected ? "transparent" : "var(--text3)")};
@@ -57,6 +58,7 @@ const StyledProjectsCategory = styled(motion.li)<{
 const MOUSE_SPRING = {
   stiffness: 120,
   damping: 15.5,
+  mass: 0.8,
 };
 
 const MOUSE_SIZE = 20;
@@ -67,6 +69,7 @@ interface ProjectsCategoryChipProps {
   color?: string;
   children: React.ReactNode;
 }
+// TODO: Code animation for when all chips are selected (bubble moving to the "all" chip)
 export const ProjectsCategoryChip: React.FC<ProjectsCategoryChipProps> = ({
   children,
   color,
@@ -108,10 +111,10 @@ export const ProjectsCategoryChip: React.FC<ProjectsCategoryChipProps> = ({
   const mouseElementX = useTransform(mouseX, (x) => x - left);
   const mouseElementY = useTransform(mouseY, (y) => y - top);
   const mouseBackgroundX = useTransform(mouseElementX, (x) =>
-    selected ? -2 : x - MOUSE_SIZE / 2
+    selected ? 0 : x - MOUSE_SIZE / 2
   );
   const mouseBackgroundY = useTransform(mouseElementY, (y) =>
-    selected ? -2 : y - MOUSE_SIZE / 2
+    selected ? 0 : y - MOUSE_SIZE / 2
   );
   const backgroundX = useSpring(mouseBackgroundX, MOUSE_SPRING);
   const backgroundY = useSpring(mouseBackgroundY, MOUSE_SPRING);
@@ -167,8 +170,8 @@ export const ProjectsCategoryChip: React.FC<ProjectsCategoryChipProps> = ({
           <motion.div
             className="background"
             animate={{
-              width: selected ? width + 4 : MOUSE_SIZE,
-              height: selected ? height + 4 : MOUSE_SIZE,
+              width: selected ? width : MOUSE_SIZE,
+              height: selected ? height : MOUSE_SIZE,
               scale: selected || hovered ? 1 : 0,
               opacity: selected || hovered ? 1 : 0,
             }}
