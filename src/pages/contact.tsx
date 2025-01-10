@@ -2,7 +2,6 @@ import { Curtain } from "components/layout/Curtain";
 import {
   Header,
   MainColumn,
-  // AnimatedLetters,
   ContactCircle,
   CopyToClipboard,
   ExternalButton,
