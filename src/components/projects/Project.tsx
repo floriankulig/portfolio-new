@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { PROJECT_CATEGORIES, Project as TProject } from "ts/content";
-import { animate, delay, easeInOut, motion, Variants } from "framer-motion";
+import { easeInOut, motion, Variants } from "framer-motion";
 import styled from "styled-components";
-import Link from "next/link";
 import { theme } from "styles";
 import { TransitionLink } from "components/shared";
 
@@ -166,7 +165,6 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
           layout: { type: "spring", stiffness: 115, damping: 18 },
           staggerChildren: 0.05,
         }}
-        onLayoutMeasure={(layout) => console.log(layout)}
         viewport={{ once: true }}
       >
         <StyledProjectFeatureImageWrapper
