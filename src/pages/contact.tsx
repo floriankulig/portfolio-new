@@ -21,8 +21,6 @@ import { EMAIL } from "ts";
 const StyledContactPage = styled(motion.div)`
   width: 100vw;
   min-height: calc(100vh - 46px);
-  background: ${({ theme }) => theme.light};
-  color: var(--dark);
   overflow: hidden;
   position: relative;
   z-index: 0;
