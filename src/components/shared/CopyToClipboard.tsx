@@ -3,7 +3,7 @@ import { motion, MotionProps } from "framer-motion";
 import { theme } from "styles";
 
 const StyledCopyToClipboard = styled(motion.div)`
-  height: 54px;
+  height: 48px;
   aspect-ratio: 1;
   display: grid;
   place-items: center;

@@ -28,10 +28,12 @@ const wordVariants: Variants = {
 interface WordExchangeProps {
   children: React.ReactNode;
   withAnimatePresence?: boolean;
+  variants?: Variants;
 }
 export const WordExchange: React.FC<WordExchangeProps> = ({
   children,
   withAnimatePresence,
+  variants,
 }) => {
   const words = String(children).toString().split(" ");
 
@@ -43,7 +45,7 @@ export const WordExchange: React.FC<WordExchangeProps> = ({
           initial="wordInitial"
           animate="wordAnimate"
           exit="wordExit"
-          variants={wordVariants}
+          variants={!!variants ? variants : wordVariants}
           transition={{
             delay: i * 0.05,
             type: "spring",

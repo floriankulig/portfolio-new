@@ -8,6 +8,7 @@ import {
   ExternalButton,
   Snackbar,
   Underline,
+  AnimatedLetters,
 } from "components/shared";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { copyToClipboard } from "helpers";
@@ -105,7 +106,8 @@ const Heading = styled(motion.h1)`
   position: relative;
   font-size: clamp(3.3rem, 15vw, 4.5rem);
   font-weight: 800;
-  margin-bottom: 3rem;
+  width: fit-content;
+  margin-bottom: 2.5rem;
   letter-spacing: -3.5%;
 
   span {
@@ -115,8 +117,9 @@ const Heading = styled(motion.h1)`
 
   svg {
     position: absolute;
-    bottom: -5px;
-    left: -5px;
+    bottom: 8%;
+    width: 110%;
+    left: -2%;
     z-index: 0;
   }
 `;
@@ -154,7 +157,7 @@ const textVariants: Variants = {
 const Buttons = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.125rem;
 `;
 
 const Contact = () => {
@@ -189,8 +192,7 @@ const Contact = () => {
           <Content variants={contentVariants}>
             <div className="text">
               <Heading>
-                <span>contact</span>
-                {/* <AnimatedLetters>contact</AnimatedLetters> */}
+                <AnimatedLetters>contact</AnimatedLetters>
                 <Underline
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
