@@ -16,11 +16,11 @@ const StyledProjectsCategoryWrapper = styled(motion.div)`
   user-select: none;
   cursor: pointer;
 `;
-
-const StyledProjectsCategory = styled(motion.li)<{
+interface StyledProjectsCategoryProps {
   $selected?: boolean;
   $hasColor?: boolean;
-}>`
+}
+const StyledProjectsCategory = styled(motion.li)<StyledProjectsCategoryProps>`
   font-size: 20px;
   font-weight: 500;
   letter-spacing: -3%;
