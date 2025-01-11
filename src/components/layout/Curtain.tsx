@@ -40,7 +40,9 @@ interface CurtainProps {
 
 export const Curtain: React.FC<CurtainProps> = ({ noEnter, noExit }) => {
   useEffect(() => {
-    document.documentElement.scrollTo({ top: 0, behavior: "instant" });
+    document.documentElement.scrollTop = 0;
+    // document.documentElement.scrollTo({ top: 0 });
+    // window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
   if (noEnter) {
