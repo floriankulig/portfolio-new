@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { PROJECT_CATEGORIES, Project as TProject } from "ts/content";
-import { easeInOut, motion, Variants } from "framer-motion";
+import { easeInOut, motion, spring, Transition, Variants } from "framer-motion";
 import styled from "styled-components";
 import { theme } from "styles";
 import { TransitionLink } from "components/shared";
@@ -117,17 +117,15 @@ const fadeInUpVariants: Variants = {
     y: 0,
     scale: 1,
     transition: {
-      delay: 0.15,
-      duration: 0.25,
       type: "spring",
       stiffness: 120,
       damping: 18,
       scale: { ease: theme.easing },
       opacity: {
         ease: "linear",
-        duration: 0.15,
+        duration: 0.2,
       },
-    },
+    } as Transition,
   },
   exit: {
     opacity: 0,
@@ -136,7 +134,7 @@ const fadeInUpVariants: Variants = {
       duration: 0.15,
       opacity: {
         ease: "linear",
-        duration: 0.1,
+        duration: 0.15,
       },
     },
   },
@@ -163,9 +161,9 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
         exit="exit"
         transition={{
           layout: { type: "spring", stiffness: 115, damping: 18 },
-          staggerChildren: 0.05,
+          staggerChildren: 0.04,
         }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
       >
         <StyledProjectFeatureImageWrapper
           variants={fadeInUpVariants}

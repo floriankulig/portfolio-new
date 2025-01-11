@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, easeOut, motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
@@ -37,8 +37,7 @@ export const AnimatedLetters: React.FC<AnimatedTextProps> = ({
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
           transition={{
-            type: "tween",
-            easings: theme.easing,
+            ease: theme.easing,
             duration: 0.8,
             delay: baseDelay + 0.05 * i,
           }}

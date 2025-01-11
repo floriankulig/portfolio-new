@@ -1,4 +1,10 @@
-import { motion, AnimatePresence, LayoutGroup, Variants } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  LayoutGroup,
+  Variants,
+  Transition,
+} from "framer-motion";
 import React from "react";
 
 const wordVariants: Variants = {
@@ -46,17 +52,22 @@ export const WordExchange: React.FC<WordExchangeProps> = ({
           animate="wordAnimate"
           exit="wordExit"
           variants={!!variants ? variants : wordVariants}
-          transition={{
-            delay: i * 0.05,
-            type: "spring",
-            stiffness: 200,
-            mass: 0.7,
-            damping: 15,
-            filter: {
-              ease: "easeOut",
-              type: "tween",
-            },
-          }}
+          transition={
+            {
+              delay: i * 0.05,
+              filter: {
+                ease: "easeOut",
+                duration: 0.25,
+              },
+              opacity: {
+                duration: 0.2,
+              },
+              type: "spring",
+              stiffness: 200,
+              mass: 0.7,
+              damping: 15,
+            } as Transition
+          }
           layout="position"
         >
           {word}
