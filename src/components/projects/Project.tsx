@@ -151,7 +151,7 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
   );
   // TODO: Build animation to Project Detail
   return (
-    <TransitionLink href={`/projects/${id}`}>
+    <TransitionLink href={`/project/${id}`}>
       <StyledProject
         layout
         initial="initial"
