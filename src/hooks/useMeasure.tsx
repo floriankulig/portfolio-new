@@ -1,10 +1,4 @@
-import {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useLayoutEffect,
-} from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 export interface MeasurementRect {
   width: number;
@@ -58,7 +52,7 @@ export function useMeasure<T extends HTMLElement>() {
     }
   }, [rect]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
