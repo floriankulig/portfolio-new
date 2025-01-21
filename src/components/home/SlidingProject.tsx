@@ -164,7 +164,7 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
   // Counter scale down at the end of the scroll
   const imageScale = useTransform(
     scrollProgress,
-    [0, slideRangeStart + 0.05, ...endRange],
+    [0, slideRangeStart + 0.025, ...endRange],
     [1.1, 1, 1, 1.15]
   );
 
