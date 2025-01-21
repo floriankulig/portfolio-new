@@ -3,16 +3,37 @@ import { motion, Variants, Transition } from "framer-motion";
 import styled from "styled-components";
 import { useEffect } from "react";
 
-export const StyledCurtain = styled(motion.div)`
+export const StyledCurtainContainer = styled(motion.div)`
   position: fixed;
   width: 100vw;
   height: 100vh;
   z-index: 9999;
-  background: ${(theme) => theme.theme.text1};
+  pointer-events: none;
 `;
 
+const CurtainLayer = styled(motion.div)<{ color: string }>`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: ${({ color }) => color};
+`;
+
+const curtainContainerVariants: Variants = {
+  pageLoad: {
+    transition: {
+      staggerChildren: 0.04,
+      staggerDirection: -1,
+    },
+  },
+  pageExit: {
+    transition: {
+      staggerChildren: 0.075,
+    },
+  },
+};
+
 const curtainTransition: Transition = {
-  duration: 0.5,
+  duration: 0.45,
   type: "tween",
   ease: theme.easing as any,
 };
@@ -46,19 +67,17 @@ export const Curtain: React.FC<CurtainProps> = ({ noEnter, noExit }) => {
     });
   }, []);
 
-  if (noEnter) {
-    return (
-      <StyledCurtain
-        variants={{ ...curtainVariants, pageEntry: { scaleX: 0 } }}
-      />
-    );
-  }
-  if (noExit) {
-    return (
-      <StyledCurtain
-        variants={{ ...curtainVariants, pageExit: { scaleX: 0 } }}
-      />
-    );
-  }
-  return <StyledCurtain variants={curtainVariants} />;
+  const variants = noEnter
+    ? { ...curtainVariants, pageEntry: { scaleX: 0 } }
+    : noExit
+    ? { ...curtainVariants, pageExit: { scaleX: 0 } }
+    : curtainVariants;
+
+  return (
+    <StyledCurtainContainer variants={curtainContainerVariants}>
+      <CurtainLayer color={theme.text3} variants={variants} />
+      <CurtainLayer color={theme.text2} variants={variants} />
+      <CurtainLayer color={theme.text1} variants={variants} />
+    </StyledCurtainContainer>
+  );
 };
