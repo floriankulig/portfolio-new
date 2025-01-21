@@ -1,5 +1,6 @@
 import { MotionValue, motion, useTransform } from "framer-motion";
 import { useViewport } from "hooks";
+import Image from "next/image";
 import { rgba } from "polished";
 import { memo, useMemo } from "react";
 import styled from "styled-components";
@@ -14,14 +15,15 @@ const StyledSlidingProject = styled(motion.div)`
   justify-content: flex-start;
 `;
 
-const StyledBG = styled(motion.img)<{ $imageOverflow: number }>`
+const StyledBG = styled(motion.div)<{ $imageOverflow: number }>`
   min-width: calc(100% + ${(p) => p.$imageOverflow}px);
   height: 100%;
-  object-fit: cover;
-  object-fit: cover;
   will-change: transform;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  img {
+    object-fit: cover;
+  }
 `;
 
 const BGOverlay = styled.div`
@@ -176,11 +178,16 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
       }}
     >
       <StyledBG
-        src={image}
         style={{ x: imageX, scale: imageScale }}
         $imageOverflow={PROJECT_IMAGE_OVERFLOW}
-        alt={`Image showing a software preview of the project "${title}"`}
-      />
+      >
+        <Image
+          src={"/" + image}
+          alt={`Image showing a software preview of the project "${title}"`}
+          fill
+          priority={index === 0}
+        />
+      </StyledBG>
       <BGOverlay>
         <h2>{title}</h2>
         <div className="row">
