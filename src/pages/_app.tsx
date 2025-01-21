@@ -1,4 +1,4 @@
-import { StyledCurtain } from "components/layout/Curtain";
+import { StyledCurtainContainer } from "components/layout/Curtain";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -21,7 +21,7 @@ const PageLoader = styled(motion.div)<PageLoaderProps>`
   ${({ $appHasLoaded }) =>
     !$appHasLoaded
       ? css`
-          ${StyledCurtain} {
+          ${StyledCurtainContainer} {
             display: none;
           }
           overflow: hidden;
