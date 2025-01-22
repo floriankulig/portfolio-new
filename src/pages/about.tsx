@@ -30,7 +30,7 @@ const StyledAboutPage = styled.section`
     );
     color: transparent;
     background-clip: text;
-    padding: 0.2em 0;
+    padding: 0.5em 0;
     display: flex;
     align-items: center;
     justify-content: center;
