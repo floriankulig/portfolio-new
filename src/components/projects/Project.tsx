@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { PROJECT_CATEGORIES, Project as TProject } from "ts/content";
-import { easeInOut, motion, spring, Transition, Variants } from "framer-motion";
+import { easeInOut, motion, Transition, Variants } from "framer-motion";
 import styled from "styled-components";
 import { theme } from "styles";
 import { TransitionLink } from "components/shared";
+import Image from "next/image";
 
 const StyledProject = styled(motion.div)`
   width: 100%;
@@ -24,11 +24,14 @@ const StyledProjectFeatureImageWrapper = styled(motion.div)`
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.075);
-  img {
+  & > div {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 16px;
+
+    img {
+      object-fit: cover;
+      border-radius: 16px;
+    }
   }
 `;
 
@@ -120,6 +123,7 @@ const fadeInUpVariants: Variants = {
       type: "spring",
       stiffness: 120,
       damping: 18,
+      delay: 0.1,
       scale: { ease: theme.easing },
       opacity: {
         ease: "linear",
@@ -169,13 +173,18 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
           variants={fadeInUpVariants}
           custom={true}
         >
-          <motion.img
+          <motion.div
             layoutId={`project-image-feature-${title}`}
             layout="preserve-aspect"
-            src={image}
             variants={imageVariants}
-            alt={`Image showing a software preview of the project "${title}"`}
-          />
+          >
+            <Image
+              src={"/" + image}
+              alt={`Image showing a software preview of the project "${title}"`}
+              fill
+              priority
+            />
+          </motion.div>
         </StyledProjectFeatureImageWrapper>
 
         <StyledProjectContent>
