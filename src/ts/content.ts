@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  image?: string;
+  image: string;
   technologies: string[];
   technologiesFeatured: number;
   externalLink?: string;
