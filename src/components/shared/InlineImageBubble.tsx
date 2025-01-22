@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { rgba } from "polished";
 import React from "react";
 import styled from "styled-components";
@@ -10,6 +11,7 @@ interface InlineImageBubbleProps {
 
 const InlineImageWrapper = styled.div<{ $aspectRatio: number }>`
   display: inline-flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   height: 1em;
@@ -20,13 +22,6 @@ const InlineImageWrapper = styled.div<{ $aspectRatio: number }>`
   border: 1.5px solid ${rgba("white", 0.05)};
 `;
 
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
-`;
-
 export const InlineImageBubble: React.FC<InlineImageBubbleProps> = ({
   image,
   alt = "Design Image",
@@ -34,7 +29,14 @@ export const InlineImageBubble: React.FC<InlineImageBubbleProps> = ({
 }) => {
   return (
     <InlineImageWrapper $aspectRatio={aspectRatio}>
-      <Image src={image} alt={alt} />
+      <Image
+        src={image}
+        alt={alt}
+        fill
+        priority
+        quality={25}
+        style={{ objectFit: "cover" }}
+      />
     </InlineImageWrapper>
   );
 };
