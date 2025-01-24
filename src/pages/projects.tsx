@@ -1,5 +1,5 @@
 import { Curtain } from "components/layout/Curtain";
-import { ProjectsHeader, ProjectsList } from "components/projects";
+import { ProjectsHeader, ProjectsList } from "components/work";
 import { LayoutGroup } from "framer-motion";
 import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
