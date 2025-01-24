@@ -2,6 +2,7 @@ export interface Project {
   id: string;
   title: string;
   featureDescription: string;
+  projectBackground: string;
   image: string;
   technologies: string[];
   technologiesFeatured: number;
@@ -24,6 +25,8 @@ const PROJECTS: Project[] = [
     id: "jvis",
     title: "Job Manager",
     image: "JvisMock.png",
+    projectBackground:
+      "This project was developed as a part of my bachelor's thesis. The goal was to create a tool for managing and planning contracting work in the forestry business. The application is built with React and Firebase, and it includes features such as a map view, a calendar view, and a task list. The application is currently in use by a small company in Finland.",
     featureDescription:
       "A tool for managing and planning contracting \n work in the forestry business.",
     technologies: ["React", "Firebase"],
@@ -34,6 +37,8 @@ const PROJECTS: Project[] = [
     id: "testiply",
     title: "Testiply",
     image: "TestiplyMock.png",
+    projectBackground:
+      "This project was developed as a part of my bachelor's thesis. The goal was to create a tool for managing and planning contracting work in the forestry business. The application is built with React and Firebase, and it includes features such as a map view, a calendar view, and a task list. The application is currently in use by a small company in Finland.",
     featureDescription:
       "A platform for sharing beta applications with a feedback \n mechanism connecting testers and developers.",
     technologies: ["Interaction", "React", "MongoDB", "NodeJS"],
@@ -46,6 +51,8 @@ const PROJECTS: Project[] = [
     id: "sorting-algorithms",
     title: "Sorting Algorithms",
     image: "SortVisMock.png",
+    projectBackground:
+      "This project was developed as a part of my bachelor's thesis. The goal was to create a tool for managing and planning contracting work in the forestry business. The application is built with React and Firebase, and it includes features such as a map view, a calendar view, and a task list. The application is currently in use by a small company in Finland.",
     featureDescription:
       "An application that visualizes the most popular sorting \n algorithms, including documentation of their methodology.",
     technologies: ["Visualization", "Python"],
