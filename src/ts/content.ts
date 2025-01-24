@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   title: string;
-  description: string;
+  featureDescription: string;
   image: string;
   technologies: string[];
   technologiesFeatured: number;
@@ -24,7 +24,7 @@ const PROJECTS: Project[] = [
     id: "jvis",
     title: "Job Manager",
     image: "JvisMock.png",
-    description:
+    featureDescription:
       "A tool for managing and planning contracting \n work in the forestry business.",
     technologies: ["React", "Firebase"],
     categories: ["development", "design"],
@@ -34,7 +34,7 @@ const PROJECTS: Project[] = [
     id: "testiply",
     title: "Testiply",
     image: "TestiplyMock.png",
-    description:
+    featureDescription:
       "A platform for sharing beta applications with a feedback \n mechanism connecting testers and developers.",
     technologies: ["Interaction", "React", "MongoDB", "NodeJS"],
     technologiesFeatured: 2,
@@ -46,7 +46,7 @@ const PROJECTS: Project[] = [
     id: "sorting-algorithms",
     title: "Sorting Algorithms",
     image: "SortVisMock.png",
-    description:
+    featureDescription:
       "An application that visualizes the most popular sorting \n algorithms, including documentation of their methodology.",
     technologies: ["Visualization", "Python"],
     categories: ["development"],

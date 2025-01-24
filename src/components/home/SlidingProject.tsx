@@ -117,8 +117,14 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
   endRange,
 }) => {
   const { viewport: windowDimensions } = useViewport();
-  const { id, title, image, description, technologies, technologiesFeatured } =
-    project;
+  const {
+    id,
+    title,
+    image,
+    featureDescription: description,
+    technologies,
+    technologiesFeatured,
+  } = project;
   const { slideRangeStart, imageSlideRange } = useMemo(() => {
     // Slide animation start after the intro animation
     const slideRangeStart = introAnimationRange[1];
