@@ -51,7 +51,7 @@ const StyledIntroHeader = styled(motion.header)`
     font-weight: 800;
     font-style: italic;
     line-height: 1.5;
-    color: var(--bg1);
+    color: var(--text3);
   }
 `;
 
