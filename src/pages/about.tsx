@@ -46,7 +46,11 @@ const AboutPage = () => {
       <Header />
       <StyledAboutPage>
         <h1>
-          Work <InlineImageBubble image="/WIP.png" alt="test" />
+          Work{" "}
+          <InlineImageBubble
+            image="/WIP.png"
+            alt="Image of a turned off laptop on a desk"
+          />
           in Progress...
         </h1>
       </StyledAboutPage>
