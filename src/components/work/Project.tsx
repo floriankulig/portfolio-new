@@ -149,7 +149,8 @@ interface ProjectProps {
 }
 
 export const Project: React.FC<ProjectProps> = ({ project }) => {
-  const { id, title, description, image, technologies, categories } = project;
+  const { id, title, featureDescription, image, technologies, categories } =
+    project;
   const chips = PROJECT_CATEGORIES.filter((category) =>
     categories?.includes(category.id)
   );
