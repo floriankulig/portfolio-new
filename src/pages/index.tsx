@@ -1,7 +1,6 @@
 import {
   Banner,
   Hero,
-  KeyServices,
   ProjectsIntro,
   ProjectsSlide,
   ThinkDifferent,
@@ -16,19 +15,15 @@ const Header = dynamic(
 );
 
 const Home = () => {
-  const router = useRouter();
-
   return (
     <>
       <Curtain />
       <Header />
       <Hero />
-      <KeyServices />
       <ProjectsIntro />
       <ProjectsSlide />
       <Banner />
       <ThinkDifferent />
-      <div style={{ background: "red", height: "300vh" }}></div>
     </>
   );
 };
