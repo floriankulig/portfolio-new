@@ -4,7 +4,7 @@ import Image from "next/image";
 import { rgba } from "polished";
 import { memo, useMemo } from "react";
 import styled from "styled-components";
-import { FeaturedProject } from "ts/content";
+import { FeaturedProject } from "ts/types";
 
 const StyledSlidingProject = styled(motion.div)`
   position: relative;
@@ -120,10 +120,10 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
   const {
     id,
     title,
-    image,
+    featureImage: image,
     featureDescription: description,
     technologies,
-    technologiesFeatured,
+    keywords,
   } = project;
   const { slideRangeStart, imageSlideRange } = useMemo(() => {
     // Slide animation start after the intro animation
@@ -197,11 +197,8 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
       <BGOverlay>
         <h2>{title}</h2>
         <div className="row">
-          <p className="description">{description}</p>
-          <LocalTechList
-            technologies={technologies}
-            technologiesFeatured={technologiesFeatured}
-          />
+          <p className="description balanced">{description}</p>
+          <LocalTechList keywords={keywords} />
         </div>
       </BGOverlay>
     </StyledSlidingProject>
@@ -209,25 +206,17 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
 };
 
 interface LocalTechListProps {
-  technologies: string[];
-  technologiesFeatured: number;
+  keywords: string[];
 }
 
-const LocalTechList: React.FC<LocalTechListProps> = memo(
-  ({ technologies, technologiesFeatured }) => {
-    const visibleTechnologies = useMemo(
-      () => technologies.slice(0, technologiesFeatured),
-      [technologies, technologiesFeatured]
-    );
-
-    return (
-      <div className="chips">
-        {visibleTechnologies.map((tech, i) => (
-          <span key={`${tech}-${i}`}>{tech}</span>
-        ))}
-      </div>
-    );
-  }
-);
+const LocalTechList: React.FC<LocalTechListProps> = memo(({ keywords }) => {
+  return (
+    <div className="chips">
+      {keywords.map((tech, i) => {
+        return <span key={`${tech}-${i}`}>{tech}</span>;
+      })}
+    </div>
+  );
+});
 LocalTechList.displayName = "LocalTechList";
 export const SlidingProject = memo(MemoSlidingProject);
