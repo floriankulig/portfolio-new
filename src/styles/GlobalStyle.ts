@@ -57,6 +57,10 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-family: var(--inter);
     line-height: 150%;
+
+    &.balanced {
+      text-wrap: balance;
+    }
   }
 `;
 
