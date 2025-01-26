@@ -4,41 +4,45 @@ const PROJECTS: Project[] = [
   {
     id: "jvis",
     title: "Job Manager",
-    image: "JvisMock.png",
+    featureImage: "JvisMock.png",
     projectBackground:
       "This project was developed as a part of my bachelor's thesis. The goal was to create a tool for managing and planning contracting work in the forestry business. The application is built with React and Firebase, and it includes features such as a map view, a calendar view, and a task list. The application is currently in use by a small company in Finland.",
     featureDescription:
-      "A tool for managing and planning contracting \n work in the forestry business.",
-    technologies: ["React", "Firebase"],
+      "A tool for managing and planning contracting work in the forestry business.",
+    technologies: ["React", "NextJS", "Firebase", "TypeScript"],
     categories: ["development", "design"],
-    technologiesFeatured: 2,
+    keywords: ["React", "Firebase"],
+    date: "June 2023",
     client: "Zolnhofer",
+    services: ["Concept", "Design", "Development"],
   },
   {
     id: "testiply",
     title: "Testiply",
-    image: "TestiplyMock.png",
+    featureImage: "TestiplyMock.png",
     projectBackground:
       "This project was developed as a part of my bachelor's thesis. The goal was to create a tool for managing and planning contracting work in the forestry business. The application is built with React and Firebase, and it includes features such as a map view, a calendar view, and a task list. The application is currently in use by a small company in Finland.",
     featureDescription:
-      "A platform for sharing beta applications with a feedback \n mechanism connecting testers and developers.",
-    technologies: ["Interaction", "React", "MongoDB", "NodeJS"],
-    technologiesFeatured: 2,
+      "A platform for sharing beta applications with a feedback mechanism connecting testers and developers.",
+    technologies: ["React", "MongoDB", "Express", "Interaction"],
+    keywords: ["React", "Interaction"],
     categories: ["development", "design"],
+    date: "Dec 2021 - Feb 2022",
     externalLink: "https://testiply.vercel.app",
     github: "",
   },
   {
     id: "sorting-algorithms",
     title: "Sorting Algorithms",
-    image: "SortVisMock.png",
+    featureImage: "SortVisMock.png",
     projectBackground:
       "This project was developed as a part of my bachelor's thesis. The goal was to create a tool for managing and planning contracting work in the forestry business. The application is built with React and Firebase, and it includes features such as a map view, a calendar view, and a task list. The application is currently in use by a small company in Finland.",
     featureDescription:
-      "An application that visualizes the most popular sorting \n algorithms, including documentation of their methodology.",
-    technologies: ["Visualization", "Python"],
+      "An application that visualizes the most popular sorting algorithms, including documentation of their methodology.",
+    technologies: ["Python", "Visualization", "Tkinter"],
     categories: ["development"],
-    technologiesFeatured: 2,
+    keywords: ["Python", "Visualization"],
+    date: "March 2020",
     github: "",
   },
 ];

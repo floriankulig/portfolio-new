@@ -5,16 +5,19 @@ export interface Project {
   title: string;
   featureDescription: string;
   projectBackground: string;
-  image: string;
+  featureImage: string;
   technologies: string[];
-  technologiesFeatured: number;
+  keywords: string[];
   externalLink?: string;
   github?: string;
   categories: Array<(typeof PROJECT_CATEGORIES)[number]["id"]>;
   client?: string;
+  services?: string[];
   date?: string;
-  roles?: string;
+  roles?: ProjectRole[];
 }
+
+export interface ProjectRole {}
 
 export interface ProjectCategory {
   id: string;
