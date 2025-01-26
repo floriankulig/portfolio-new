@@ -20,10 +20,12 @@ const StyledProjectDescription = styled.div`
     letter-spacing: -4%;
     text-transform: uppercase;
     color: var(--text3);
+    text-indent: clamp(2rem, 10vw, 5rem);
   }
   p {
     color: var(--text2);
     font-size: 1.125rem;
+    text-indent: clamp(2rem, 10vw, 5rem);
     line-height: 1.5;
   }
 `;
