@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Project } from "ts/content";
+import { Project } from "ts/types";
 
 const Header = dynamic(
   () => import("components/shared").then((mod) => mod.Header),
@@ -23,6 +23,28 @@ const ProjectDetailPage = () => {
       setProject(fetchedProject);
     }
   }, [projectID]);
+
+  if (!project) {
+    return (
+      <>
+        <Curtain />
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            zIndex: 100,
+            width: "100dvw",
+          }}
+        >
+          <Header />
+        </div>
+        <div style={{ minHeight: "100vh" }}>
+          <h1>Project not found</h1>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

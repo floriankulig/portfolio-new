@@ -1,24 +1,4 @@
-export interface Project {
-  id: string;
-  title: string;
-  featureDescription: string;
-  projectBackground: string;
-  image: string;
-  technologies: string[];
-  technologiesFeatured: number;
-  externalLink?: string;
-  github?: string;
-  categories?: string[];
-}
-
-export interface ProjectCategory {
-  id: string;
-  title: string;
-  legerTitle: string;
-  color: string;
-}
-
-export interface FeaturedProject extends Project {}
+import { FeaturedProject, Project, ProjectCategory } from "./types";
 
 const PROJECTS: Project[] = [
   {
@@ -32,6 +12,7 @@ const PROJECTS: Project[] = [
     technologies: ["React", "Firebase"],
     categories: ["development", "design"],
     technologiesFeatured: 2,
+    client: "Zolnhofer",
   },
   {
     id: "testiply",

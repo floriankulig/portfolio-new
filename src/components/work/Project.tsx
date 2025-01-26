@@ -1,5 +1,6 @@
 import React from "react";
-import { PROJECT_CATEGORIES, Project as TProject } from "ts/content";
+import { PROJECT_CATEGORIES } from "ts/content";
+import { Project as TProject } from "ts/types";
 import { easeInOut, motion, Transition, Variants } from "framer-motion";
 import styled from "styled-components";
 import { theme } from "styles";
