@@ -1,16 +1,15 @@
 import {
+  easeIn,
   motion,
   useMotionTemplate,
   useScroll,
-  useSpring,
   useTransform,
-  useVelocity,
 } from "framer-motion";
 import Image from "next/image";
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { SCROLL_SPRING } from "ts";
-import { Project } from "ts/content";
+import { Project } from "ts/types";
+import { ProjectStats } from "./ProjectStats";
 
 const StyledProjectDetailHeadSection = styled.section`
   display: flex;
@@ -20,19 +19,28 @@ const StyledProjectDetailHeadSection = styled.section`
 `;
 
 const StyledHeroSection = styled.div`
-  height: 85vh;
+  min-height: 80vh;
+  padding-top: 64px;
   width: 100%;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  align-items: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   padding-inline: ${({ theme }) => theme.mainColPadding};
 
   h1 {
     font-size: clamp(2.5rem, 10dvw, 6rem);
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: -5%;
     line-height: 1.05;
     padding-block: 0.15em;
+  }
+  p {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--text2);
+    opacity: 0.9;
+    padding-block: 0.75em;
+    width: 100%;
+    max-width: 55ch;
   }
 `;
 
@@ -46,12 +54,14 @@ export const ProjectDetailHead: React.FC<ProjectDetailHeadProps> = ({
   return (
     <StyledProjectDetailHeadSection>
       <StyledHeroSection>
-        <div>
-          <h1>{project.title}</h1>
-          <p>{project.featureDescription}</p>
-        </div>
+        <h1>{project.title}</h1>
+        <p className="balanced">{project.featureDescription}</p>
+        <ProjectStats project={project} />
       </StyledHeroSection>
-      <FeatureImageSection image={project.image} projectTitle={project.title} />
+      <FeatureImageSection
+        image={project.featureImage}
+        projectTitle={project.title}
+      />
     </StyledProjectDetailHeadSection>
   );
 };
@@ -71,7 +81,15 @@ const StyledFeatureImageContainer = styled.div`
   place-items: center;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  position: relative;
 `;
+
+const AnimatedOverlay = styled(motion.div)`
+  position: absolute;
+  inset: 0;
+  background: black;
+`;
+
 const StyledFeatureImage = styled(motion.div)<{ $overlap: number }>`
   width: 100%;
   height: ${(p) => 100 + 2 * p.$overlap}%;
@@ -82,7 +100,7 @@ interface FeatureImageSectionProps {
   image: string;
   projectTitle: string;
 }
-const IMAGE_OVERLAP = 5;
+const IMAGE_OVERLAP = 12.5;
 const FeatureImageSection: React.FC<FeatureImageSectionProps> = ({
   image,
   projectTitle,
@@ -92,22 +110,21 @@ const FeatureImageSection: React.FC<FeatureImageSectionProps> = ({
     target: sectionRef,
     offset: ["start 80%", "end 10%"],
   });
-  const scrollY = useSpring(scrollYProgress, SCROLL_SPRING);
-  const scrollVelocity = useVelocity(scrollY);
-  const scrollVelocityAbs = useTransform(scrollVelocity, Math.abs);
   const imageYPercent = useTransform(
     scrollYProgress,
     [0, 1],
     [-IMAGE_OVERLAP, IMAGE_OVERLAP]
   );
   const imageY = useMotionTemplate`${imageYPercent}%`;
-  const imageScale = useTransform(scrollVelocityAbs, [0, 1], [1.001, 1]);
+  const overlayOpacity = useTransform(scrollYProgress, [0.7, 1], [0, 0.5], {
+    ease: [easeIn],
+  });
   return (
     <StyledFeatureImageSection ref={sectionRef}>
       <StyledFeatureImageContainer>
         <StyledFeatureImage
           $overlap={IMAGE_OVERLAP}
-          style={{ y: imageY, scale: imageScale }}
+          style={{ y: imageY, scale: 1 }}
         >
           <Image
             src={"/" + image}
@@ -117,6 +134,7 @@ const FeatureImageSection: React.FC<FeatureImageSectionProps> = ({
             priority
           />
         </StyledFeatureImage>
+        <AnimatedOverlay style={{ opacity: overlayOpacity }} />
       </StyledFeatureImageContainer>
     </StyledFeatureImageSection>
   );
