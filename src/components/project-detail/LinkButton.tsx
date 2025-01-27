@@ -17,30 +17,34 @@ type SLinkButtonProps = {
 const StyledLinkButton = styled(motion.a)<SLinkButtonProps>`
   display: flex;
   align-items: center;
-  gap: ${GAP}px;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 10px 24px;
   border-radius: 99px;
-  white-space: nowrap;
   cursor: pointer;
-  span {
-    font-family: var(--poppins);
-    font-weight: 500;
-    line-height: 1.5;
-    text-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
-    display: block;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: ${GAP}px;
+    white-space: nowrap;
+    span {
+      font-family: var(--poppins);
+      font-weight: 500;
+      line-height: 1.5;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+      display: block;
 
-    &.icon {
-      /* margin-bottom: 1px; */
-      user-select: none;
+      &.icon {
+        user-select: none;
 
-      svg {
-        width: 100%;
-        height: 100%;
-      }
+        svg {
+          width: 100%;
+          height: 100%;
+        }
 
-      &:first-child {
-        position: absolute;
+        &:first-child {
+          position: absolute;
+        }
       }
     }
   }
@@ -124,29 +128,31 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
         },
       }}
     >
-      {icon && (
-        <motion.span
-          className="icon"
-          style={iconStyle}
-          variants={firstIconVariants}
-          transition={transition}
-        >
-          {icon}
+      <div>
+        {icon && (
+          <motion.span
+            className="icon"
+            style={iconStyle}
+            variants={firstIconVariants}
+            transition={transition}
+          >
+            {icon}
+          </motion.span>
+        )}
+        <motion.span variants={textVariants} transition={transition}>
+          {children}
         </motion.span>
-      )}
-      <motion.span variants={textVariants} transition={transition}>
-        {children}
-      </motion.span>
-      {icon && (
-        <motion.span
-          className="icon"
-          style={iconStyle}
-          variants={secondIconVariants}
-          transition={transition}
-        >
-          {icon}
-        </motion.span>
-      )}
+        {icon && (
+          <motion.span
+            className="icon"
+            style={iconStyle}
+            variants={secondIconVariants}
+            transition={transition}
+          >
+            {icon}
+          </motion.span>
+        )}
+      </div>
     </StyledLinkButton>
   );
 };

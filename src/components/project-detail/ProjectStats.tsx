@@ -16,6 +16,20 @@ const Stats = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    &.links {
+      gap: 8px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      @media (${({ theme }) => theme.bp.small}) {
+        flex-direction: column;
+      }
+      @media (max-width: 400px) {
+        flex-direction: column;
+        a {
+          width: 100%;
+        }
+      }
+    }
   }
 `;
 const StyledProjectStatsSection = styled.section`
@@ -26,7 +40,7 @@ const StyledProjectStatsSection = styled.section`
   display: flex;
   align-items: stretch;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
   @media (${({ theme }) => theme.bp.small}) {
     padding-block: 32px;
     align-items: flex-start;
