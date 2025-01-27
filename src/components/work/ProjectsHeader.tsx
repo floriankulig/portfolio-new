@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
 import { WordExchange } from "components/shared";
 
 const StyledProjectsHeader = styled.header`
-  padding: min(max(12vw, 48px), 100px) ${({ theme }) => theme.mainColPadding}
-    40px;
+  padding-block: min(max(12vw, 48px), 100px) 40px;
   display: flex;
   flex-direction: column;
   h1 {
@@ -68,7 +67,7 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({
   }, [selectedCategories]);
 
   return (
-    <StyledProjectsHeader>
+    <StyledProjectsHeader className="main-col">
       <h1>
         👨🏽‍💻 Projects. <WordExchange>{secondaryText}</WordExchange>
       </h1>

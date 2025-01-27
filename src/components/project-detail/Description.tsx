@@ -5,7 +5,6 @@ const StyledProjectDescriptionSection = styled.section`
   min-height: 75vh;
   display: grid;
   place-items: center;
-  padding: 0 ${({ theme }) => theme.mainColPadding};
 `;
 
 const StyledProjectDescription = styled.div`
@@ -40,7 +39,7 @@ export const Description: React.FC<ProjectDescriptionSectionProps> = ({
   label,
 }) => {
   return (
-    <StyledProjectDescriptionSection>
+    <StyledProjectDescriptionSection className="main-col">
       <StyledProjectDescription>
         <span>{label}</span>
         <p>{description}</p>

@@ -62,6 +62,13 @@ const GlobalStyle = createGlobalStyle`
       text-wrap: balance;
     }
   }
+
+  .main-col {
+    padding-inline: 5vw;
+    @media (${theme.bp.small}){
+      padding-inline: ${theme.mainColPadding};
+    }
+  }
 `;
 
 export default GlobalStyle;

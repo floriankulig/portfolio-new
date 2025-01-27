@@ -25,7 +25,6 @@ const StyledHeroSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-inline: ${({ theme }) => theme.mainColPadding};
 
   h1 {
     font-size: clamp(2.5rem, 10dvw, 6rem);
@@ -53,7 +52,7 @@ export const ProjectDetailHead: React.FC<ProjectDetailHeadProps> = ({
 }) => {
   return (
     <StyledProjectDetailHeadSection>
-      <StyledHeroSection>
+      <StyledHeroSection className="main-col">
         <h1>{project.title}</h1>
         <p className="balanced">{project.featureDescription}</p>
         <ProjectStats project={project} />
@@ -75,13 +74,18 @@ const StyledFeatureImageSection = styled.div`
 `;
 
 const StyledFeatureImageContainer = styled.div`
-  width: 95vw;
-  height: min(110vh, calc(95vw / 1.618));
+  --size: 100vw;
+  @media (${({ theme }) => theme.bp.small}) {
+    --size: 95vw;
+  }
+  width: var(--size);
+  height: min(110vh, calc(var(--size) / 1.618));
   display: grid;
   place-items: center;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   position: relative;
+  border-radius: 4px;
 `;
 
 const AnimatedOverlay = styled(motion.div)`

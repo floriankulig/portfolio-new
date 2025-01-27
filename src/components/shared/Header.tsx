@@ -9,7 +9,7 @@ const StyledHeader = styled.nav`
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: clamp(1.5rem, 3vw, 2rem) ${({ theme }) => theme.mainColPadding} 0;
+  padding-block: clamp(1.5rem, 3vw, 2rem) 0;
   letter-spacing: 2%;
   font-size: 14px;
   font-family: var(--jakarta);
@@ -103,7 +103,7 @@ export const Header: React.FC = () => {
   }, [updateTime]);
 
   return (
-    <StyledHeader>
+    <StyledHeader className="main-col">
       <div>Florian Kulig</div>
       <StyledLinks>
         {LINKS.map((link) => (
