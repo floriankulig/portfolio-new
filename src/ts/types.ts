@@ -6,6 +6,7 @@ export interface Project {
   featureDescription: string;
   projectBackground: string;
   featureImage: string;
+  gradient: string;
   technologies: string[];
   keywords: string[];
   externalLink?: string;
