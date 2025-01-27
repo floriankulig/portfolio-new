@@ -1,8 +1,8 @@
 import { MainColumn } from "components/shared";
 import React from "react";
 import styled from "styled-components";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
-import { Project } from "ts/content";
+import { AnimatePresence, motion } from "framer-motion";
+import { Project } from "ts/types";
 import { Project as ProjectComponent } from "./Project";
 
 const StyledProjectsListSection = styled(motion.section)`
