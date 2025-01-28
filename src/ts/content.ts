@@ -6,7 +6,7 @@ const PROJECTS: Project[] = [
     title: "Job Manager",
     featureImage: "JvisMock.png",
     projectBackground:
-      "This project was developed as a part of my bachelor's thesis. The goal was to create a tool for managing and planning contracting work in the forestry business. The application is built with React and Firebase, and it includes features such as a map view, a calendar view, and a task list. The application is currently in use by a small company in Finland.",
+      "For this project, I was contacted by a medium-sized wood processing company that wanted to digitize its order management and route planning processes. The company, which specializes in mobile firewood processing, previously managed all orders and routes using various Excel spreadsheets and handwritten notes - a system that was increasingly reaching its limits as the business grew.",
     featureDescription:
       "A tool for managing and planning contracting work in the forestry business.",
     gradient:
@@ -23,11 +23,11 @@ const PROJECTS: Project[] = [
     title: "Testiply",
     featureImage: "TestiplyMock.png",
     projectBackground:
-      "This project was developed as a part of my bachelor's thesis. The goal was to create a tool for managing and planning contracting work in the forestry business. The application is built with React and Firebase, and it includes features such as a map view, a calendar view, and a task list. The application is currently in use by a small company in Finland.",
+      'What started as a simple coding challenge to "build a cool app" evolved into an ambitious attempt in creating a platform connecting developers with beta testers. Working in a team for the first time, we transformed this open-ended prompt into a practical solution for a common developer need: organizing and managing beta feedback effectively.',
     featureDescription:
       "A platform for sharing beta applications with a feedback mechanism connecting testers and developers.",
     gradient: "linear-gradient(135deg, #a431d6 0%, #3b38d6 100%)",
-    technologies: ["React", "MongoDB", "Express", "Interaction"],
+    technologies: ["React", "NextJS", "MongoDB", "Express"],
     keywords: ["React", "Interaction"],
     categories: ["development", "design"],
     date: "Dec 2021 - Feb 2022",
@@ -39,7 +39,7 @@ const PROJECTS: Project[] = [
     title: "Sorting Algorithms",
     featureImage: "SortVisMock.png",
     projectBackground:
-      "This project was developed as a part of my bachelor's thesis. The goal was to create a tool for managing and planning contracting work in the forestry business. The application is built with React and Firebase, and it includes features such as a map view, a calendar view, and a task list. The application is currently in use by a small company in Finland.",
+      "My first coding project. I set out to create an interactive visualization tool for sorting algorithms. The goal of this project is twofold: to master the fundamentals of programming and to create an educational tool which makes complex algorithms more accessible through visualization.",
     featureDescription:
       "An application that visualizes the most popular sorting algorithms, including documentation of their methodology.",
     technologies: ["Python", "Visualization", "Tkinter"],
