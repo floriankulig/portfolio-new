@@ -23,7 +23,7 @@ const PROJECTS: Project[] = [
     title: "Testiply",
     featureImage: "TestiplyMock.png",
     projectBackground:
-      'What started as a simple coding challenge to "build a cool app" evolved into an ambitious attempt in creating a platform connecting developers with beta testers. Working in a team for the first time, we transformed this open-ended prompt into a practical solution for a common developer need: organizing and managing beta feedback effectively.',
+      'What started as a simple student coding challenge to "build a cool app" evolved into an ambitious attempt in creating a platform connecting developers with beta testers. Working in a team for the first time, we transformed this open-ended prompt into a practical solution for a common developer need: organizing and managing beta feedback effectively.',
     featureDescription:
       "A platform for sharing beta applications with a feedback mechanism connecting testers and developers.",
     gradient: "linear-gradient(135deg, #a431d6 0%, #3b38d6 100%)",
