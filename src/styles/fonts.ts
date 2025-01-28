@@ -1,4 +1,4 @@
-import { Poppins, Plus_Jakarta_Sans } from "@next/font/google";
+import { Poppins, Plus_Jakarta_Sans } from "next/font/google";
 
 const POPPINS = Poppins({
   subsets: ["latin"],
