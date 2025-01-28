@@ -2,7 +2,6 @@ import { Curtain } from "components/layout/Curtain";
 import { Description, ProjectDetailHead } from "components/project-detail";
 import { getProjectByID } from "helpers";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Project } from "ts/types";
