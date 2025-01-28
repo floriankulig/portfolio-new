@@ -12,7 +12,7 @@ const wordVariants: Variants = {
     opacity: 0,
     scale: 0.8,
     y: 40,
-    filter: "blur(6px)",
+    filter: "blur(12px)",
   },
   wordAnimate: {
     opacity: 1,
@@ -60,7 +60,8 @@ export const WordExchange: React.FC<WordExchangeProps> = ({
                 duration: 0.25,
               },
               opacity: {
-                duration: 0.2,
+                ease: "easeIn",
+                duration: 0.3,
               },
               type: "spring",
               stiffness: 200,
