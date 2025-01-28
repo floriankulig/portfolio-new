@@ -183,7 +183,7 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
         >
           <motion.div
             layoutId={`project-image-feature-${title}`}
-            layout="preserve-aspect"
+            layout
             variants={imageVariants}
           >
             <Image
@@ -197,7 +197,7 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
 
         <StyledProjectContent>
           <StyledProjectHeader>
-            <motion.h3 layout="position" variants={fadeInUpVariants}>
+            <motion.h3 layout variants={fadeInUpVariants}>
               {title}
             </motion.h3>
             <div className="chips">

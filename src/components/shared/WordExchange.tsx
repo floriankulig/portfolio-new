@@ -61,15 +61,15 @@ export const WordExchange: React.FC<WordExchangeProps> = ({
               },
               opacity: {
                 ease: "easeIn",
-                duration: 0.3,
+                duration: 0.275,
               },
               type: "spring",
-              stiffness: 200,
+              stiffness: 175,
               mass: 0.7,
               damping: 15,
             } as Transition
           }
-          layout="position"
+          layout
         >
           {word}
         </motion.span>

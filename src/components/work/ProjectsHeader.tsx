@@ -69,7 +69,8 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({
   return (
     <StyledProjectsHeader className="main-col">
       <h1>
-        👨🏽‍💻 Projects. <WordExchange>{secondaryText}</WordExchange>
+        👨🏽‍💻 Projects.{" "}
+        <WordExchange withAnimatePresence>{secondaryText}</WordExchange>
       </h1>
       <StyledProjectsCategoryList layout>
         <ProjectsCategoryChip

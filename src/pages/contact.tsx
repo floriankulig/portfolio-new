@@ -124,6 +124,7 @@ const Heading = styled(motion.h1)`
 const button1Variants: Variants = {
   pageEntry: {
     scaleX: 0,
+    originX: "left",
   },
   pageLoad: {
     scaleX: 1,
