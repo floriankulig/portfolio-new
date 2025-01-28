@@ -62,7 +62,7 @@ interface LinkButtonProps {
 
 const transition: Transition = {
   duration: 0.5,
-  ease: theme.easing as Easing,
+  ease: theme.easing as unknown as Easing,
 };
 
 const firstIconVariants: Variants = {

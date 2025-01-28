@@ -41,6 +41,7 @@ const curtainTransition: Transition = {
 const curtainVariants: Variants = {
   pageEntry: {
     scaleX: 1,
+    originX: "right",
   },
   pageLoad: {
     scaleX: 0,
