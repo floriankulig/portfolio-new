@@ -33,7 +33,7 @@ const Stats = styled.div`
   }
 `;
 const StyledProjectStatsSection = styled.section`
-  padding-block: 16px;
+  padding-block: 0 16px;
   font: var(--jakarta);
   color: var(--text2);
 
@@ -42,7 +42,7 @@ const StyledProjectStatsSection = styled.section`
   flex-direction: column;
   gap: 28px;
   @media (${({ theme }) => theme.bp.small}) {
-    padding-block: 32px;
+    padding-block: 0 32px;
     align-items: flex-start;
     flex-direction: row;
     gap: clamp(24px, 5vw, 64px);
@@ -140,18 +140,28 @@ export const ProjectStats: React.FC<ProjectStatsProps> = ({ project }) => {
   );
 };
 
-interface RolesProps {
-  roles: ProjectRole[];
-}
+type RolesProps = Required<Pick<Project, "roles">>;
 
 const Roles: React.FC<RolesProps> = ({ roles }) => {
-  const header = "Role & Team";
+  const showResponsibilities = roles.every(
+    (role) => role.responsibilities && role.responsibilities.length > 0
+  );
+  const header = showResponsibilities ? "Role & Team" : "Team";
+
+  const responsibilityDetails = (role: ProjectRole) => {
+    if (!role.responsibilities || !showResponsibilities) return "";
+    return ` (${role.responsibilities.join(", ")})`;
+  };
 
   return (
     <Stats>
       <span>{header}</span>
       <ul>
-        <li>{"Me"}</li>
+        {roles.map((role, i) => (
+          <li key={`role-${i}-${role.name}`}>
+            {role.name + responsibilityDetails(role)}
+          </li>
+        ))}
       </ul>
     </Stats>
   );

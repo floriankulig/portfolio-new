@@ -14,11 +14,14 @@ export interface Project {
   categories: Array<(typeof PROJECT_CATEGORIES)[number]["id"]>;
   client?: string;
   services?: string[];
-  date?: string;
+  date: string;
   roles?: ProjectRole[];
 }
 
-export interface ProjectRole {}
+export interface ProjectRole {
+  name: string;
+  responsibilities?: string[];
+}
 
 export interface ProjectCategory {
   id: string;

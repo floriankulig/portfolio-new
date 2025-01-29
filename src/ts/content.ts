@@ -31,12 +31,22 @@ const PROJECTS: Project[] = [
     keywords: ["React", "Interaction"],
     categories: ["development", "design"],
     date: "Dec 2021 - Feb 2022",
+    roles: [
+      {
+        name: "Noel Mayr",
+        responsibilities: ["Backend"],
+      },
+      {
+        name: "Florian Kulig",
+        responsibilities: ["Frontend", "Design"],
+      },
+    ],
     externalLink: "https://testiply.vercel.app",
     github: "https://github.com/floriankulig/testiply",
   },
   {
     id: "sorting-algorithms",
-    title: "Sorting Algorithms",
+    title: "Sorting Algorithms Visualizer",
     featureImage: "SortVisMock.png",
     projectBackground:
       "My first coding project. I set out to create an interactive visualization tool for sorting algorithms. The goal of this project is twofold: to master the fundamentals of programming and to create an educational tool which makes complex algorithms more accessible through visualization.",
