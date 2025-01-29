@@ -16,11 +16,20 @@ export interface Project {
   services?: string[];
   date: string;
   roles?: ProjectRole[];
+  sections?: {
+    parallaxImages?: ParallaxImagesSection;
+  };
 }
 
 export interface ProjectRole {
   name: string;
   responsibilities?: string[];
+}
+
+export interface ParallaxImagesSection {
+  bgImage: string;
+  mainImage: string;
+  sideImages?: string[];
 }
 
 export interface ProjectCategory {

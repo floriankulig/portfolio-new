@@ -16,7 +16,7 @@ const StyledParallaxImagesSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: red;
+  background: var(--bg3);
   position: relative;
   overflow: hidden;
 `;
@@ -24,6 +24,7 @@ const StyledParallaxImagesSection = styled.section`
 const BGImageWrapper = styled(motion.div)<{ $overlap: number }>`
   position: absolute;
   width: 100%;
+  will-change: transform;
   height: ${(p) => 100 + 2 * p.$overlap}%;
 `;
 

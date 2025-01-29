@@ -17,6 +17,13 @@ const PROJECTS: Project[] = [
     date: "June 2023",
     client: "Zolnhofer",
     services: ["Concept", "Design", "Development"],
+    sections: {
+      parallaxImages: {
+        bgImage: "forest.jpg",
+        mainImage: "Jvis Main.png",
+        // sideImages: ["JvisSide1.png", "JvisSide2.png"],
+      },
+    },
   },
   {
     id: "testiply",
@@ -43,6 +50,13 @@ const PROJECTS: Project[] = [
     ],
     externalLink: "https://testiply.vercel.app",
     github: "https://github.com/floriankulig/testiply",
+    sections: {
+      parallaxImages: {
+        bgImage: "swirl.jpg",
+        mainImage: "Testiply Main.png",
+        // sideImages: ["JvisSide1.png", "JvisSide2.png"],
+      },
+    },
   },
   {
     id: "sorting-algorithms",
@@ -58,6 +72,13 @@ const PROJECTS: Project[] = [
     date: "March 2020",
     gradient: "linear-gradient(135deg, #3357C1 0%, #3392C1 100%)",
     github: "https://github.com/floriankulig/SortingVisualizer",
+    sections: {
+      parallaxImages: {
+        bgImage: "twister.jpg",
+        mainImage: "SortVis Main.png",
+        // sideImages: ["JvisSide1.png", "JvisSide2.png"],
+      },
+    },
   },
 ];
 
