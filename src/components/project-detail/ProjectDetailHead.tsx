@@ -30,14 +30,14 @@ const StyledHeroSection = styled.div`
     font-size: clamp(2.5rem, 10dvw, 6rem);
     font-weight: 500;
     letter-spacing: -5%;
-    line-height: 1.05;
-    padding-block: 0.15em;
+    line-height: 1;
+    /* padding-block: 0.15em; */
   }
   p {
     font-size: clamp(1rem, 3vw, 1.25rem);
     color: var(--text2);
     opacity: 0.9;
-    padding-block: 0.75em;
+    padding-block: 2.5em;
     width: 100%;
     max-width: 55ch;
   }
