@@ -1,6 +1,7 @@
 export { Header } from "./Header";
 export { ScrollIndicator } from "./ScrollIndicator";
 export { ArrowButton } from "./ArrowButton";
+export { BlurAround } from "./BlurAround";
 export { MainColumn } from "./MainColumn";
 export { WordExchange } from "./WordExchange";
 export { TransitionLink } from "./TransitionLink";
