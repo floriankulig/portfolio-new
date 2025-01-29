@@ -1,5 +1,9 @@
 import { Curtain } from "components/layout/Curtain";
-import { Description, ProjectDetailHead } from "components/project-detail";
+import {
+  Description,
+  ParallaxImages,
+  ProjectDetailHead,
+} from "components/project-detail";
 import { getProjectByID } from "helpers";
 import dynamic from "next/dynamic";
 import { Project } from "ts/types";
@@ -36,6 +40,7 @@ export const getStaticProps = (async (context) => {
 const ProjectDetailPage = ({
   project,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { id, sections } = project;
   return (
     <>
       <Curtain />
@@ -55,9 +60,13 @@ const ProjectDetailPage = ({
         label="Project Background"
         description={project.projectBackground}
       />
-      <div
-        style={{ height: "50vh", marginTop: 50, background: "#88888888" }}
-      ></div>
+      {sections?.parallaxImages && (
+        <ParallaxImages parallaxImages={sections?.parallaxImages} />
+      )}
+      <Description
+        label="Project Background"
+        description={project.projectBackground}
+      />
     </>
   );
 };
