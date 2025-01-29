@@ -1,5 +1,6 @@
 import { MeasurementRect } from "hooks/useMeasure";
 import { PROJECTS } from "ts/content";
+import { Project } from "ts/types";
 
 export const copyToClipboard = (text: string) => {
   navigator.clipboard.writeText(text);
@@ -17,4 +18,15 @@ export const measureDistance = (
 
 export const getProjectByID = (projectID: string) => {
   return PROJECTS.find((project) => project.id === projectID);
+};
+
+export const getProjectYear = (project: Project) => {
+  const today = new Date();
+  const thisYear = today.getFullYear();
+  if (project.date?.includes("Present")) {
+    return thisYear;
+  }
+  // Extract the last year from the date string using regex
+  const yearMatch = project.date?.match(/\d{4}/g);
+  return yearMatch ? parseInt(yearMatch[yearMatch.length - 1]) : undefined;
 };
