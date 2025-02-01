@@ -59,6 +59,7 @@ export const ParallaxImages: React.FC<ParallaxImagesProps> = ({
           src={`/parallaxBG/${bgImage}`}
           alt="Background Image"
           fill
+          sizes="100vw"
           quality={50}
           style={{ objectFit: "cover" }}
         />
@@ -68,6 +69,7 @@ export const ParallaxImages: React.FC<ParallaxImagesProps> = ({
           <Image
             src={`/${mainImage}`}
             alt="Main Image"
+            sizes="70vw"
             style={{
               width: "70vw",
               height: "auto",

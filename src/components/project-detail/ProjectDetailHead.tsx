@@ -134,6 +134,7 @@ const FeatureImageSection: React.FC<FeatureImageSectionProps> = ({
             style={{ objectFit: "cover" }}
             alt={`Feature image for project ${projectTitle}`}
             fill
+            sizes="(max-width: 720px) 100vw, 95vw"
             priority
           />
         </StyledFeatureImage>
