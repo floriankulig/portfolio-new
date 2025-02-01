@@ -28,6 +28,7 @@ const StyledArrowButton = styled(motion.button)`
   .text {
     position: relative;
     display: block;
+    white-space: nowrap;
     z-index: 1;
     line-height: 1;
     letter-spacing: -2%;
