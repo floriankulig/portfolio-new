@@ -6,6 +6,7 @@ import styled from "styled-components";
 interface InlineImageBubbleProps {
   image: string;
   alt?: string;
+  sizes?: string;
   aspectRatio?: number;
 }
 
@@ -25,6 +26,7 @@ const InlineImageWrapper = styled.div<{ $aspectRatio: number }>`
 export const InlineImageBubble: React.FC<InlineImageBubbleProps> = ({
   image,
   alt = "Design Image",
+  sizes,
   aspectRatio = 2,
 }) => {
   return (
@@ -34,6 +36,7 @@ export const InlineImageBubble: React.FC<InlineImageBubbleProps> = ({
         alt={alt}
         fill
         priority
+        sizes={sizes}
         quality={25}
         style={{ objectFit: "cover" }}
       />

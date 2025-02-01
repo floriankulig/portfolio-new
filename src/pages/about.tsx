@@ -49,6 +49,7 @@ const AboutPage = () => {
           Work{" "}
           <InlineImageBubble
             image="/WIP.png"
+            sizes="(max-width: 768px) 20vw, 190px"
             alt="Image of a turned off laptop on a desk"
           />
           in Progress...

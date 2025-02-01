@@ -191,6 +191,7 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
           src={"/" + image}
           alt={`Image showing a software preview of the project "${title}"`}
           fill
+          sizes="90vw"
           priority={index === 0}
         />
       </StyledBG>
