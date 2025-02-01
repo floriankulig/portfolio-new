@@ -1,8 +1,6 @@
 import { Spring, Transition } from "framer-motion";
 import { url } from "inspector";
 
-export const EMAIL = "florian.kulig@web.de" as const;
-
 export const EASING = [0.6, 0.01, -0.05, 0.95] as any;
 
 export const SCROLL_SPRING: Spring = {

@@ -16,7 +16,7 @@ import { rgba } from "polished";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { pageContentExit, theme } from "styles";
-import { EMAIL } from "ts";
+import { EMAIL } from "ts/content";
 
 const StyledContactPage = styled(motion.div)`
   width: 100vw;

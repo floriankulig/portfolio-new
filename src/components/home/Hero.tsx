@@ -12,7 +12,7 @@ import { lighten } from "polished";
 import { useState } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
-import { EMAIL } from "ts";
+import { EMAIL, YEARS_OF_EXPERIENCE } from "ts/content";
 
 const StyledHeroSection = styled.section`
   --alignment: left;
@@ -98,16 +98,17 @@ export const Hero = () => {
   const { isMobile } = useViewport(720);
   const mobileDescription = (
     <p>
-      I&apos;m a Software Engineer with <b>5 years of experience.</b> While
-      crafting intuitive user interfaces is my forte, my driving force is{" "}
+      I&apos;m a Software Engineer with{" "}
+      <b>{YEARS_OF_EXPERIENCE} years of experience.</b> While crafting intuitive
+      user interfaces is my forte, my driving force is{" "}
       <b>creating solutions that deliver tangible value. </b>
     </p>
   );
   const description = (
     <p>
       Based in South-Germany, I&apos;m a Software Engineer with{" "}
-      <b>5 years of hands-on development experience.</b> While crafting
-      intuitive user interfaces is my forte, my driving force is{" "}
+      <b>{YEARS_OF_EXPERIENCE} years of hands-on development experience.</b>{" "}
+      While crafting intuitive user interfaces is my forte, my driving force is{" "}
       <b>creating solutions that deliver tangible value </b>– whether it&apos;s
       streamlining workflows or enhancing user experiences.
     </p>
