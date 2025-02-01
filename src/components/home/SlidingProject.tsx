@@ -16,6 +16,7 @@ const StyledSlidingProject = styled(motion.div)`
 `;
 
 const StyledBG = styled(motion.div)<{ $imageOverflow: number }>`
+  position: relative;
   min-width: calc(100% + ${(p) => p.$imageOverflow}px);
   height: 100%;
   will-change: transform;
