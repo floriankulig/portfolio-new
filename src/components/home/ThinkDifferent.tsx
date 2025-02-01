@@ -21,7 +21,7 @@ const StyledThinkDifferentSection = styled(motion.section)`
   align-items: center;
 `;
 const StyledThinkDifferentAnimation = styled.div`
-  height: 550vh;
+  height: 500vh;
   position: relative;
   width: 100%;
 `;
