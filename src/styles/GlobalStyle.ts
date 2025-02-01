@@ -58,9 +58,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--inter);
     line-height: 150%;
 
-    &.balanced {
-      text-wrap: balance;
-    }
+  }
+  .balanced {
+    text-wrap: balance;
   }
 
   .main-col {

@@ -1,3 +1,4 @@
+export { HeroBanner } from "./HeroBanner";
 export { Hero } from "./Hero";
 export { KeyServices } from "./KeyServices";
 export { ProjectsIntro } from "./ProjectsIntro";

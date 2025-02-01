@@ -1,6 +1,7 @@
 import {
   Banner,
   Hero,
+  HeroBanner,
   ProjectsIntro,
   ProjectsSlide,
   ThinkDifferent,
@@ -18,7 +19,18 @@ const Home = () => {
   return (
     <>
       <Curtain />
-      <Header />
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: 100,
+          width: "100dvw",
+        }}
+      >
+        <Header />
+      </div>
+      {/* <HeroBanner /> */}
       <Hero />
       <ProjectsIntro />
       <ProjectsSlide />
