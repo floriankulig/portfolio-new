@@ -2,39 +2,39 @@ import {
   motion,
   useMotionTemplate,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
 import { rgba } from "polished";
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
-import { SCROLL_SPRING } from "ts";
+import { PROJECT_INTRO_DISTANCE } from "./SlidingProject";
 
 const StyledProjectsIntroContainer = styled(motion.div)`
   position: relative;
   background: var(--text1);
-  padding-bottom: 3rem;
 `;
 const StyledProjectsIntro = styled(motion.div)`
   position: sticky;
   top: 0;
-  height: 400px;
-  padding: 4rem 6rem;
+  font-size: clamp(2.5rem, 9dvw, 6rem);
+  padding-block: 1em calc(0.75em + (${PROJECT_INTRO_DISTANCE}px * 0.85));
 `;
 
 const StyledIntroHeader = styled(motion.header)`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   align-items: baseline;
 
   h2 {
-    font-size: 6rem;
+    font-size: inherit;
     text-transform: uppercase;
     font-weight: 500;
-    letter-spacing: -5px;
-    line-height: 1.5;
-    -webkit-text-stroke: 1px ${({ theme }) => rgba(theme.bg1, 0.25)};
+    letter-spacing: -5%;
+    line-height: 1.1;
+    -webkit-text-stroke: 1px ${({ theme }) => rgba(theme.bg1, 0.2)};
     background: ${({ theme }) =>
       `linear-gradient(177deg, ${rgba(theme.bg2, 0.7)}, ${rgba(
         theme.bg2,
@@ -45,7 +45,7 @@ const StyledIntroHeader = styled(motion.header)`
   }
 
   span {
-    font-size: 1.5rem;
+    font-size: clamp(0.875rem, 3vw, 1.5rem);
     letter-spacing: -0.5px;
     font-family: var(--jakarta);
     font-weight: 800;
@@ -85,7 +85,7 @@ export const ProjectsIntro: React.FC<ProjectsIntroProps> = () => {
   const currentYear = new Date().getFullYear().toString().slice(2);
   return (
     <StyledProjectsIntroContainer ref={sectionRef}>
-      <StyledProjectsIntro>
+      <StyledProjectsIntro className="main-col">
         <StyledIntroHeader>
           <motion.h2 style={{ backgroundImage }}>MY PROJECTS</motion.h2>
           <span>©2019-{currentYear}</span>
