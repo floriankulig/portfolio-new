@@ -1,15 +1,19 @@
 import { ArrowButton, TransitionLink } from "components/shared";
 import {
   AnimatePresence,
+  easeOut,
   motion,
+  Transition,
   useMotionValueEvent,
+  useScroll,
   useTime,
   useTransform,
   Variants,
 } from "framer-motion";
 import { useViewport } from "hooks";
 import { lighten, rgba } from "polished";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { ArrowDown, Repeat } from "react-feather";
 import styled from "styled-components";
 import { theme } from "styles";
 import { EMAIL, YEARS_OF_EXPERIENCE } from "ts/content";
@@ -21,6 +25,7 @@ const StyledHeroSection = styled.section`
     --alignment: center;
   }
   min-height: 100lvh;
+  position: relative;
   padding-block: max(20vh, 100px);
   display: flex;
   flex-direction: column;
@@ -96,6 +101,15 @@ const StyledButtons = styled.div`
 
 export const Hero = () => {
   const { isMobile } = useViewport(720);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const [scrolled, setScrolled] = useState(false);
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setScrolled(latest > 0.05);
+  });
   const mobileDescription = (
     <p>
       I&apos;m a Software Engineer with{" "}
@@ -114,7 +128,7 @@ export const Hero = () => {
     </p>
   );
   return (
-    <StyledHeroSection className="main-col">
+    <StyledHeroSection className="main-col" ref={sectionRef}>
       <TextAnimation />
       <h1>
         Creative <br /> Software Engineer
@@ -126,6 +140,7 @@ export const Hero = () => {
         </TransitionLink>
         <a href={`mailto:${EMAIL}?subject=Let's work together!`}>Reach out</a>
       </StyledButtons>
+      <AnimatePresence>{!scrolled && <ScrollingIndicator />}</AnimatePresence>
     </StyledHeroSection>
   );
 };
@@ -147,7 +162,7 @@ const StyledTextAnimation = styled(motion.div)`
 const sentenceVariants: Variants = {
   animate: {
     transition: {
-      delayChildren: 0.05,
+      delayChildren: 0.025,
       staggerChildren: 0.0125,
     },
   },
@@ -181,7 +196,7 @@ const letterVariants: Variants = {
   },
 };
 
-export const TextAnimation = () => {
+const TextAnimation = () => {
   const sentences = [
     "Driving Experiences.",
     "Pushing Excellence.",
@@ -193,7 +208,6 @@ export const TextAnimation = () => {
     Math.floor(latest / (1000 * changeSeconds))
   );
   useMotionValueEvent(counter, "change", (latest) => {
-    console.log(latest);
     setSentence(sentences[latest % sentences.length]);
   });
   const [sentence, setSentence] = useState(sentences[0]);
@@ -223,5 +237,125 @@ export const TextAnimation = () => {
         </motion.span>
       </AnimatePresence>
     </StyledTextAnimation>
+  );
+};
+
+const StyledScrollIndicator = styled(motion.div)`
+  --padding: min(16px, 5vw);
+  --size: 56px;
+  position: fixed;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  left: var(--padding);
+  top: calc(min(100%, 100dvh) - var(--padding) - var(--size));
+  display: grid;
+  place-items: center;
+  color: var(--text2);
+  background-color: ${({ theme }) => rgba(theme.bg3, 0.6)};
+  border: 1px solid ${({ theme }) => rgba(theme.bg3, 0.5)};
+  backdrop-filter: blur(8px);
+  z-index: 10;
+  span {
+    position: relative;
+    display: grid;
+    place-items: center;
+    span {
+      position: absolute;
+    }
+  }
+`;
+
+const indicatorVariants: Variants = {
+  initial: {
+    scale: 0,
+    originY: "bottom",
+  },
+  animate: {
+    scale: 1,
+    originY: "bottom",
+    transition: {
+      ease: theme.easing,
+      duration: 0.45,
+      delayChildren: 0.4,
+    },
+  },
+  exit: {
+    scale: 0,
+    originY: "top",
+    transition: {
+      delay: 0.15,
+      ease: theme.easing,
+      duration: 0.35,
+    },
+  },
+};
+
+const arrowTransition: Transition = {
+  repeat: Infinity,
+  delay: 2,
+  repeatDelay: 0.75,
+  ease: theme.easing,
+  duration: 1.5,
+};
+
+const arrowVariants: Variants = {
+  initial: (custom) => ({
+    y: custom ? -24 : 0,
+    scale: custom ? 0.5 : 1,
+    opacity: custom ? 0 : 1,
+  }),
+  animate: (custom) => ({
+    y: custom ? 0 : 24,
+    scale: custom ? 1 : 0,
+    opacity: custom ? 1 : 0,
+    transition: {
+      y: arrowTransition,
+      scale: arrowTransition,
+      opacity: {
+        ...arrowTransition,
+        ease: "easeInOut",
+        duration: arrowTransition.duration * 0.75,
+        repeatDelay:
+          arrowTransition.repeatDelay! + arrowTransition.duration * 0.25,
+      },
+    },
+  }),
+};
+
+const transitionVariants: Variants = {
+  initial: {
+    scale: 0,
+  },
+  animate: {
+    scale: 1,
+    transition: {
+      type: "spring",
+      damping: 13,
+      stiffness: 120,
+    },
+  },
+  exit: {
+    scale: 0,
+  },
+};
+
+const ScrollingIndicator: React.FC = () => {
+  const Arrow = <ArrowDown size={32} strokeWidth={1.25} strokeLinecap="butt" />;
+
+  return (
+    <StyledScrollIndicator
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={indicatorVariants}
+    >
+      <motion.span variants={transitionVariants}>
+        <motion.span variants={arrowVariants} custom={true}>
+          {Arrow}
+        </motion.span>
+        <motion.span variants={arrowVariants}>{Arrow}</motion.span>
+      </motion.span>
+    </StyledScrollIndicator>
   );
 };
