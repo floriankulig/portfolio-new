@@ -10,7 +10,7 @@ const StyledArrowButton = styled(motion.button)`
   overflow: visible;
   border: none;
   height: 44px;
-  padding-inline: 22px 28px;
+  padding-inline: 22px 30px;
   background: none;
   position: relative;
   pointer-events: all;
