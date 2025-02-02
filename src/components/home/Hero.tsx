@@ -1,4 +1,4 @@
-import { ArrowButton, ExternalButton, TransitionLink } from "components/shared";
+import { ArrowButton, TransitionLink } from "components/shared";
 import {
   AnimatePresence,
   motion,
