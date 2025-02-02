@@ -88,7 +88,7 @@ export const ProjectsIntro: React.FC<ProjectsIntroProps> = () => {
       <StyledProjectsIntro className="main-col">
         <StyledIntroHeader>
           <motion.h2 style={{ backgroundImage }}>MY PROJECTS</motion.h2>
-          <span>©2019-{currentYear}</span>
+          <span>©2020-{currentYear}</span>
         </StyledIntroHeader>
       </StyledProjectsIntro>
     </StyledProjectsIntroContainer>
