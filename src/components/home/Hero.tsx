@@ -1,7 +1,6 @@
 import { ArrowButton, TransitionLink } from "components/shared";
 import {
   AnimatePresence,
-  easeOut,
   motion,
   Transition,
   useMotionValueEvent,
@@ -13,7 +12,7 @@ import {
 import { useViewport } from "hooks";
 import { lighten, rgba } from "polished";
 import { useRef, useState } from "react";
-import { ArrowDown, Repeat } from "react-feather";
+import { ArrowDown } from "react-feather";
 import styled from "styled-components";
 import { theme } from "styles";
 import { EMAIL, YEARS_OF_EXPERIENCE } from "ts/content";
@@ -49,8 +48,9 @@ const StyledHeroSection = styled.section`
     padding-block: 0 0.1em;
 
     background: var(--text1);
+    --circleX: 57.5%;
     background-image: radial-gradient(
-      circle at 57.5% 10%,
+      circle at var(--circleX) 10%,
       ${({ theme }) => rgba(theme.text3, 0.45)},
       transparent 40%
     );
@@ -58,6 +58,7 @@ const StyledHeroSection = styled.section`
     color: transparent;
 
     @media (max-width: 420px) {
+      --circleX: 45%;
       letter-spacing: -4.5%;
       font-size: 15vw;
     }
