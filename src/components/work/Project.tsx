@@ -20,7 +20,7 @@ const StyledProjectFeatureImageWrapper = styled(motion.div)`
   width: 100%;
   aspect-ratio: 1.618;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: clamp(8px, 2vw, 16px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +31,7 @@ const StyledProjectFeatureImageWrapper = styled(motion.div)`
 
     img {
       object-fit: cover;
-      border-radius: 16px;
+      border-radius: clamp(8px, 2vw, 16px);
     }
   }
 `;
@@ -40,8 +40,8 @@ const StyledProjectContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 16px;
-  padding: 0 16px 8px;
+  gap: clamp(12px, 2vw, 16px);
+  padding: 0 clamp(8px, 2vw, 16px) 8px;
 `;
 
 const StyledProjectHeader = styled.div`

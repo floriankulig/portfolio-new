@@ -13,7 +13,7 @@ const StyledProjectsListSection = styled(motion.section)`
 
 const StyledProjectsList = styled(motion.ul)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
   gap: 48px 32px;
 `;
 
@@ -26,17 +26,17 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({
 }) => {
   return (
     <StyledProjectsListSection layout>
-      <MainColumn>
-        {/* <LayoutGroup> */}
-        <StyledProjectsList>
-          <AnimatePresence initial={false}>
-            {selectedProjects.map((project) => (
-              <ProjectComponent key={project.id} project={project} />
-            ))}
-          </AnimatePresence>
-        </StyledProjectsList>
-        {/* </LayoutGroup> */}
-      </MainColumn>
+      {/* <MainColumn> */}
+      {/* <LayoutGroup> */}
+      <StyledProjectsList className="main-col">
+        <AnimatePresence initial={false}>
+          {selectedProjects.map((project) => (
+            <ProjectComponent key={project.id} project={project} />
+          ))}
+        </AnimatePresence>
+      </StyledProjectsList>
+      {/* </LayoutGroup> */}
+      {/* </MainColumn> */}
     </StyledProjectsListSection>
   );
 };
