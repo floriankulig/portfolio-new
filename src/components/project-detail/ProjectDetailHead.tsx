@@ -74,8 +74,10 @@ const StyledFeatureImageSection = styled.div`
 
 const StyledFeatureImageContainer = styled.div`
   --size: 100vw;
+  border-radius: 0px;
   @media (${({ theme }) => theme.bp.small}) {
     --size: 95vw;
+    border-radius: 4px;
   }
   width: var(--size);
   height: min(110vh, calc(var(--size) / 1.618));
@@ -84,7 +86,6 @@ const StyledFeatureImageContainer = styled.div`
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   position: relative;
-  border-radius: 4px;
 `;
 
 const AnimatedOverlay = styled(motion.div)`
