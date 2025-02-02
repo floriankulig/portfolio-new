@@ -8,7 +8,7 @@ import {
   Variants,
 } from "framer-motion";
 import { useViewport } from "hooks";
-import { lighten } from "polished";
+import { lighten, rgba } from "polished";
 import { useState } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
@@ -21,40 +21,40 @@ const StyledHeroSection = styled.section`
     --alignment: center;
   }
   min-height: 100lvh;
-  padding-block: 25vh;
+  padding-block: max(20vh, 100px);
   display: flex;
   flex-direction: column;
   align-items: var(--alignment);
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
 
   & > * {
     text-align: var(--alignment);
   }
 
   h1 {
-    font-size: clamp(2.875rem, 10vw, 5.5rem);
-    font-weight: 600;
+    font-size: clamp(2.875rem, 10.25vw, 5.5rem);
+    font-weight: 500;
     letter-spacing: -5.5%;
     line-height: 1.05;
     width: 100%;
     white-space: pre-line;
     max-width: 15ch;
     position: relative;
+    padding-block: 0 0.1em;
 
-    span {
-      //GRADIENT
-      inset: 0;
-      position: absolute;
-      opacity: 0.15;
-      /* z-index: -1; */
-      /* background: #396dcf; */
-      background: linear-gradient(40deg, #ffb347, #ff6b6b, #4ea8de, #c138ca);
-      background-clip: text;
-      color: transparent;
-      filter: blur(0.5rem);
-      user-select: none;
-      pointer-events: none;
+    background: var(--text1);
+    background-image: radial-gradient(
+      circle at 57.5% 10%,
+      ${({ theme }) => rgba(theme.text3, 0.45)},
+      transparent 40%
+    );
+    background-clip: text;
+    color: transparent;
+
+    @media (max-width: 420px) {
+      letter-spacing: -4.5%;
+      font-size: 15vw;
     }
   }
 
@@ -68,11 +68,11 @@ const StyledHeroSection = styled.section`
     @media (max-width: 720px) {
       max-width: 45ch;
     }
-    padding-block: 0.5em;
+    padding-block: 0.25em 1em;
+    word-break: keep-all;
     b {
-      font-weight: 700;
+      font-weight: 600;
       color: var(--text2);
-      opacity: 1;
     }
   }
 `;
@@ -116,13 +116,8 @@ export const Hero = () => {
   return (
     <StyledHeroSection className="main-col">
       <TextAnimation />
-      <h1 className="balanced">
-        <span>
-          Creative 👨🏽‍💻
-          <br /> Software Engineer
-        </span>
-        Creative 👨🏽‍💻
-        <br /> Software Engineer
+      <h1>
+        Creative <br /> Software Engineer
       </h1>
       {isMobile ? mobileDescription : description}
       <StyledButtons>

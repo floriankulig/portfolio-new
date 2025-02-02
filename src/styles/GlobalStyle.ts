@@ -39,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--poppins), var(--jakarta), sans-serif;
     overflow-x: hidden;
     min-height: 100dvh;
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -57,7 +58,6 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-family: var(--inter);
     line-height: 150%;
-
   }
   .balanced {
     text-wrap: balance;
