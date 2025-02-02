@@ -10,6 +10,8 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { Project } from "ts/types";
 import { ProjectStats } from "./ProjectStats";
+import { rgba } from "polished";
+import { theme } from "styles";
 
 const StyledProjectDetailHeadSection = styled.section`
   display: flex;
@@ -20,7 +22,7 @@ const StyledProjectDetailHeadSection = styled.section`
 
 const StyledHeroSection = styled.div`
   min-height: 80vh;
-  padding-top: 64px;
+  padding-top: max(64px, 25vh);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -65,11 +67,11 @@ export const ProjectDetailHead: React.FC<ProjectDetailHeadProps> = ({
 };
 
 const StyledFeatureImageSection = styled.div`
+  --padding: max(1rem, 5vh);
   width: 100%;
   display: grid;
   place-items: center;
-  padding-block: 5vh;
-  padding-block: max(1rem, 5vh);
+  padding-block: var(--padding) 0;
 `;
 
 const StyledFeatureImageContainer = styled.div`
