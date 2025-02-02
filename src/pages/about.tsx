@@ -17,7 +17,7 @@ const StyledAboutPage = styled.section`
   place-items: center;
 
   h1 {
-    font-size: clamp(2.5rem, 10dvw, 6rem);
+    font-size: clamp(2rem, 11svw, 6rem);
     font-weight: 600;
     letter-spacing: -5%;
     line-height: 1;
