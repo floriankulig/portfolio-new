@@ -262,6 +262,7 @@ const StyledScrollIndicator = styled(motion.div)`
     display: grid;
     place-items: center;
     span {
+      perspective: 100px;
       position: absolute;
     }
   }
@@ -303,16 +304,19 @@ const arrowTransition: Transition = {
 const arrowVariants: Variants = {
   initial: (custom) => ({
     y: custom ? -24 : 0,
-    scale: custom ? 0.5 : 1,
+    rotateX: custom ? -45 : 0,
+    scale: custom ? 0.6 : 1,
     opacity: custom ? 0 : 1,
   }),
   animate: (custom) => ({
     y: custom ? 0 : 24,
+    rotateX: custom ? 0 : 45,
     scale: custom ? 1 : 0,
     opacity: custom ? 1 : 0,
     transition: {
       y: arrowTransition,
       scale: arrowTransition,
+      rotateX: arrowTransition,
       opacity: {
         ...arrowTransition,
         ease: "easeInOut",
