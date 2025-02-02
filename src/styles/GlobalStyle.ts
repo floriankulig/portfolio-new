@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--dark) transparent;
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
+    font-smooth: always;
+    text-rendering: optimizeLegibility;
   }
   *,
   *:before,
@@ -39,7 +43,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--poppins), var(--jakarta), sans-serif;
     overflow-x: hidden;
     min-height: 100dvh;
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
