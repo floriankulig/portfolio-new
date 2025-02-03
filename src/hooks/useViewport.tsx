@@ -7,21 +7,25 @@ interface ViewportData {
 
 type ViewportOrientation = "landscape" | "portrait";
 
-export const useViewport = (
-  breakpoint: number = 1080,
-  defaultIsMobile: boolean = true
-): {
+type UseViewPortReturn = {
   isMobile: boolean;
   viewport: ViewportData;
   orientation: ViewportOrientation;
-} => {
-  const [isMobile, setIsMobile] = useState<boolean>(defaultIsMobile);
+};
+
+export const useViewport = (
+  breakpoint: number = 1080,
+  defaultIsMobile: boolean = true
+): UseViewPortReturn => {
   const [viewport, setViewport] = useState<ViewportData>({
     viewPortHeight: 1080,
-    viewPortWidth: defaultIsMobile ? 960 : 1920,
+    viewPortWidth: defaultIsMobile ? breakpoint - 120 : 1920,
   });
-  const [orientation, setOrientation] =
-    useState<ViewportOrientation>("landscape");
+
+  const { viewPortWidth, viewPortHeight } = viewport;
+  const isMobile = viewPortWidth <= breakpoint;
+  const orientation: ViewportOrientation =
+    viewPortHeight > viewPortWidth ? "portrait" : "landscape";
 
   const onResize = (e: any) => {
     if (!e.currentTarget) return;
@@ -29,22 +33,11 @@ export const useViewport = (
       viewPortHeight: e.currentTarget.innerHeight,
       viewPortWidth: e.currentTarget.innerWidth,
     });
-    setOrientation(
-      e.currentTarget.innerHeight > e.currentTarget.innerWidth
-        ? "landscape"
-        : "portrait"
-    );
-    if (e.currentTarget.innerWidth > breakpoint) {
-      setIsMobile(false);
-    } else {
-      setIsMobile(true);
-    }
   };
 
   useEffect(() => {
     // set this as an initial value without having to resize first
     if (window) {
-      setIsMobile(window.innerWidth <= breakpoint);
       setViewport({
         viewPortHeight: window.innerHeight,
         viewPortWidth: window.innerWidth,
