@@ -30,3 +30,5 @@ export const getProjectYear = (project: Project) => {
   const yearMatch = project.date?.match(/\d{4}/g);
   return yearMatch ? parseInt(yearMatch[yearMatch.length - 1]) : undefined;
 };
+
+export { formatTimeForGermany } from "./formatTimeForGermany";
