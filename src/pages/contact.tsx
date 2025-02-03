@@ -1,6 +1,6 @@
 import { Curtain } from "components/layout/Curtain";
+import { StaticHeader } from "components/layout/header";
 import {
-  Header,
   MainColumn,
   ContactCircle,
   CopyToClipboard,
@@ -184,7 +184,7 @@ const Contact = () => {
   return (
     <>
       <Curtain />
-      <Header />
+      <StaticHeader />
       <StyledContactPage variants={{ pageExit: pageContentExit }}>
         <MainColumn>
           <Content variants={contentVariants}>
