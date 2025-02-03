@@ -9,10 +9,10 @@ import {
   useTransform,
 } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useMeasure } from "hooks";
+import { useDevice, useMeasure } from "hooks";
 
 const StyledProjectsCategoryWrapper = styled(motion.div)`
-  padding: 8px;
+  padding: clamp(4px, 1vw, 8px);
   user-select: none;
   cursor: pointer;
 `;
@@ -21,7 +21,7 @@ interface StyledProjectsCategoryProps {
   $hasColor?: boolean;
 }
 const StyledProjectsCategory = styled(motion.li)<StyledProjectsCategoryProps>`
-  font-size: 20px;
+  font-size: clamp(16px, 5vw, 20px);
   font-weight: 500;
   letter-spacing: -0.03em;
   position: relative;
@@ -76,6 +76,7 @@ export const ProjectsCategoryChip: React.FC<ProjectsCategoryChipProps> = ({
   selected,
   toggleSelected,
 }) => {
+  const { isTouchDevice } = useDevice();
   const [hovered, setHovered] = useState(false);
   const [measurementRect, ref] = useMeasure<HTMLDivElement>();
   const { width, height, top, left } = measurementRect;
@@ -153,9 +154,9 @@ export const ProjectsCategoryChip: React.FC<ProjectsCategoryChipProps> = ({
 
   return (
     <StyledProjectsCategoryWrapper
-      onMouseMove={onMouseMove}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseMove={isTouchDevice ? undefined : onMouseMove}
+      onMouseEnter={isTouchDevice ? undefined : onMouseEnter}
+      onMouseLeave={isTouchDevice ? undefined : onMouseLeave}
       onTap={onClick}
     >
       <div ref={ref}>

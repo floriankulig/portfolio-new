@@ -10,17 +10,18 @@ const StyledProjectsHeader = styled.header`
   display: flex;
   flex-direction: column;
   h1 {
-    font-size: clamp(2.5rem, 10dvw, 6rem);
+    font-size: clamp(2.5rem, 12.5dvw, 5.5rem);
     font-weight: 600;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.055em;
     line-height: 1;
     display: flex;
     flex-wrap: wrap;
     gap: 0.2em;
     margin-bottom: 0.3em;
     & > span {
+      display: flex;
+      gap: 0.2em;
       color: var(--text3);
-      filter: blur(0px);
     }
   }
 `;
@@ -29,7 +30,12 @@ const StyledProjectsCategoryList = styled(motion.ul)`
   display: flex;
   gap: 0px;
   flex-wrap: wrap;
+
+  @media (max-width: 420px) {
+    margin-inline: -0.5rem;
+  }
 `;
+
 const PROJECT_CATEGORY_IDS = PROJECT_CATEGORIES.map((c) => c.id);
 interface ProjectsHeaderProps {
   selectedChips: string[];
@@ -70,7 +76,9 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({
     <StyledProjectsHeader className="main-col">
       <h1>
         👨🏽‍💻 Projects.{" "}
-        <WordExchange withAnimatePresence>{secondaryText}</WordExchange>
+        <span>
+          <WordExchange withAnimatePresence>{secondaryText}</WordExchange>
+        </span>
       </h1>
       <StyledProjectsCategoryList layout>
         <ProjectsCategoryChip
