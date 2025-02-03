@@ -5,9 +5,8 @@ export const EASING = [0.6, 0.01, -0.05, 0.95] as any;
 
 export const SCROLL_SPRING: Spring = {
   type: "spring",
-  stiffness: 70,
-  damping: 20,
-  mass: 1.1,
+  stiffness: 100,
+  damping: 30,
   restDelta: 0.0001,
 };
 
