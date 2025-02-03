@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale; 
     font-smooth: always;
     text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
   }
   *,
   *:before,
@@ -43,8 +44,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--poppins), var(--jakarta), sans-serif;
     overflow-x: hidden;
     min-height: 100dvh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
   ul {
     margin: 0;
