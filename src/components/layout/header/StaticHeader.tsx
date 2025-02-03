@@ -64,7 +64,7 @@ const formatTimeForGermany = (date: Date) => {
   });
 };
 
-export const Header: React.FC = () => {
+export const StaticHeader: React.FC = () => {
   const [timeData, setTimeData] = useState(() => {
     const initialDate = new Date();
     const formattedTime = formatTimeForGermany(initialDate);

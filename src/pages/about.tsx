@@ -5,7 +5,7 @@ import { rgba } from "polished";
 import styled from "styled-components";
 
 const Header = dynamic(
-  () => import("components/shared").then((mod) => mod.Header),
+  () => import("components/layout/header").then((mod) => mod.StaticHeader),
   { ssr: false }
 );
 

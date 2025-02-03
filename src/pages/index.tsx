@@ -1,17 +1,15 @@
 import {
   Banner,
   Hero,
-  HeroBanner,
   ProjectsIntro,
   ProjectsSlide,
   ThinkDifferent,
 } from "components/home";
 import { Curtain } from "components/layout/Curtain";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 
 const Header = dynamic(
-  () => import("components/shared").then((mod) => mod.Header),
+  () => import("components/layout/header").then((mod) => mod.StaticHeader),
   { ssr: false }
 );
 

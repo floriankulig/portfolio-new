@@ -16,7 +16,7 @@ import type {
 } from "next";
 
 const Header = dynamic(
-  () => import("components/shared").then((mod) => mod.Header),
+  () => import("components/layout/header").then((mod) => mod.StaticHeader),
   { ssr: false }
 );
 

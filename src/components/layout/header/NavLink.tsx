@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
-import { TransitionLink } from "./TransitionLink";
+import { TransitionLink } from "components/shared";
 
 const StyledNavLinkItem = styled.li`
   position: relative;
