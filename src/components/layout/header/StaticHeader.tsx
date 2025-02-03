@@ -14,6 +14,9 @@ const StyledHeader = styled.nav`
   font-size: 14px;
   font-family: var(--jakarta);
   font-weight: 500;
+  &:last-child {
+    text-align: right;
+  }
 `;
 
 const StyledMeta = styled.div`
@@ -21,11 +24,11 @@ const StyledMeta = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 0.25em;
-  text-align: right;
+  /* text-align: right; */
   & > span {
     font-weight: 600;
     min-width: 2.5rem;
-    text-align: right;
+    /* text-align: right; */
     color: var(--text1);
   }
 `;
