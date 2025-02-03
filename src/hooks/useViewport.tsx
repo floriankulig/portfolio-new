@@ -9,16 +9,16 @@ type ViewportOrientation = "landscape" | "portrait";
 
 export const useViewport = (
   breakpoint: number = 1080,
-  def: boolean = true
+  defaultIsMobile: boolean = true
 ): {
   isMobile: boolean;
   viewport: ViewportData;
   orientation: ViewportOrientation;
 } => {
-  const [isMobile, setIsMobile] = useState<boolean>(def);
+  const [isMobile, setIsMobile] = useState<boolean>(defaultIsMobile);
   const [viewport, setViewport] = useState<ViewportData>({
     viewPortHeight: 1080,
-    viewPortWidth: def ? 960 : 1920,
+    viewPortWidth: defaultIsMobile ? 960 : 1920,
   });
   const [orientation, setOrientation] =
     useState<ViewportOrientation>("landscape");

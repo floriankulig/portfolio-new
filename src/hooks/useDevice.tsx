@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useMotionValue, useTransform, useSpring } from "framer-motion";
-import styled from "styled-components";
+import { useMotionValue, useSpring } from "framer-motion";
 
 interface DeviceInfo {
   isTouchDevice: boolean;
