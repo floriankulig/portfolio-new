@@ -109,7 +109,7 @@ export const Hero = () => {
   });
   const [scrolled, setScrolled] = useState(false);
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    setScrolled(latest > 0.05);
+    setScrolled(latest > 0.025);
   });
   const mobileDescription = (
     <p>
@@ -243,7 +243,7 @@ const TextAnimation = () => {
 
 const StyledScrollIndicator = styled(motion.div)`
   --padding: min(16px, 5vw);
-  --size: 56px;
+  --size: clamp(40px, 9vw, 56px);
   position: fixed;
   width: var(--size);
   height: var(--size);
@@ -264,6 +264,11 @@ const StyledScrollIndicator = styled(motion.div)`
     span {
       perspective: 100px;
       position: absolute;
+      svg {
+        --svgSize: calc(var(--size) / 1.618);
+        width: var(--svgSize);
+        height: var(--svgSize);
+      }
     }
   }
 `;
