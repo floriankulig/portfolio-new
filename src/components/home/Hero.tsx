@@ -39,7 +39,7 @@ const StyledHeroSection = styled.section`
   h1 {
     font-size: clamp(2.875rem, 10.25vw, 5.5rem);
     font-weight: 500;
-    letter-spacing: -5.5%;
+    letter-spacing: -0.055em;
     line-height: 1.05;
     width: 100%;
     white-space: pre-line;
@@ -59,7 +59,7 @@ const StyledHeroSection = styled.section`
 
     @media (max-width: 420px) {
       --circleX: 45%;
-      letter-spacing: -4.5%;
+      letter-spacing: -0.045em;
       font-size: 15vw;
     }
   }
@@ -67,7 +67,7 @@ const StyledHeroSection = styled.section`
   p {
     width: 100%;
     max-width: 55ch;
-    letter-spacing: 0.5%;
+    letter-spacing: 0.005em;
     font-family: var(--jakarta);
     color: var(--textColor);
     max-width: 53ch;

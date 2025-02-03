@@ -135,7 +135,7 @@ const StyledProjectsCTAContent = styled(motion.div)`
   align-items: center;
   gap: 8px;
   line-height: 1.5;
-  letter-spacing: -3%;
+  letter-spacing: -0.03em;
   font-weight: 500;
 
   h3 {

@@ -16,7 +16,7 @@ const StyledProjectDescription = styled.div`
 
   span {
     font-weight: 600;
-    letter-spacing: -4%;
+    letter-spacing: -0.04em;
     text-transform: uppercase;
     color: var(--text3);
     text-indent: clamp(2rem, 10vw, 5rem);

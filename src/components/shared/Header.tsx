@@ -10,7 +10,7 @@ const StyledHeader = styled.nav`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding-block: clamp(1.5rem, 3vw, 2rem) 0;
-  letter-spacing: 2%;
+  letter-spacing: 0.02em;
   font-size: 14px;
   font-family: var(--jakarta);
   font-weight: 500;

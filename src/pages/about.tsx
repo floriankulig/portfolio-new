@@ -19,7 +19,7 @@ const StyledAboutPage = styled.section`
   h1 {
     font-size: clamp(2rem, 11svw, 6rem);
     font-weight: 600;
-    letter-spacing: -5%;
+    letter-spacing: -0.05em;
     line-height: 1;
     -webkit-text-stroke: 1px ${({ theme }) => rgba(theme.bg1, 0.2)};
     background: var(--text1);

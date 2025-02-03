@@ -46,7 +46,7 @@ const BGOverlay = styled.div`
     font-size: 4rem;
     font-weight: 500;
     line-height: 1.5;
-    letter-spacing: -3%;
+    letter-spacing: -0.03em;
     color: var(--bg2);
     margin-bottom: 1rem;
     text-shadow: 0 0 124px ${rgba("#000", 0.5)};

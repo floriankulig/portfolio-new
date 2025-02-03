@@ -12,7 +12,7 @@ const StyledProjectsHeader = styled.header`
   h1 {
     font-size: clamp(2.5rem, 10dvw, 6rem);
     font-weight: 600;
-    letter-spacing: -5%;
+    letter-spacing: -0.05em;
     line-height: 1;
     display: flex;
     flex-wrap: wrap;

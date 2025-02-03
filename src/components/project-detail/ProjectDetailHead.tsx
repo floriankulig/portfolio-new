@@ -31,7 +31,7 @@ const StyledHeroSection = styled.div`
   h1 {
     font-size: clamp(2.5rem, 10dvw, 6rem);
     font-weight: 500;
-    letter-spacing: -5%;
+    letter-spacing: -0.05em;
     line-height: 1;
   }
   p {

@@ -31,7 +31,7 @@ const StyledArrowButton = styled(motion.button)`
     white-space: nowrap;
     z-index: 1;
     line-height: 1;
-    letter-spacing: -2%;
+    letter-spacing: -0.02em;
   }
 
   .arrow {

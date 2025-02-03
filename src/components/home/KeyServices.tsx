@@ -11,7 +11,7 @@ const StyledKeyServices = styled.div`
   h3 {
     font-size: 2rem;
     font-weight: 600;
-    letter-spacing: 2%;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
   }
 `;
@@ -19,7 +19,7 @@ const StyledKeyServices = styled.div`
 const StyledService = styled.div`
   font-family: var(--jakarta);
   font-weight: 600;
-  letter-spacing: 2%;
+  letter-spacing: 0.02em;
   color: var(--text2);
   font-size: 1.5rem;
 `;

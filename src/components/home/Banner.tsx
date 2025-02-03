@@ -49,7 +49,7 @@ const StyledBannerSingleText = styled.h2`
   text-transform: uppercase;
   font-weight: 800;
   line-height: 1.4;
-  letter-spacing: -3%;
+  letter-spacing: -0.03em;
   color: var(--text2);
   gap: 0.25em;
   padding-right: 0.25em;

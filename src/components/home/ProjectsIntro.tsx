@@ -32,7 +32,7 @@ const StyledIntroHeader = styled(motion.header)`
     font-size: inherit;
     text-transform: uppercase;
     font-weight: 500;
-    letter-spacing: -5%;
+    letter-spacing: -0.05em;
     line-height: 1.1;
     -webkit-text-stroke: 1px ${({ theme }) => rgba(theme.bg1, 0.2)};
     background: ${({ theme }) =>

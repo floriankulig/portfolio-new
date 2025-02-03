@@ -105,7 +105,7 @@ const Heading = styled(motion.h1)`
   font-weight: 800;
   width: fit-content;
   margin-bottom: 2.5rem;
-  letter-spacing: -3.5%;
+  letter-spacing: -0.035em;
 
   span {
     position: relative;

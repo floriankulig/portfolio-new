@@ -23,7 +23,7 @@ interface StyledProjectsCategoryProps {
 const StyledProjectsCategory = styled(motion.li)<StyledProjectsCategoryProps>`
   font-size: 20px;
   font-weight: 500;
-  letter-spacing: -3%;
+  letter-spacing: -0.03em;
   position: relative;
   color: var(--text3);
   border-radius: 99px;

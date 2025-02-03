@@ -54,7 +54,7 @@ const StyledProjectHeader = styled.div`
   h3 {
     font-size: 1.618rem;
     font-weight: 600;
-    letter-spacing: -4%;
+    letter-spacing: -0.04em;
     color: var(--text2);
   }
 
@@ -67,7 +67,7 @@ const StyledProjectHeader = styled.div`
       padding: 0.5em 1em;
       font-size: 1rem;
       font-weight: 500;
-      letter-spacing: -3%;
+      letter-spacing: -0.03em;
     }
   }
 `;
