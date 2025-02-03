@@ -12,7 +12,7 @@ const wordVariants: Variants = {
     opacity: 0,
     scale: 0.8,
     y: 40,
-    filter: "blur(12px)",
+    filter: "blur(24px)",
   },
   wordAnimate: {
     opacity: 1,
@@ -65,8 +65,8 @@ export const WordExchange: React.FC<WordExchangeProps> = ({
               },
               type: "spring",
               stiffness: 175,
-              mass: 0.7,
-              damping: 15,
+              mass: 0.8,
+              damping: 14,
             } as Transition
           }
           layout
