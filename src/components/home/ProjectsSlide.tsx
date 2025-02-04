@@ -34,6 +34,8 @@ const StickyProjectsSlide = styled(motion.div)`
   background-color: var(--text1);
   height: 100vh;
   min-width: fit-content;
+  will-change: transform;
+  backface-visibility: hidden;
 `;
 const START_SCROLL_RANGE = [0, 0.2];
 const MAIN_SCROLL_RANGE = [0.2, 1];
