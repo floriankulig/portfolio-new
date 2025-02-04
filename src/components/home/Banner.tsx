@@ -11,6 +11,7 @@ import styled from "styled-components";
 
 const StyledBannerSection = styled.section`
   display: flex;
+  align-items: center;
   gap: 1rem;
   width: 100%;
   padding-block: 64px;
@@ -49,7 +50,7 @@ const StyledBannerSingleText = styled.h2`
   text-transform: uppercase;
   font-weight: 800;
   line-height: 1.35;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   color: var(--text2);
   gap: 0.25em;
   padding-right: 0.25em;
