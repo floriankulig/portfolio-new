@@ -5,9 +5,9 @@ import { rgba } from "polished";
 import styled from "styled-components";
 
 const StyledAboutPage = styled.section`
-  height: calc(100vh - 46px);
+  height: 100vh;
   padding-inline: ${({ theme }) => theme.mainColPadding};
-  padding-block: 0 46px;
+  padding-block: 64px;
   display: grid;
   place-items: center;
 
