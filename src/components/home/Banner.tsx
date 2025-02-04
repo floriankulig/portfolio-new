@@ -44,11 +44,11 @@ const StyledBannerText = styled(motion.div)`
 
 const StyledBannerSingleText = styled.h2`
   display: flex;
-  font-size: clamp(100px, 5vw, 160px);
+  font-size: clamp(64px, 15vw, 130px);
   font-family: var(--jakarta);
   text-transform: uppercase;
   font-weight: 800;
-  line-height: 1.4;
+  line-height: 1.35;
   letter-spacing: -0.03em;
   color: var(--text2);
   gap: 0.25em;
