@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { WordExchange } from "components/shared";
 
 const StyledProjectsHeader = styled.header`
-  padding-block: min(max(12vw, 48px), 100px) 40px;
+  padding-block: min(max(12vw, 100px), 140px) 40px;
   display: flex;
   flex-direction: column;
   h1 {
