@@ -1,19 +1,20 @@
 import { StyledCurtainContainer } from "components/layout/Curtain";
-import { OverlayProvider } from "context/overlay-context";
+import { OverlayProvider, useOverlayContext } from "context/overlay-context";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { Router } from "next/router";
 import { rgba } from "polished";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled, { ThemeProvider, css } from "styled-components";
 import { GlobalStyle, POPPINS, theme } from "styles";
 import { JAKARTA } from "styles/fonts";
 
-interface PageLoaderProps {
+interface StyledPageLoaderProps {
   $appHasLoaded: boolean;
 }
 
-const PageLoader = styled(motion.div)<PageLoaderProps>`
+const StyledPageLoader = styled(motion.div)<StyledPageLoaderProps>`
   display: block;
   min-height: 100dvh;
   animation: shadow 1.8s 4.5s forwards;
@@ -62,8 +63,6 @@ const pageLoadingVariants: Variants = {
 };
 
 export default function App({ Component, pageProps, router }: AppProps) {
-  const [appHasLoaded, setAppHasLoaded] = useState<boolean>(true);
-
   return (
     <>
       <Head>
@@ -81,21 +80,40 @@ export default function App({ Component, pageProps, router }: AppProps) {
       <ThemeProvider theme={theme}>
         <OverlayProvider>
           <GlobalStyle />
-          <AnimatePresence mode="wait">
-            <PageLoader
-              initial="pageEntry"
-              animate="pageLoad"
-              exit="pageExit"
-              // variants={!appHasLoaded ? pageLoadingVariants : undefined}
-              // onAnimationComplete={() => setAppHasLoaded(true)}
-              $appHasLoaded={appHasLoaded}
-              key={router.route}
-            >
-              <Component {...pageProps} />
-            </PageLoader>
-          </AnimatePresence>
+          {/* <motion.div animate=""></motion.div> */}
+          <PageLoader router={router}>
+            <Component {...pageProps} />
+          </PageLoader>
         </OverlayProvider>
       </ThemeProvider>
     </>
   );
 }
+
+interface PageLoaderProps {
+  children: React.ReactNode;
+  router: Router;
+}
+const PageLoader: React.FC<PageLoaderProps> = ({ children, router }) => {
+  const [appHasLoaded, setAppHasLoaded] = useState<boolean>(true);
+  const { preRunPageTransition, setPreRunPageTransition } = useOverlayContext();
+  useEffect(() => {
+    setPreRunPageTransition(false);
+  }, [router.route, setPreRunPageTransition]);
+
+  return (
+    <AnimatePresence mode="wait">
+      <StyledPageLoader
+        initial="pageEntry"
+        animate={preRunPageTransition ? "pageExit" : "pageLoad"}
+        exit="pageExit"
+        // variants={!appHasLoaded ? pageLoadingVariants : undefined}
+        // onAnimationComplete={() => setAppHasLoaded(true)}
+        $appHasLoaded={appHasLoaded}
+        key={router.route}
+      >
+        {children}
+      </StyledPageLoader>
+    </AnimatePresence>
+  );
+};

@@ -3,6 +3,8 @@ import { createContext, useContext, ReactNode, useState } from "react";
 interface OverlayContextType {
   blockHeader: boolean;
   setBlockHeader: (block: boolean) => void;
+  preRunPageTransition: boolean;
+  setPreRunPageTransition: (block: boolean) => void;
 }
 
 const OverlayContext = createContext<OverlayContextType | undefined>(undefined);
@@ -15,8 +17,16 @@ export const OverlayProvider: React.FC<OverlayProviderProps> = ({
   children,
 }) => {
   const [blockHeader, setBlockHeader] = useState(false);
+  const [preRunPageTransition, setPreRunPageTransition] = useState(false);
   return (
-    <OverlayContext.Provider value={{ blockHeader, setBlockHeader }}>
+    <OverlayContext.Provider
+      value={{
+        blockHeader,
+        setBlockHeader,
+        preRunPageTransition,
+        setPreRunPageTransition,
+      }}
+    >
       {children}
     </OverlayContext.Provider>
   );
