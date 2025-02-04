@@ -31,7 +31,7 @@ const PageLoader = styled(motion.div)<PageLoaderProps>`
       : css`
           border: none;
           box-shadow: none;
-          overflow: visible;
+          overflow: clip;
           height: auto;
         `}
 
