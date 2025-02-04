@@ -53,7 +53,7 @@ const StyledProjectHeader = styled.div`
 
   h3 {
     font-size: 1.618rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: -0.04em;
     color: var(--text2);
   }
