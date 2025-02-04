@@ -22,17 +22,14 @@ const StyledHeader = styled(motion.nav)`
   z-index: 99;
   width: 100%;
   align-items: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  backdrop-filter: saturate(180%) blur(24px);
+  backdrop-filter: saturate(180%) blur(32px);
   border-bottom: 1px solid;
   letter-spacing: 0.02em;
   font-size: 14px;
   font-family: var(--jakarta);
   font-weight: 500;
-  &:last-child {
-    text-align: right;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   .name {
     font-weight: 600;
     letter-spacing: -0.04em;
@@ -84,7 +81,7 @@ export const Header: React.FC = () => {
   const backgroundColor = useTransform(
     scrollY,
     [0, STICK_TOP],
-    [rgba(theme.bg1, 0), rgba(theme.bg1, 0.7)]
+    [rgba(theme.bg1, 0), rgba(theme.bg1, 0.75)]
   );
 
   return (
