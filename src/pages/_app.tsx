@@ -1,4 +1,5 @@
 import { StyledCurtainContainer } from "components/layout/Curtain";
+import { OverlayProvider } from "context/overlay-context";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -78,20 +79,22 @@ export default function App({ Component, pageProps, router }: AppProps) {
         }
       `}</style>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <AnimatePresence mode="wait">
-          <PageLoader
-            initial="pageEntry"
-            animate="pageLoad"
-            exit="pageExit"
-            // variants={!appHasLoaded ? pageLoadingVariants : undefined}
-            // onAnimationComplete={() => setAppHasLoaded(true)}
-            $appHasLoaded={appHasLoaded}
-            key={router.route}
-          >
-            <Component {...pageProps} />
-          </PageLoader>
-        </AnimatePresence>
+        <OverlayProvider>
+          <GlobalStyle />
+          <AnimatePresence mode="wait">
+            <PageLoader
+              initial="pageEntry"
+              animate="pageLoad"
+              exit="pageExit"
+              // variants={!appHasLoaded ? pageLoadingVariants : undefined}
+              // onAnimationComplete={() => setAppHasLoaded(true)}
+              $appHasLoaded={appHasLoaded}
+              key={router.route}
+            >
+              <Component {...pageProps} />
+            </PageLoader>
+          </AnimatePresence>
+        </OverlayProvider>
       </ThemeProvider>
     </>
   );

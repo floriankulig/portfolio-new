@@ -2,7 +2,9 @@ import { ArrowButton, TransitionLink } from "components/shared";
 import {
   MotionValue,
   motion,
+  useInView,
   useMotionValue,
+  useMotionValueEvent,
   useScroll,
   useSpring,
   useTransform,
@@ -13,8 +15,9 @@ import styled from "styled-components";
 import { SCROLL_SPRING } from "ts";
 import { FEATURED_PROJECTS } from "ts/content";
 import { SlidingProject } from "./SlidingProject";
+import { useOverlayContext } from "context/overlay-context";
 
-const StickyProjectsSlideContainer = styled.div`
+const StickyProjectsSlideContainer = styled(motion.div)`
   position: relative;
   display: flex;
   height: 450vh;
@@ -40,6 +43,14 @@ export const ProjectsSlide = () => {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start 50%", "end end"],
+  });
+  const { setBlockHeader } = useOverlayContext();
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (0.1 < latest && latest < 0.975) {
+      setBlockHeader(true);
+    } else {
+      setBlockHeader(false);
+    }
   });
   const dampedScrollY = useSpring(scrollYProgress, SCROLL_SPRING);
   const slideContent = useRef<HTMLDivElement>(null);
