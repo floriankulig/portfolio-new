@@ -1,5 +1,5 @@
 import { Curtain } from "components/layout/Curtain";
-import { StaticHeader } from "components/layout/header";
+import { Header } from "components/layout/header";
 import {
   MainColumn,
   ContactCircle,
@@ -20,7 +20,7 @@ import { EMAIL } from "ts/content";
 
 const StyledContactPage = styled(motion.div)`
   width: 100vw;
-  min-height: calc(100vh - 46px);
+  min-height: 100svh;
   overflow: hidden;
   position: relative;
   z-index: 0;
@@ -184,7 +184,7 @@ const Contact = () => {
   return (
     <>
       <Curtain />
-      <StaticHeader />
+      <Header />
       <StyledContactPage variants={{ pageExit: pageContentExit }}>
         <MainColumn>
           <Content variants={contentVariants}>
