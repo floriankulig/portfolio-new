@@ -1,5 +1,6 @@
 import {
   AnimatePresence,
+  easeIn,
   LayoutGroup,
   motion,
   MotionValue,
@@ -153,9 +154,11 @@ const WordAnimation: React.FC<WordAnimationProps> = ({
   const xProgress = useTransform(
     scrollProgress,
     [introAnimationEnd / numberOfWords, introAnimationEnd].concat([0.55, 0.85]), // start after the first word
-    [50, 3].concat([-3, -38.5])
+    [50, 3].concat([-3, -50])
   );
-  const x = useMotionTemplate`${xProgress}%`;
+  // subtract half of the last word width to center the last word
+  const xWordWidth = useTransform(scrollProgress, [0.55, 0.85], [0, 0.5]);
+  const x = useMotionTemplate`calc(${xProgress}% + ${xWordWidth}em)`;
   const y = useTransform(scrollProgress, [0.85, 1], ["0vh", "10vh"]);
 
   return (
@@ -216,26 +219,33 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
     };
   }, [numberOfWords, index, introAnimationEnd]);
 
+  const isLastWord = index === numberOfWords - 1;
+
   const [lastWordAnimationVisible, setLastWordAnimationVisible] =
     useState(false);
 
   useMotionValueEvent(scrollProgress, "change", (latest) => {
     setLastWordAnimationVisible(
-      parseFloat(latest.toFixed(2)) > animationTriggerThreshold &&
-        index === numberOfWords - 1
+      parseFloat(latest.toFixed(2)) > animationTriggerThreshold && isLastWord
     );
   });
   const y = useTransform(scrollProgress, wordFadeInRange, [100, 0]);
   const opacity = useTransform(scrollProgress, wordFadeInRange, [0, 1]);
+  // Fade out animations
   const x = useTransform(scrollProgress, wordOutRange, [
     0,
-    -(numberOfWords - index) * 50,
+    -(numberOfWords - index) * 40 + 50,
   ]);
+  const scale = useTransform(scrollProgress, wordOutRange, ["100%", "150%"], {
+    ease: easeIn,
+  });
 
   return (
     <LayoutGroup>
-      <StyledSingleWord style={{ y, opacity, x }}>
-        {index === numberOfWords - 1 ? (
+      <StyledSingleWord
+        style={{ y, opacity, x, scale: isLastWord ? scale : 1 }}
+      >
+        {isLastWord ? (
           <>
             {children}
             <AnimatePresence>
@@ -255,21 +265,17 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
 };
 
 const StyledLastWordAnimation = styled(motion.div)`
-  border: clamp(2px, 0.5vw, 3px) solid var(--text1);
+  border: 0.035em solid var(--text1);
   transform-origin: 0 50%;
   backdrop-filter: blur(3px);
   position: absolute;
-  border-radius: clamp(4px, 1vw, 8px);
+  border-radius: 0.075em;
 
   & + .light-bulb {
     position: absolute;
-    top: calc(-50% - 12px);
+    top: calc(-50% - 0.375em);
     right: -20%;
-    font-size: clamp(
-      12px,
-      3vw,
-      48px
-    ); // half of defined font size in WordAnimation
+    font-size: 0.5em; // half of defined font size in WordAnimation
   }
 `;
 
@@ -314,7 +320,7 @@ const lastWordAnimationVariants = {
 const lightBulbAnimationVariants = {
   hidden: {
     scale: 0.9,
-    y: 20,
+    y: ".375em",
     opacity: 0,
   },
   visible: {
@@ -323,13 +329,12 @@ const lightBulbAnimationVariants = {
     opacity: 1,
     transition: {
       duration: 0.3,
-      delay: 0.5,
+      delay: 0.7,
       ease: "easeOut",
-      y: {
-        ease: "easeOut",
-      },
       opacity: {
         ease: "linear",
+        delay: 0.7,
+        duration: 0.25,
       },
     },
   },
