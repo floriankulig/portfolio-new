@@ -6,7 +6,9 @@ import { useEffect } from "react";
 export const StyledCurtainContainer = styled(motion.div)`
   position: fixed;
   width: 100vw;
-  height: 100lvh;
+  height: 150lvh;
+  inset: 0;
+  top: -25lvh;
   z-index: 9999;
   pointer-events: none;
 `;
