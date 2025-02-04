@@ -64,7 +64,7 @@ export const ArrowButton: React.FC<ArrowButtonProps> = ({
       variants={{
         initial: { scale: 1 },
         animate: { scale: 1 },
-        tapped: { scale: 0.98 },
+        tapped: { scale: 0.95 },
       }}
       aria-label={children?.toString()}
       role="button"
@@ -102,6 +102,10 @@ const backgroundVariants: Variants = {
     x: 0,
   },
   hovered: {
+    width: "calc(100% + 8px)",
+    x: -4,
+  },
+  tapped: {
     width: "calc(100% + 8px)",
     x: -4,
   },
