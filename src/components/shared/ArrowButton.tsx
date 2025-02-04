@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { MotionProps, Transition, Variants, motion } from "framer-motion";
+import { darken } from "polished";
+import { theme } from "styles";
 
 const StyledArrowButton = styled(motion.button)`
   font-family: var(--jakarta);
@@ -107,6 +109,7 @@ const backgroundVariants: Variants = {
   },
   tapped: {
     width: "calc(100% + 8px)",
+    backgroundColor: darken(0.05, theme.bg3),
     x: -4,
   },
 };
