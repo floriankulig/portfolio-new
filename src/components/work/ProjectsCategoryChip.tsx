@@ -109,8 +109,12 @@ export const ProjectsCategoryChip: React.FC<ProjectsCategoryChipProps> = ({
     toggleSelected();
   };
 
-  const mouseElementX = useTransform(mouseX, (x) => x - left);
-  const mouseElementY = useTransform(mouseY, (y) => y - top);
+  const mouseElementX = useTransform(mouseX, (x) =>
+    isTouchDevice ? middle.x : x - left
+  );
+  const mouseElementY = useTransform(mouseY, (y) =>
+    isTouchDevice ? middle.y : y - top
+  );
   const mouseBackgroundX = useTransform(mouseElementX, (x) =>
     selected ? 0 : x - MOUSE_SIZE / 2
   );
