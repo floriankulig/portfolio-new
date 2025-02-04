@@ -7,6 +7,7 @@ const StyledMeta = styled.div`
   color: var(--text3);
   display: flex;
   justify-content: flex-end;
+  text-align: right;
   gap: 0.25em;
   & > span {
     font-weight: 600;
