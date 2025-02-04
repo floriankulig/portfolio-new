@@ -1,4 +1,10 @@
-import { MotionValue, motion, useTransform } from "framer-motion";
+import {
+  MotionValue,
+  easeInOut,
+  easeOut,
+  motion,
+  useTransform,
+} from "framer-motion";
 import { useViewport } from "hooks";
 import Image from "next/image";
 import { rgba } from "polished";
@@ -145,19 +151,24 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
     0,
   ]);
   const projectIntroXInitial = (windowDimensions.viewPortWidth * (1 - 0.9)) / 2; // Project takes 90vw
-  const projectIntroX = useTransform(scrollProgress, introAnimationRange, [
-    projectIntroXInitial,
-    0,
-  ]);
-  const projectOthersX = useTransform(scrollProgress, introAnimationRange, [
-    PROJECT_INTRO_DISTANCE,
-    0,
-  ]);
+  const projectIntroX = useTransform(
+    scrollProgress,
+    introAnimationRange,
+    [projectIntroXInitial, 0],
+    { ease: easeOut }
+  );
+  const projectOthersX = useTransform(
+    scrollProgress,
+    introAnimationRange,
+    [PROJECT_INTRO_DISTANCE, 0],
+    { ease: easeOut }
+  );
   const projectX = index === 0 ? projectIntroX : projectOthersX;
   const projectIntroY = useTransform(
     scrollProgress,
     [0, slideRangeStart - 0.075],
-    [-PROJECT_INTRO_DISTANCE, 0]
+    [-PROJECT_INTRO_DISTANCE, 0],
+    { ease: easeInOut }
   );
   const projectY = index === 0 ? projectIntroY : 0;
   const projectIntroScale = useTransform(
@@ -166,7 +177,9 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
     [0.85, 1]
   );
   const projectScale = index <= 1 ? projectIntroScale : 1;
-  const slideBR = useTransform(scrollProgress, introAnimationRange, [48, 0]);
+  const slideBR = useTransform(scrollProgress, introAnimationRange, [48, 0], {
+    ease: easeInOut,
+  });
 
   // Counter scale down at the end of the scroll
   const imageScale = useTransform(

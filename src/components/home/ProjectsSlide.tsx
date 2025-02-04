@@ -30,10 +30,10 @@ const StickyProjectsSlide = styled(motion.div)`
   z-index: 9;
   left: 0;
   display: flex;
+  justify-content: flex-start;
   background-color: var(--text1);
   height: 100vh;
   min-width: fit-content;
-  justify-content: flex-start;
 `;
 const START_SCROLL_RANGE = [0, 0.2];
 const MAIN_SCROLL_RANGE = [0.2, 1];
@@ -129,10 +129,10 @@ const StyledProjectsCTA = styled.div`
   position: sticky;
   top: 0;
   right: 0;
-  width: 400px;
+  width: 100vw;
   height: 100vh;
   flex-shrink: 0;
-  max-width: 100vw;
+  max-width: 400px;
   pointer-events: none;
   display: grid;
   place-items: center;
