@@ -6,18 +6,14 @@ import {
   ThinkDifferent,
 } from "components/home";
 import { Curtain } from "components/layout/Curtain";
+import { Header, StaticHeader } from "components/layout/header";
 import dynamic from "next/dynamic";
-
-const Header = dynamic(
-  () => import("components/layout/header").then((mod) => mod.StaticHeader),
-  { ssr: false }
-);
 
 const Home = () => {
   return (
     <>
       <Curtain />
-      <div
+      {/* <div
         style={{
           position: "absolute",
           top: 0,
@@ -26,8 +22,9 @@ const Home = () => {
           width: "100dvw",
         }}
       >
-        <Header />
-      </div>
+        <StaticHeader />
+      </div> */}
+      <Header />
       {/* <HeroBanner /> */}
       <Hero />
       <ProjectsIntro />

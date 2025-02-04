@@ -1,13 +1,8 @@
 import { Curtain } from "components/layout/Curtain";
+import { Header } from "components/layout/header";
 import { InlineImageBubble } from "components/shared";
-import dynamic from "next/dynamic";
 import { rgba } from "polished";
 import styled from "styled-components";
-
-const Header = dynamic(
-  () => import("components/layout/header").then((mod) => mod.StaticHeader),
-  { ssr: false }
-);
 
 const StyledAboutPage = styled.section`
   height: calc(100vh - 46px);

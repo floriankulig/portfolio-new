@@ -5,7 +5,6 @@ import {
   ProjectDetailHead,
 } from "components/project-detail";
 import { getProjectByID } from "helpers";
-import dynamic from "next/dynamic";
 import { Project } from "ts/types";
 import { PROJECTS } from "ts/content";
 
@@ -14,11 +13,7 @@ import type {
   GetStaticProps,
   InferGetStaticPropsType,
 } from "next";
-
-const Header = dynamic(
-  () => import("components/layout/header").then((mod) => mod.StaticHeader),
-  { ssr: false }
-);
+import { Header } from "components/layout/header";
 
 export const getStaticPaths = (async () => {
   const paths = PROJECTS.map((project) => ({
@@ -52,9 +47,8 @@ const ProjectDetailPage = ({
           zIndex: 100,
           width: "100dvw",
         }}
-      >
-        <Header />
-      </div>
+      ></div>
+      <Header />
       <ProjectDetailHead project={project} />
       <Description
         label="Project Background"
