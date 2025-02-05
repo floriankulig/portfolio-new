@@ -243,12 +243,13 @@ const TextAnimation = () => {
 
 const StyledScrollIndicator = styled(motion.div)`
   --padding: min(16px, 5vw);
-  --size: clamp(40px, 9vw, 56px);
+  --size: clamp(40px, 8vw, 56px);
   position: fixed;
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
   left: var(--padding);
+  overflow: hidden;
   top: calc(min(100%, 100dvh) - var(--padding) - var(--size));
   display: grid;
   place-items: center;
