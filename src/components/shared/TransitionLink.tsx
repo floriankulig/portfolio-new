@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { motion } from "framer-motion";
-import { useOverlayContext } from "context/overlay-context";
 
 interface TransitionLinkProps {
   children: React.ReactNode;
@@ -13,9 +12,7 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
   href,
 }) => {
   const router = useRouter();
-  const { setPreRunPageTransition } = useOverlayContext();
   const handleClick = () => {
-    setPreRunPageTransition(true);
     router.push(href, undefined, { scroll: false });
   };
   return (
