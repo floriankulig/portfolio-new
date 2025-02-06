@@ -22,6 +22,7 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
         cursor: "pointer",
       }}
       onTap={() => handleClick()}
+      role="link"
     >
       {children}
     </motion.div>
