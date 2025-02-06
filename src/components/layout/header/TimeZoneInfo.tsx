@@ -9,22 +9,20 @@ const StyledMeta = styled.div`
   justify-content: flex-end;
   text-align: right;
   gap: 0.25em;
-  & > span {
+  span.time {
     font-weight: 600;
-    min-width: 2.5rem;
+    min-width: 2.5em;
     color: var(--text1);
   }
 `;
 
 interface TimeZoneInfoProps {
-  displayFullLocation?: boolean;
   displayFullCounty?: boolean;
   displayCounty?: boolean;
 }
 
 export const TimeZoneInfo: React.FC<TimeZoneInfoProps> = ({
   displayFullCounty,
-  displayFullLocation,
   displayCounty,
 }) => {
   const [timeData, setTimeData] = useState(() => {
@@ -65,19 +63,19 @@ export const TimeZoneInfo: React.FC<TimeZoneInfoProps> = ({
   }, [updateTime]);
 
   const county = displayCounty ? (displayFullCounty ? "Bavaria" : "BY") : null;
-  const location = !displayFullLocation
-    ? "DE"
-    : (county ? county + ", " : "") + "Germany";
+  const location = (county ? county + ", " : "") + "Germany";
 
   return (
-    <StyledMeta>
-      {location}
-      <span>
+    <StyledMeta className="timezone-meta">
+      <motion.span layoutId="timezone-location">{location}</motion.span>
+      <motion.span layoutId="timezone-time" className="time">
         {timeData.hours}
         <BlinkingColon />
         {timeData.minutes}
-      </span>{" "}
-      {timeData.meridiem}
+      </motion.span>{" "}
+      <motion.span layoutId="timezone-meridiem">
+        {timeData.meridiem}
+      </motion.span>
     </StyledMeta>
   );
 };
