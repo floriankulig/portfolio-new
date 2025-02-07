@@ -1,5 +1,5 @@
 import { TransitionLink } from "components/shared";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Transition, Variants } from "framer-motion";
 import { rgba } from "polished";
 import { X } from "react-feather";
 import styled from "styled-components";
@@ -219,14 +219,9 @@ const StyledFullscreenNavLink = styled(motion.div)`
   }
 `;
 
-const letterTransition = {
-  opacity: {
-    duration: 0.25,
-  },
-  y: {
-    ease: theme.easing,
-    duration: 0.6,
-  },
+const letterTransition: Transition = {
+  ease: theme.easing,
+  duration: 0.6,
 };
 
 const letterVariantsEnter: Variants = {
@@ -243,12 +238,10 @@ const letterVariantsEnter: Variants = {
 const letterVariantsExit: Variants = {
   hover: {
     y: "-100%",
-    // opacity: 0,
     transition: letterTransition,
   },
   initial: {
     y: 0,
-    opacity: 1,
     transition: letterTransition,
   },
 };
