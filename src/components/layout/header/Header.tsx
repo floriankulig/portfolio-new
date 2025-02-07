@@ -19,6 +19,7 @@ import {
 import { theme } from "styles";
 import { useOverlayContext } from "context/overlay-context";
 import { Menu } from "react-feather";
+import { TransitionLink } from "components/shared";
 
 const SHOW_LINKS_WIDTH = 600;
 
@@ -139,6 +140,7 @@ export const Header: React.FC = () => {
       <StyledHeader
         className="main-col"
         style={{ paddingBlock, borderColor, backgroundColor }}
+        layoutRoot
         animate={{
           y: hideHeader ? "-120%" : "0%",
         }}
@@ -147,8 +149,12 @@ export const Header: React.FC = () => {
           duration: 0.75,
         }}
       >
-        <motion.div className="name" layoutId="hm-name">
-          {name}
+        <motion.div
+          className="name"
+          layoutId="hm-name"
+          layoutDependency={menuOpen}
+        >
+          <TransitionLink href="/">{name}</TransitionLink>
         </motion.div>
         {showLinks && (
           <StyledLinks>
@@ -179,6 +185,7 @@ export const Header: React.FC = () => {
                 whileHover={{ scale: 1.025 }}
                 whileTap={{ scale: 0.925 }}
                 onTap={() => onOpenMenu()}
+                layoutDependency={menuOpen}
                 layoutId="hm-menu"
               >
                 <Menu />

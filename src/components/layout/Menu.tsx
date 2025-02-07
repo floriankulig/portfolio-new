@@ -7,7 +7,6 @@ import { theme } from "styles";
 import { LINKS } from "ts";
 import { TimeZoneInfo } from "./header/TimeZoneInfo";
 import { useViewport } from "hooks";
-import { useRouter } from "next/router";
 
 const StyledFullscreenMenu = styled(motion.div)<{ $open: boolean }>`
   position: fixed;
@@ -20,23 +19,24 @@ const StyledFullscreenMenu = styled(motion.div)<{ $open: boolean }>`
   color: var(--text1);
   will-change: transform;
   pointer-events: ${({ $open }) => ($open ? "auto" : "none")};
-  & > div {
+  display: flex;
+  flex-direction: column;
+  padding-block: clamp(1.5rem, 4vh, 2.5rem);
+
+  & > div.content {
     position: relative;
     width: 100%;
     height: 100%;
+    flex: 1;
+    padding-bottom: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-block: 15vh;
   }
 `;
 
 const MenuHeader = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  padding-top: 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -164,28 +164,33 @@ export const Menu: React.FC<MenuProps> = ({ open, setOpen, displayName }) => {
           variants={menuOverlayVariants}
           $open={open}
         >
-          <motion.div>
-            <MenuHeader className="main-col">
-              <motion.h3 layoutId="hm-name" className="name">
-                {displayName}
-              </motion.h3>
-              <div className="right">
-                <TimeZoneInfo
-                  displayCounty={300 < viewPortWidth}
-                  displayFullCounty={420 < viewPortWidth}
-                />
-                <CloseMenuButton
-                  layoutId="hm-menu"
-                  animate
-                  whileTap={{ scale: 0.9 }}
-                  whileHover={{ scale: 1.05 }}
-                  onTap={() => setOpen(false)}
-                >
-                  <X size={24} />
-                </CloseMenuButton>
-              </div>
-            </MenuHeader>
+          <MenuHeader className="main-col">
+            <motion.h3
+              layoutId="hm-name"
+              className="name"
+              layoutDependency={open}
+            >
+              {displayName}
+            </motion.h3>
+            <div className="right">
+              <TimeZoneInfo
+                displayCounty={300 < viewPortWidth}
+                displayFullCounty={420 < viewPortWidth}
+              />
+              <CloseMenuButton
+                layoutId="hm-menu"
+                layoutDependency={open}
+                animate
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.05 }}
+                onTap={() => setOpen(false)}
+              >
+                <X size={24} />
+              </CloseMenuButton>
+            </div>
+          </MenuHeader>
 
+          <div className="content">
             <LinkList variants={linkListVariants}>
               {LINKS.map((link) => (
                 <motion.li variants={navLinkVariants} key={link.name}>
@@ -193,7 +198,7 @@ export const Menu: React.FC<MenuProps> = ({ open, setOpen, displayName }) => {
                 </motion.li>
               ))}
             </LinkList>
-          </motion.div>
+          </div>
         </StyledFullscreenMenu>
       )}
     </AnimatePresence>
@@ -255,19 +260,12 @@ const FullscreenNavLink: React.FC<FullscreenNavLinkProps> = ({
   setOpen,
 }) => {
   const letters = link.name.split("");
-  const { route: currentRoute } = useRouter();
-  const refersToCurrentRoute = link.url === currentRoute;
   const onTap = () => {
-    if (refersToCurrentRoute) {
-      setOpen(false);
-    }
+    setOpen(false);
   };
 
   return (
-    <TransitionLink
-      href={link.url}
-      onTap={refersToCurrentRoute ? onTap : undefined}
-    >
+    <TransitionLink href={link.url} onTap={onTap}>
       <StyledFullscreenNavLink
         whileHover="hover"
         initial="initial"
