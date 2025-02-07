@@ -7,14 +7,12 @@ import {
   useMotionTemplate,
   useMotionValueEvent,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
 import { rgba } from "polished";
 import React, { memo, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
-import { SCROLL_SPRING } from "ts";
 
 // for paddings on top and bottom
 const StyledThinkDifferentSection = styled(motion.section)`
@@ -55,7 +53,6 @@ export const ThinkDifferent: React.FC = () => {
     target: sectionRef,
     offset: ["start 25%", "end 20%"],
   });
-  const dampedScrollY = useSpring(scrollYProgress, SCROLL_SPRING);
   const partOneSection = [0, 0.25];
   const partOneProgress = useTransform(scrollYProgress, partOneSection, [0, 1]);
   const partTwoSection = [0.25, 0.95];
