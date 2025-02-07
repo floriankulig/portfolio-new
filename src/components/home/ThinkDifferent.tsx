@@ -236,7 +236,7 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
     0,
     -(numberOfWords - index) * 40 + 50,
   ]);
-  const scale = useTransform(scrollProgress, wordOutRange, ["100%", "150%"], {
+  const scale = useTransform(scrollProgress, wordOutRange, ["100%", "140%"], {
     ease: easeIn,
   });
 
