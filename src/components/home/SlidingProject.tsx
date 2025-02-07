@@ -1,5 +1,6 @@
 import {
   MotionValue,
+  backIn,
   easeInOut,
   easeOut,
   motion,
@@ -37,25 +38,30 @@ const BGOverlay = styled.div`
   position: absolute;
   inset: 0;
   width: 100%;
-  padding: 90px 64px;
+  padding-block: min(90px, 10vh);
+  padding-inline: 4vw;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   background: linear-gradient(
     180deg,
-    rgba(24, 24, 24, 0.35) 0%,
+    rgba(24, 24, 24, 0.15) 0%,
     rgba(24, 24, 24, 0.6) 100%
   );
+  @media (${({ theme }) => theme.bp.small}) {
+    padding-inline: 5vw;
+  }
 
   h2 {
     font-size: 4rem;
     font-weight: 500;
-    line-height: 1.5;
+    line-height: 1;
+    padding-bottom: 0.2em;
     letter-spacing: -0.03em;
     color: var(--bg2);
     margin-bottom: 1rem;
-    text-shadow: 0 0 124px ${rgba("#000", 0.5)};
+    text-shadow: 0 0 2em ${rgba("#000", 0.5)};
   }
 
   .row {
@@ -70,16 +76,18 @@ const BGOverlay = styled.div`
       font-size: 1.5rem;
       font-weight: 400;
       line-height: 1.3;
-      max-width: 40ch;
+      flex-grow: 1;
+      max-width: 45ch;
       white-space: pre-line;
       color: var(--bg1);
-      text-shadow: 0 0 64px ${rgba("#000", 0.8)};
+      text-shadow: 0 0 2em ${rgba("#000", 0.8)};
     }
 
     .chips {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+      flex-shrink: 0;
       justify-content: flex-end;
       align-items: flex-end;
 
@@ -155,7 +163,7 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
     scrollProgress,
     introAnimationRange,
     [projectIntroXInitial, 0],
-    { ease: easeOut }
+    { ease: backIn }
   );
   const projectOthersX = useTransform(
     scrollProgress,
