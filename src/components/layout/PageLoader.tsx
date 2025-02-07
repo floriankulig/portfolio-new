@@ -64,7 +64,7 @@ interface PageLoaderProps {
 export const PageLoader: React.FC<PageLoaderProps> = ({ children, router }) => {
   const [appHasLoaded, setAppHasLoaded] = useState<boolean>(true);
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" initial={false}>
       <StyledPageLoader
         initial="pageEntry"
         animate="pageLoad"
