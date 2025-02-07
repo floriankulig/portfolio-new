@@ -60,14 +60,15 @@ const BGOverlay = styled.div`
     padding-bottom: 0.2em;
     letter-spacing: -0.03em;
     color: var(--bg2);
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0px, 1vw, 1rem);
     text-shadow: 0 0 2em ${rgba("#000", 0.5)};
   }
 
   .row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: end;
+    flex-wrap: wrap-reverse;
     padding-left: 4px;
     gap: 1rem;
 
@@ -76,7 +77,6 @@ const BGOverlay = styled.div`
       font-size: 1.5rem;
       font-weight: 400;
       line-height: 1.3;
-      flex-grow: 1;
       max-width: 45ch;
       white-space: pre-line;
       color: var(--bg1);
