@@ -155,7 +155,7 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
     scrollProgress,
     introAnimationRange,
     [projectIntroXInitial, 0],
-    { ease: easeInOut }
+    { ease: easeOut }
   );
   const projectOthersX = useTransform(
     scrollProgress,
