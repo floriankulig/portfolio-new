@@ -7,8 +7,9 @@ import { theme } from "styles";
 import { LINKS } from "ts";
 import { TimeZoneInfo } from "./header/TimeZoneInfo";
 import { useViewport } from "hooks";
+import { useRouter } from "next/router";
 
-const StyledFullscreenMenu = styled(motion.div)`
+const StyledFullscreenMenu = styled(motion.div)<{ $open: boolean }>`
   position: fixed;
   overflow-y: auto;
   inset: 0;
@@ -18,6 +19,7 @@ const StyledFullscreenMenu = styled(motion.div)`
   color: var(--bg1);
   color: var(--text1);
   will-change: transform;
+  pointer-events: ${({ $open }) => ($open ? "auto" : "none")};
   & > div {
     position: relative;
     width: 100%;
@@ -78,16 +80,67 @@ const LinkList = styled(motion.ul)`
   gap: 1.25rem;
 `;
 
-const menuVariants: Variants = {
-  initial: {
+const menuOverlayVariants: Variants = {
+  hminitial: {
     opacity: 0,
   },
-  animate: {
+  hmanimate: {
     opacity: 1,
   },
-  exit: {
+  hmexit: {
     opacity: 0,
-    transition: { duration: 0.3, ease: "linear", when: "afterChildren" },
+    transition: { delay: 0.1, ease: "linear" },
+  },
+};
+
+const linkListVariants: Variants = {
+  hmanimate: {
+    transition: {
+      delayChildren: 0.25,
+      staggerChildren: 0.05,
+    },
+  },
+  hmexit: {
+    transition: {
+      staggerChildren: 0.025,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const navLinkVariants: Variants = {
+  hminitial: {
+    opacity: 0,
+    scale: 0.9,
+    y: "-30%",
+  },
+  hmanimate: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      damping: 16,
+      stiffness: 110,
+      visualDuration: 0.275,
+      opacity: {
+        ease: "linear",
+        duration: 0.275,
+      },
+    },
+  },
+  hmexit: {
+    opacity: 0,
+    scale: 0.9,
+    y: "-30%",
+    transition: {
+      type: "spring",
+      visualDuration: 0.3,
+      opacity: {
+        ease: "linear",
+        duration: 0.275,
+      },
+    },
   },
 };
 
@@ -105,12 +158,13 @@ export const Menu: React.FC<MenuProps> = ({ open, setOpen, displayName }) => {
     <AnimatePresence>
       {open && (
         <StyledFullscreenMenu
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          variants={menuVariants}
+          initial="hminitial"
+          animate="hmanimate"
+          exit="hmexit"
+          variants={menuOverlayVariants}
+          $open={open}
         >
-          <div>
+          <motion.div>
             <MenuHeader className="main-col">
               <motion.h3 layoutId="hm-name" className="name">
                 {displayName}
@@ -132,22 +186,21 @@ export const Menu: React.FC<MenuProps> = ({ open, setOpen, displayName }) => {
               </div>
             </MenuHeader>
 
-            <LinkList>
+            <LinkList variants={linkListVariants}>
               {LINKS.map((link) => (
-                <FullscreenNavLink
-                  key={link.name}
-                  link={link}
-                ></FullscreenNavLink>
+                <motion.li variants={navLinkVariants} key={link.name}>
+                  <FullscreenNavLink link={link} setOpen={setOpen} />
+                </motion.li>
               ))}
             </LinkList>
-          </div>
+          </motion.div>
         </StyledFullscreenMenu>
       )}
     </AnimatePresence>
   );
 };
 
-const StyledFullscreenNavLink = styled(motion.li)`
+const StyledFullscreenNavLink = styled(motion.div)`
   line-height: 1.3;
   font-size: 15vw;
   letter-spacing: -0.06em;
@@ -202,11 +255,26 @@ const letterVariantsExit: Variants = {
 
 interface FullscreenNavLinkProps {
   link: { name: string; url: string };
+  setOpen: (open: boolean) => void;
 }
-const FullscreenNavLink: React.FC<FullscreenNavLinkProps> = ({ link }) => {
+const FullscreenNavLink: React.FC<FullscreenNavLinkProps> = ({
+  link,
+  setOpen,
+}) => {
   const letters = link.name.split("");
+  const { route: currentRoute } = useRouter();
+  const refersToCurrentRoute = link.url === currentRoute;
+  const onTap = () => {
+    if (refersToCurrentRoute) {
+      setOpen(false);
+    }
+  };
+
   return (
-    <TransitionLink href={link.url}>
+    <TransitionLink
+      href={link.url}
+      onTap={refersToCurrentRoute ? onTap : undefined}
+    >
       <StyledFullscreenNavLink
         whileHover="hover"
         initial="initial"
