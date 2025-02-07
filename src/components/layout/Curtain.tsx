@@ -35,7 +35,7 @@ const curtainContainerVariants: Variants = {
 };
 
 const curtainTransition: Transition = {
-  duration: 0.45,
+  duration: 0.4,
   type: "tween",
   ease: theme.easing as any,
 };
