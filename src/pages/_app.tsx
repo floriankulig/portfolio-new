@@ -1,12 +1,29 @@
 import { PageLoader } from "components/layout/PageLoader";
 import { OverlayProvider } from "context/overlay-context";
+import { cancelFrame, frame } from "framer-motion";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { useEffect, useRef } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, POPPINS, theme } from "styles";
 import { JAKARTA } from "styles/fonts";
+import { ReactLenis } from "lenis/react";
+import type { LenisRef } from "lenis/react";
 
 export default function App({ Component, pageProps, router }: AppProps) {
+  const lenisRef = useRef<LenisRef>(null);
+
+  useEffect(() => {
+    function update(data: { timestamp: number }) {
+      const time = data.timestamp;
+      lenisRef.current?.lenis?.raf(time);
+    }
+
+    frame.update(update, true);
+
+    return () => cancelFrame(update);
+  }, []);
+
   return (
     <>
       <Head>
@@ -24,9 +41,15 @@ export default function App({ Component, pageProps, router }: AppProps) {
       <ThemeProvider theme={theme}>
         <OverlayProvider>
           <GlobalStyle />
-          <PageLoader router={router}>
-            <Component {...pageProps} />
-          </PageLoader>
+          <ReactLenis
+            options={{ autoRaf: false, lerp: 0.25 }}
+            root
+            ref={lenisRef}
+          >
+            <PageLoader router={router}>
+              <Component {...pageProps} />
+            </PageLoader>
+          </ReactLenis>
         </OverlayProvider>
       </ThemeProvider>
     </>
