@@ -75,13 +75,6 @@ const MenuWrapper = styled(motion.button)`
   margin-right: -0.5rem;
   border-radius: 0.5rem;
   color: var(--text2);
-  transition: 0.3s;
-  transition-property: background, color;
-
-  &:hover {
-    background: ${({ theme }) => rgba(theme.text3, 0.1)};
-    color: var(--text1);
-  }
 `;
 
 type ScrollDirection = "up" | "down";
@@ -182,7 +175,10 @@ export const Header: React.FC = () => {
               <MenuWrapper
                 key="menu-wrapper"
                 aria-label="Open Menu"
-                whileHover={{ scale: 1.025 }}
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: rgba(theme.text3, 0.1),
+                }}
                 whileTap={{ scale: 0.925 }}
                 onTap={() => onOpenMenu()}
                 layoutDependency={menuOpen}
