@@ -16,7 +16,7 @@ import { useRef } from "react";
 
 const StyledFooter = styled(motion.footer)`
   --gap: clamp(3rem, 10vw, 5rem);
-  --header-font-size: clamp(1.5rem, 11vw, 4rem);
+  --header-font-size: clamp(1.5rem, 10.8vw, 4rem);
   width: 100%;
   background: var(--text1);
   color: var(--bg3);
@@ -115,9 +115,6 @@ export const Footer: React.FC = () => {
             something great.
           </h3>
           <a href={`mailto:${EMAIL}?subject=Let's work together!`}>
-            {/* <ExternalButton $light>
-              <motion.span>{EMAIL}</motion.span>
-            </ExternalButton> */}
             <ArrowButton theme="dark">Get in touch</ArrowButton>
           </a>
         </div>
