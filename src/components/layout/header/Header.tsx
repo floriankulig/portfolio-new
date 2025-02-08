@@ -27,7 +27,7 @@ const StyledHeader = styled(motion.nav)`
   position: fixed;
   z-index: 99;
   width: 100%;
-  backdrop-filter: saturate(180%) blur(24px);
+  backdrop-filter: saturate(180%) blur(16px);
   border-bottom: 1px solid;
   letter-spacing: 0.02em;
   font-size: 14px;
