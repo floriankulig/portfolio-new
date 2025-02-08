@@ -1,5 +1,6 @@
 import { PageLoader } from "components/layout/PageLoader";
 import { OverlayProvider } from "context/overlay-context";
+import { useDevice } from "hooks";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
@@ -7,6 +8,8 @@ import { GlobalStyle, POPPINS, theme } from "styles";
 import { JAKARTA } from "styles/fonts";
 
 export default function App({ Component, pageProps, router }: AppProps) {
+  const { isTouchDevice } = useDevice();
+  const usedTheme = { ...theme, isTouch: isTouchDevice };
   return (
     <>
       <Head>
@@ -21,7 +24,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
           --jakarta: ${JAKARTA.style.fontFamily};
         }
       `}</style>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={usedTheme}>
         <OverlayProvider>
           <GlobalStyle />
           <PageLoader router={router}>
