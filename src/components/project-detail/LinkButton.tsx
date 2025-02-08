@@ -1,4 +1,5 @@
-import { easeInOut, Easing, motion, Transition, Variants } from "framer-motion";
+import { Easing, motion, Transition, Variants } from "framer-motion";
+import { rgba } from "polished";
 import React from "react";
 import styled from "styled-components";
 import { theme } from "styles";
@@ -16,6 +17,7 @@ type SLinkButtonProps = {
 
 const StyledLinkButton = styled(motion.a)<SLinkButtonProps>`
   display: flex;
+  user-select: none;
   align-items: center;
   justify-content: center;
   padding: 10px 24px;
@@ -56,6 +58,7 @@ interface LinkButtonProps {
   color?: string;
   textColor?: string;
   link: string;
+  disabled?: boolean;
   children: React.ReactNode;
   icon?: React.ReactNode;
 }
@@ -104,20 +107,26 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
   color = theme.text1,
   textColor = theme.bg1,
   link,
+  disabled,
   children,
   icon,
 }) => {
+  const variantDefinitions = {
+    whileTap: "pressed",
+    initial: "initial",
+    animate: "initial",
+    whileHover: "hovered",
+  };
+  const appliedVariants = disabled ? undefined : variantDefinitions;
   return (
     <StyledLinkButton
-      $color={color}
-      $textColor={textColor}
-      href={link}
+      $color={disabled ? rgba(theme.text3, 0.25) : color}
+      $textColor={disabled ? rgba(theme.bg3, 0.25) : textColor}
+      href={!disabled && link}
       target="_blank"
       rel="noopener noreferrer"
-      whileTap="pressed"
-      initial="initial"
-      animate="initial"
-      whileHover="hovered"
+      {...appliedVariants}
+      style={{ pointerEvents: disabled ? "none" : "auto" }}
       variants={{
         pressed: { scale: 0.95 },
         hovered: {
@@ -129,7 +138,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
       }}
     >
       <div>
-        {icon && (
+        {!disabled && icon && (
           <motion.span
             className="icon"
             style={iconStyle}
