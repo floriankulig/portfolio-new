@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { MotionProps, Transition, Variants, motion } from "framer-motion";
-import { darken } from "polished";
+import { darken, rgba } from "polished";
 import { theme } from "styles";
 
-const StyledArrowButton = styled(motion.button)`
+const StyledArrowButton = styled(motion.button)<{ $isLight: boolean }>`
   font-family: var(--jakarta);
-  color: var(--text1);
+  --textColor: ${({ $isLight }) => ($isLight ? theme.text1 : theme.bg1)};
+  color: var(--textColor);
   font-weight: 500;
   font-size: 1rem;
   overflow: visible;
@@ -23,7 +24,8 @@ const StyledArrowButton = styled(motion.button)`
     inset: 0;
     height: 44px;
     aspect-ratio: 1;
-    background: var(--bg3);
+    background: ${({ $isLight }) =>
+      $isLight ? theme.bg3 : rgba(theme.text3, 0.15)};
     border-radius: 99px;
   }
 
@@ -40,12 +42,13 @@ const StyledArrowButton = styled(motion.button)`
     position: absolute;
     right: -26px;
     top: 5px;
-    fill: var(--text1);
+    fill: var(--textColor);
   }
 `;
 
 interface ArrowButtonProps extends MotionProps {
   children: React.ReactNode;
+  theme?: "light" | "dark";
 }
 const springAnimation: Transition = {
   type: "spring",
@@ -55,8 +58,10 @@ const springAnimation: Transition = {
 };
 export const ArrowButton: React.FC<ArrowButtonProps> = ({
   children,
+  theme = "light",
   ...motionProps
 }) => {
+  const isLight = theme === "light";
   return (
     <StyledArrowButton
       initial="initial"
@@ -70,12 +75,14 @@ export const ArrowButton: React.FC<ArrowButtonProps> = ({
       }}
       aria-label={children?.toString()}
       role="button"
+      $isLight={isLight}
       {...motionProps}
     >
       <motion.div
         className="bg"
         variants={backgroundVariants}
         transition={springAnimation}
+        custom={isLight}
       ></motion.div>
       <motion.span
         className="text"
@@ -107,11 +114,11 @@ const backgroundVariants: Variants = {
     width: "calc(100% + 8px)",
     x: -4,
   },
-  tapped: {
+  tapped: (isLight) => ({
     width: "calc(100% + 8px)",
-    backgroundColor: darken(0.05, theme.bg3),
+    backgroundColor: isLight ? darken(0.05, theme.bg3) : rgba(theme.text3, 0.1),
     x: -4,
-  },
+  }),
 };
 
 const textVariants: Variants = {

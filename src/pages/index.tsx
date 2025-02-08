@@ -6,6 +6,7 @@ import {
   ThinkDifferent,
 } from "components/home";
 import { Curtain } from "components/layout/Curtain";
+import { Footer } from "components/layout/footer/Footer";
 import { Header, StaticHeader } from "components/layout/header";
 import dynamic from "next/dynamic";
 
@@ -31,6 +32,7 @@ const Home = () => {
       <ProjectsSlide />
       <Banner />
       <ThinkDifferent />
+      <Footer />
     </>
   );
 };

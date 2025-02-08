@@ -14,6 +14,7 @@ import type {
   InferGetStaticPropsType,
 } from "next";
 import { Header } from "components/layout/header";
+import { Footer } from "components/layout/footer/Footer";
 
 export const getStaticPaths = (async () => {
   const paths = PROJECTS.map((project) => ({
@@ -61,6 +62,7 @@ const ProjectDetailPage = ({
         label="Project Background"
         description={project.projectBackground}
       />
+      <Footer />
     </>
   );
 };

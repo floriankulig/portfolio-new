@@ -20,7 +20,7 @@ const InlineImageWrapper = styled.div<{ $aspectRatio: number }>`
   aspect-ratio: ${({ $aspectRatio }) => $aspectRatio};
   overflow: hidden;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.125);
-  border: 1.5px solid ${rgba("white", 0.05)};
+  border: 1.5px solid ${rgba("white", 0.25)};
 `;
 
 export const InlineImageBubble: React.FC<InlineImageBubbleProps> = ({

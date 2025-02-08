@@ -1,4 +1,5 @@
 import { Curtain } from "components/layout/Curtain";
+import { Footer } from "components/layout/footer/Footer";
 import { Header } from "components/layout/header";
 import { ProjectsHeader, ProjectsList } from "components/work";
 import { LayoutGroup } from "framer-motion";
@@ -30,6 +31,7 @@ const ProjectsPage = () => {
         />
         <ProjectsList selectedProjects={selectedProjects} />
       </LayoutGroup>
+      <Footer />
     </>
   );
 };
