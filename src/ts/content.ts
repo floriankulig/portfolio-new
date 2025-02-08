@@ -1,5 +1,6 @@
 import { FeaturedProject, Project, ProjectCategory } from "./types";
 const EMAIL = "florian.kulig@web.de" as const;
+const GITHUB = "https://github.com/floriankulig" as const;
 const YEARS_OF_EXPERIENCE = new Date().getFullYear() - 2020;
 
 const PROJECTS: Project[] = [
@@ -112,6 +113,7 @@ const PROJECT_CATEGORIES: ProjectCategory[] = [
 
 export {
   EMAIL,
+  GITHUB,
   YEARS_OF_EXPERIENCE,
   FEATURED_PROJECTS,
   PROJECTS,
