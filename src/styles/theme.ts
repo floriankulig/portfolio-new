@@ -13,6 +13,7 @@ const theme = {
     medium: `min-width: 1081px`,
     big: `min-width: 1201px`,
   },
+  isTouch: false,
 };
 
 export default theme;

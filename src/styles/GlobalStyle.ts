@@ -65,6 +65,13 @@ const GlobalStyle = createGlobalStyle`
     text-wrap: balance;
   }
 
+  .with-bubble {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0 0.25em;
+  }
+
   .main-col {
     padding-inline: 5vw;
     @media (${theme.bp.small}){

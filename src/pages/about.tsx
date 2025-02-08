@@ -27,10 +27,10 @@ const StyledAboutPage = styled.section`
     background-clip: text;
     padding: 0.5em 0;
     display: flex;
-    align-items: center;
     justify-content: center;
+    /* align-items: center;
     flex-wrap: wrap;
-    gap: 0 0.25em;
+    gap: 0 0.25em; */
   }
 `;
 
@@ -40,7 +40,7 @@ const AboutPage = () => {
       <Curtain />
       <Header />
       <StyledAboutPage>
-        <h1>
+        <h1 className="with-bubble">
           Work{" "}
           <InlineImageBubble
             image="/WIP.png"
