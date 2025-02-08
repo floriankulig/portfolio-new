@@ -30,9 +30,10 @@ const StyledIntroHeader = styled(motion.header)`
 
   h2 {
     font-size: inherit;
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: -0.05em;
+    font-weight: 400;
+    padding-block: 0.15em;
+    margin-block: -0.15em;
+    letter-spacing: -0.045em;
     line-height: 1.1;
     -webkit-text-stroke: 1px ${({ theme }) => rgba(theme.bg1, 0.2)};
     background: ${({ theme }) =>
@@ -64,8 +65,8 @@ export const ProjectsIntro: React.FC<ProjectsIntroProps> = () => {
     offset: ["start 80%", "end 50%"],
   });
 
-  const gradientX = useTransform(scrollYProgress, [0, 0.9], [10, 85]);
-  const gradientY = useTransform(scrollYProgress, [0, 0.9], [0, 20]);
+  const gradientX = useTransform(scrollYProgress, [0, 0.95], [10, 85]);
+  const gradientY = useTransform(scrollYProgress, [0, 0.95], [0, 20]);
   const gradientOpacity = useTransform(
     scrollYProgress,
     [0, 0.4, 1],
@@ -87,7 +88,7 @@ export const ProjectsIntro: React.FC<ProjectsIntroProps> = () => {
     <StyledProjectsIntroContainer ref={sectionRef}>
       <StyledProjectsIntro className="main-col">
         <StyledIntroHeader>
-          <motion.h2 style={{ backgroundImage }}>MY PROJECTS</motion.h2>
+          <motion.h2 style={{ backgroundImage }}>My Projects</motion.h2>
           <span>©2020-{currentYear}</span>
         </StyledIntroHeader>
       </StyledProjectsIntro>
