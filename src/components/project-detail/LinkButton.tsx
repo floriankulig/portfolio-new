@@ -122,7 +122,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     <StyledLinkButton
       $color={disabled ? rgba(theme.text3, 0.25) : color}
       $textColor={disabled ? rgba(theme.bg3, 0.25) : textColor}
-      href={!disabled && link}
+      href={!disabled ? link : undefined}
       target="_blank"
       rel="noopener noreferrer"
       {...appliedVariants}
