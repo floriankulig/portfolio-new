@@ -1,4 +1,3 @@
-import { MainColumn } from "components/shared";
 import React from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
@@ -18,25 +17,21 @@ const StyledProjectsList = styled(motion.ul)`
 `;
 
 interface ProjectsListProps {
-  selectedProjects: Project[];
+  filteredProjects: Project[];
 }
 
 export const ProjectsList: React.FC<ProjectsListProps> = ({
-  selectedProjects,
+  filteredProjects,
 }) => {
   return (
     <StyledProjectsListSection layout>
-      {/* <MainColumn> */}
-      {/* <LayoutGroup> */}
       <StyledProjectsList className="main-col">
         <AnimatePresence initial={false}>
-          {selectedProjects.map((project) => (
+          {filteredProjects.map((project) => (
             <ProjectComponent key={project.id} project={project} />
           ))}
         </AnimatePresence>
       </StyledProjectsList>
-      {/* </LayoutGroup> */}
-      {/* </MainColumn> */}
     </StyledProjectsListSection>
   );
 };
