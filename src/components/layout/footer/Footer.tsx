@@ -34,7 +34,7 @@ const StyledFooterContent = styled(motion.section)`
   .cta-section {
     display: flex;
     flex-direction: column;
-    gap: max(0.35em, 0.75rem);
+    gap: max(0.35em, 1rem);
     font-size: var(--header-font-size);
 
     .headline {
