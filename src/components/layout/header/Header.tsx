@@ -15,6 +15,7 @@ import {
   useMotionValueEvent,
   useScroll,
   useTransform,
+  Variants,
 } from "framer-motion";
 import { theme } from "styles";
 import { useOverlayContext } from "context/overlay-context";
@@ -77,6 +78,18 @@ const MenuWrapper = styled(motion.button)`
   color: var(--text2);
 `;
 
+const headerVariants: Variants = {
+  pageEntry: {
+    y: "-120%",
+  },
+  hidden: {
+    y: "-120%",
+  },
+  pageLoad: {
+    y: "0%",
+  },
+};
+
 type ScrollDirection = "up" | "down";
 const STICK_TOP = 50;
 
@@ -134,9 +147,8 @@ export const Header: React.FC = () => {
         className="main-col"
         style={{ paddingBlock, borderColor, backgroundColor }}
         layoutRoot
-        animate={{
-          y: hideHeader ? "-120%" : "0%",
-        }}
+        animate={hideHeader ? "hidden" : ""}
+        variants={headerVariants}
         transition={{
           ease: hideHeader ? theme.easing : circInOut,
           duration: 0.75,
