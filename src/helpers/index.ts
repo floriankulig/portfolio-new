@@ -2,8 +2,13 @@ import { MeasurementRect } from "hooks/useMeasure";
 import { PROJECTS } from "ts/content";
 import { Project } from "ts/types";
 
-export const copyToClipboard = (text: string) => {
-  navigator.clipboard.writeText(text);
+export const copyToClipboard = async (text: string): Promise<void> => {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (error) {
+    // Handle errors appropriately
+    console.error("Failed to copy text to clipboard:", error);
+  }
 };
 
 export const measureDistance = (
