@@ -19,11 +19,13 @@ const StyledMeta = styled.div`
 interface TimeZoneInfoProps {
   displayFullCounty?: boolean;
   displayCounty?: boolean;
+  layoutDependency?: string | number | boolean;
 }
 
 export const TimeZoneInfo: React.FC<TimeZoneInfoProps> = ({
   displayFullCounty,
   displayCounty,
+  layoutDependency,
 }) => {
   const [timeData, setTimeData] = useState(() => {
     const initialDate = new Date();
@@ -67,13 +69,28 @@ export const TimeZoneInfo: React.FC<TimeZoneInfoProps> = ({
 
   return (
     <StyledMeta className="timezone-meta">
-      <motion.span layoutId="timezone-location">{location}</motion.span>
-      <motion.span layoutId="timezone-time" className="time">
+      <motion.span
+        layoutRoot
+        layoutDependency={layoutDependency}
+        layoutId="timezone-location"
+      >
+        {location}
+      </motion.span>
+      <motion.span
+        layoutRoot
+        layoutDependency={layoutDependency}
+        layoutId="timezone-time"
+        className="time"
+      >
         {timeData.hours}
         <BlinkingColon />
         {timeData.minutes}
       </motion.span>{" "}
-      <motion.span layoutId="timezone-meridiem">
+      <motion.span
+        layoutRoot
+        layoutDependency={layoutDependency}
+        layoutId="timezone-meridiem"
+      >
         {timeData.meridiem}
       </motion.span>
     </StyledMeta>

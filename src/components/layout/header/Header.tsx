@@ -158,6 +158,7 @@ export const Header: React.FC = () => {
           className="name"
           layoutId="hm-name"
           layoutDependency={menuOpen}
+          layoutRoot
         >
           <TransitionLink href="/">{name}</TransitionLink>
         </motion.div>
@@ -173,6 +174,7 @@ export const Header: React.FC = () => {
             {!menuOpen && (
               <TimeZoneInfo
                 key="timezone-info"
+                layoutDependency={menuOpen}
                 displayCounty={
                   viewPortWidth > 720 ||
                   (300 < viewPortWidth && viewPortWidth < SHOW_LINKS_WIDTH)
@@ -195,6 +197,7 @@ export const Header: React.FC = () => {
                 onTap={() => onOpenMenu()}
                 layoutDependency={menuOpen}
                 layoutId="hm-menu"
+                layoutScroll
               >
                 <Menu />
               </MenuWrapper>
