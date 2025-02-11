@@ -51,6 +51,7 @@ const StyledCircle = styled(motion.div)`
     text-align: center;
     padding-top: clamp(80px, 13vw, 160px);
     line-height: 1.618;
+    z-index: 1;
 
     span {
       display: inline-block;
@@ -72,7 +73,7 @@ export const ContactCircle: React.FC<ContactCircleProps> = ({
   ...restProps
 }) => {
   return (
-    <StyledCircle initial="initial" animate={mode} exit="exit">
+    <StyledCircle initial="initial" animate={mode || "initial"} exit="exit">
       <svg
         width="366"
         height="366"
