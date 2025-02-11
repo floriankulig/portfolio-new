@@ -18,7 +18,7 @@ const StyledFullscreenMenu = styled(motion.div)<{ $open: boolean }>`
   color: var(--bg1);
   color: var(--text1);
   will-change: transform;
-  pointer-events: ${({ $open }) => ($open ? "auto" : "none")};
+  pointer-events: ${({ $open }) => ($open ? "all" : "none")};
   display: flex;
   flex-direction: column;
   padding-block: clamp(1.5rem, 4vh, 2.5rem);
