@@ -70,14 +70,12 @@ export const TimeZoneInfo: React.FC<TimeZoneInfoProps> = ({
   return (
     <StyledMeta className="timezone-meta">
       <motion.span
-        layoutRoot
         layoutDependency={layoutDependency}
         layoutId="timezone-location"
       >
         {location}
       </motion.span>
       <motion.span
-        layoutRoot
         layoutDependency={layoutDependency}
         layoutId="timezone-time"
         className="time"
@@ -87,7 +85,6 @@ export const TimeZoneInfo: React.FC<TimeZoneInfoProps> = ({
         {timeData.minutes}
       </motion.span>{" "}
       <motion.span
-        layoutRoot
         layoutDependency={layoutDependency}
         layoutId="timezone-meridiem"
       >

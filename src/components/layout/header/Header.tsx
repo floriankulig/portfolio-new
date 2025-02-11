@@ -158,7 +158,6 @@ export const Header: React.FC = () => {
           className="name"
           layoutId="hm-name"
           layoutDependency={menuOpen}
-          layoutRoot
         >
           <TransitionLink href="/">{name}</TransitionLink>
         </motion.div>
