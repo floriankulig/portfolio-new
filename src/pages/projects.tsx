@@ -9,7 +9,7 @@ import { PROJECTS } from "ts/content";
 const ProjectsPage = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
-  const selectedProjects = useMemo(
+  const filteredProjects = useMemo(
     () =>
       PROJECTS.filter(
         (project) =>
@@ -29,7 +29,7 @@ const ProjectsPage = () => {
           selectedChips={selectedCategories}
           setSelectedChips={setSelectedCategories}
         />
-        <ProjectsList selectedProjects={selectedProjects} />
+        <ProjectsList filteredProjects={filteredProjects} />
       </LayoutGroup>
       <Footer />
     </>
