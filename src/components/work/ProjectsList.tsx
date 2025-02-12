@@ -5,15 +5,14 @@ import { Project } from "ts/types";
 import { Project as ProjectComponent } from "./Project";
 
 const StyledProjectsListSection = styled(motion.section)`
-  padding-block: 56px;
-  background-color: var(--bg3);
-  min-height: 100vh;
+  padding-bottom: 52px;
+  padding-inline: 2.5vw;
 `;
 
 const StyledProjectsList = styled(motion.ul)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
-  gap: 48px 32px;
+  grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
+  gap: 48px 24px;
 `;
 
 interface ProjectsListProps {
@@ -25,7 +24,7 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({
 }) => {
   return (
     <StyledProjectsListSection layout>
-      <StyledProjectsList className="main-col">
+      <StyledProjectsList>
         <AnimatePresence initial={false}>
           {filteredProjects.map((project) => (
             <ProjectComponent key={project.id} project={project} />
