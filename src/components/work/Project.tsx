@@ -152,9 +152,12 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
     keywords,
     categories,
   } = project;
-  const chips = PROJECT_CATEGORIES.filter((category) =>
-    categories?.includes(category.id)
-  );
+  const chips = categories.map((category) => {
+    const foundCategory = PROJECT_CATEGORIES.find(
+      (cat) => cat.id === category
+    )!;
+    return foundCategory;
+  });
   const secondarySubTextContent = services || technologies;
   const subText = Array.from(
     new Set(keywords.concat(secondarySubTextContent || []))
