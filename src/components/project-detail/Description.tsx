@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledProjectDescriptionSection = styled.section`
-  min-height: 75vh;
+  min-height: 85vh;
   display: grid;
   place-items: center;
 `;
