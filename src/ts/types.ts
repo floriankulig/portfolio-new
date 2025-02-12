@@ -16,6 +16,7 @@ export interface Project {
   services?: string[];
   date: string;
   roles?: ProjectRole[];
+  stillDeveloping?: boolean;
   sections?: {
     parallaxImages?: ParallaxImagesSection;
   };

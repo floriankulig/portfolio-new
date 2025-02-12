@@ -15,6 +15,7 @@ import type {
 } from "next";
 import { Header } from "components/layout/header";
 import { Footer } from "components/layout/footer/Footer";
+import { MoreInfoComing } from "components/work";
 
 export const getStaticPaths = (async () => {
   const paths = PROJECTS.map((project) => ({
@@ -36,7 +37,7 @@ export const getStaticProps = (async (context) => {
 const ProjectDetailPage = ({
   project,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { id, sections } = project;
+  const { id, sections, title, stillDeveloping } = project;
   return (
     <>
       <Curtain />
@@ -56,12 +57,12 @@ const ProjectDetailPage = ({
         description={project.projectBackground}
       />
       {sections?.parallaxImages && (
-        <ParallaxImages parallaxImages={sections?.parallaxImages} />
+        <ParallaxImages
+          projectName={title}
+          parallaxImages={sections?.parallaxImages}
+        />
       )}
-      <Description
-        label="Project Background"
-        description={project.projectBackground}
-      />
+      <MoreInfoComing stillDeveloping={stillDeveloping} />
       <Footer />
     </>
   );
