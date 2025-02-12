@@ -25,8 +25,8 @@ const PROJECTS: Project[] = [
     services: ["AI-Research", "Development", "Testing"],
     sections: {
       parallaxImages: {
-        bgImage: "traffic.jpg",
-        mainImage: "tst.png",
+        bgImage: "cars.jpg",
+        mainImage: "NeuralNavi Main.png",
       },
     },
     github: "https://github.com/floriankulig/neural-navi",
