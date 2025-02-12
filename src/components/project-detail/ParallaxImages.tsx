@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { ParallaxImagesSection } from "ts/types";
+import { ParallaxImagesSection, Project } from "ts/types";
 
 const StyledParallaxImagesSection = styled.section`
   min-height: 125vh;
@@ -35,10 +35,12 @@ const MainImage = styled(motion.div)`
 
 interface ParallaxImagesProps {
   parallaxImages: ParallaxImagesSection;
+  projectName: Project["title"];
 }
 const IMAGE_OVERLAP = 15;
 export const ParallaxImages: React.FC<ParallaxImagesProps> = ({
   parallaxImages,
+  projectName,
 }) => {
   const { mainImage, bgImage, sideImages } = parallaxImages;
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -68,7 +70,7 @@ export const ParallaxImages: React.FC<ParallaxImagesProps> = ({
         <BlurAround size={5}>
           <Image
             src={`/${mainImage}`}
-            alt="Main Image"
+            alt={`${projectName}'s Main Image`}
             sizes="70vw"
             style={{
               width: "70vw",
