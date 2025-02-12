@@ -185,7 +185,7 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
     [0.85, 1]
   );
   const projectScale = index <= 1 ? projectIntroScale : 1;
-  const slideBR = useTransform(scrollProgress, introAnimationRange, [48, 0], {
+  const slideBR = useTransform(scrollProgress, introAnimationRange, [32, 0], {
     ease: easeInOut,
   });
 
