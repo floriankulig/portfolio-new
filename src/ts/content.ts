@@ -37,7 +37,7 @@ const PROJECTS: Project[] = [
     title: "Job Manager",
     featureImage: "JvisMock.png",
     projectBackground:
-      "For this project, I was contacted by a medium-sized wood processing company that wanted to digitize its order management and route planning processes. The company, which specializes in mobile firewood processing, previously managed all orders and routes using various Excel spreadsheets and handwritten notes - a system that was increasingly reaching its limits as the business grew.",
+      "For this project, I was contacted by a medium-sized wood processing company that wanted to <b>digitize its order management</b> and route planning processes. The company, which specializes in mobile firewood processing, previously managed all orders and routes using various Excel spreadsheets and handwritten notes - a system that was increasingly reaching its limits as the business grew.",
     featureDescription:
       "A tool for managing and planning contracting work in the forestry business.",
     gradient:
@@ -61,7 +61,7 @@ const PROJECTS: Project[] = [
     title: "Testiply",
     featureImage: "TestiplyMock.png",
     projectBackground:
-      'What started as a simple student coding challenge to "build a cool app" evolved into an ambitious attempt in creating a platform connecting developers with beta testers. Working in a team for the first time, we transformed this open-ended prompt into a practical solution for a common developer need: organizing and managing beta feedback effectively.',
+      'What started as a simple student coding challenge to "build a cool app" evolved into an ambitious attempt in creating a platform connecting developers with beta testers. <b>Working in a team</b> for the first time, we transformed this open-ended prompt into a practical solution for a common developer need: organizing and managing beta feedback effectively.',
     featureDescription:
       "A platform for sharing beta applications with a feedback mechanism connecting testers and developers.",
     gradient: "linear-gradient(135deg, #a431d6 0%, #3b38d6 100%)",
@@ -94,7 +94,7 @@ const PROJECTS: Project[] = [
     title: "Sorting Algorithm Visualizer",
     featureImage: "SortVisMock.png",
     projectBackground:
-      "My first coding project. I set out to create an interactive visualization tool for sorting algorithms. The goal of this project is twofold: to master the fundamentals of programming and to create an educational tool which makes complex algorithms more accessible through visualization.",
+      "My first coding project. I set out to create an <b>interactive visualization tool for sorting algorithms</b>. The goal of this project is twofold: to <b>master the fundamentals of programming</b> and to create an educational tool which makes complex algorithms more accessible through visualization.",
     featureDescription:
       "An application that visualizes the most popular sorting algorithms, including documentation of their methodology.",
     technologies: ["Python", "Visualization", "Tkinter"],
