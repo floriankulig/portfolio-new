@@ -5,6 +5,34 @@ const YEARS_OF_EXPERIENCE = new Date().getFullYear() - 2020;
 
 const PROJECTS: Project[] = [
   {
+    id: "neural-navi",
+    title: "Neural Navi",
+    featureImage: "NeuralNaviMock.jpg",
+    projectBackground:
+      "For this project, I combined my <b>long-standing passion for automotive engineering</b> with the academic requirements of my university studies. What started as a student research project quickly evolved into a comprehensive system for capturing and analyzing driving data to produce machine learning model outputs. The goal is to develop <b>a copilot that intelligently helps drivers make informed decisions</b> to make driving safer.",
+    featureDescription:
+      "An AI-powered driver CoPilot that improves decision-making for efficient and economic driving.",
+    gradient: "linear-gradient(135deg, #A8EDEA 0%, #FED6E3 100%)",
+    technologies: [
+      "Python",
+      "PyTorch",
+      "Computer Vision",
+      "OBD-II Diagnostics",
+    ],
+    categories: ["data", "development"],
+    keywords: ["In-Car Use", "Deep Learning"],
+    date: "Oct 2024 - Present",
+    services: ["AI-Research", "Development", "Testing"],
+    sections: {
+      parallaxImages: {
+        bgImage: "traffic.jpg",
+        mainImage: "tst.png",
+      },
+    },
+    github: "https://github.com/floriankulig/neural-navi",
+    stillDeveloping: true,
+  },
+  {
     id: "jvis",
     title: "Job Manager",
     featureImage: "JvisMock.png",
@@ -63,7 +91,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "sorting-algorithms",
-    title: "Sorting Algorithms Visualizer",
+    title: "Sorting Algorithm Visualizer",
     featureImage: "SortVisMock.png",
     projectBackground:
       "My first coding project. I set out to create an interactive visualization tool for sorting algorithms. The goal of this project is twofold: to master the fundamentals of programming and to create an educational tool which makes complex algorithms more accessible through visualization.",
@@ -85,10 +113,18 @@ const PROJECTS: Project[] = [
   },
 ];
 
-const FEATURED_PROJECTS: FeaturedProject[] = PROJECTS.slice(
-  0,
-  3
-) as FeaturedProject[];
+const FEATURED_PROJECTS_IDS: Array<(typeof PROJECTS)[number]["id"]> = [
+  "neural-navi",
+  "jvis",
+  "sorting-algorithms",
+];
+const FEATURED_PROJECTS: FeaturedProject[] = FEATURED_PROJECTS_IDS.map((id) => {
+  const project = PROJECTS.find((project) => project.id === id);
+  if (!project) {
+    throw new Error(`Project with ID ${id} not found.`);
+  }
+  return project;
+});
 
 const PROJECT_CATEGORIES: ProjectCategory[] = [
   {
@@ -98,7 +134,7 @@ const PROJECT_CATEGORIES: ProjectCategory[] = [
     legerTitle: "Shit that works.",
   },
   {
-    id: "data-science",
+    id: "data",
     title: "Data Science & AI",
     color: "#FF6347",
     legerTitle: "Data digging.",
