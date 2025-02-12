@@ -136,7 +136,7 @@ export const Hero = () => {
       </h1>
       {isMobile ? mobileDescription : description}
       <StyledButtons>
-        <TransitionLink href="/projects">
+        <TransitionLink href="/work">
           <ArrowButton>View Projects</ArrowButton>
         </TransitionLink>
         <a href={`mailto:${EMAIL}?subject=Let's work together!`}>Reach out</a>

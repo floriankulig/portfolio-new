@@ -175,7 +175,7 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
           layout: { type: "spring", stiffness: 115, damping: 18 },
           staggerChildren: 0.04,
         }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
       >
         <StyledProjectFeatureImageWrapper
           variants={fadeInUpVariants}

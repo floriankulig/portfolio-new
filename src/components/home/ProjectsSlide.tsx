@@ -175,7 +175,7 @@ const ProjectsCTA: React.FC<ProjectsCTAProps> = ({ scrollYProgress }) => {
       <StyledProjectsCTAContent style={{ y, opacity }}>
         <h3>Want more?</h3>
         <p>that&lsquo;s not everything...</p>
-        <TransitionLink href="/projects">
+        <TransitionLink href="/work">
           <ArrowButton>View Project Showcase</ArrowButton>
         </TransitionLink>
       </StyledProjectsCTAContent>
