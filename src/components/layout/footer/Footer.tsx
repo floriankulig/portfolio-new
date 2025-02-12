@@ -7,7 +7,7 @@ import {
   InlineImageBubble,
   TransitionLink,
 } from "components/shared";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionProps, useScroll, useTransform } from "framer-motion";
 import { theme } from "styles";
 import { LinkButton } from "components/project-detail/LinkButton";
 import { GitHub, Linkedin } from "react-feather";
@@ -92,11 +92,9 @@ const StyledLinks = styled.ul`
 const GitHubIcon = <GitHub />;
 const LinkedInIcon = <Linkedin strokeWidth={1.5} />;
 
-interface FooterProps {
-  layout?: boolean;
-}
+interface FooterProps extends MotionProps {}
 
-export const Footer: React.FC<FooterProps> = ({ layout }) => {
+export const Footer: React.FC<FooterProps> = (props) => {
   const { asPath } = useRouter();
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -105,7 +103,7 @@ export const Footer: React.FC<FooterProps> = ({ layout }) => {
   });
   const sectionY = useTransform(scrollYProgress, [0, 0.25], [100, 0]);
   return (
-    <StyledFooter ref={sectionRef} layout={layout}>
+    <StyledFooter ref={sectionRef} {...props}>
       <StyledFooterContent className="main-col" style={{ y: sectionY }}>
         <div className="cta-section">
           <h3 className="headline balanced with-bubble">
