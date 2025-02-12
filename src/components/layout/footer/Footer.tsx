@@ -92,7 +92,11 @@ const StyledLinks = styled.ul`
 const GitHubIcon = <GitHub />;
 const LinkedInIcon = <Linkedin strokeWidth={1.5} />;
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  layout?: boolean;
+}
+
+export const Footer: React.FC<FooterProps> = ({ layout }) => {
   const { asPath } = useRouter();
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -101,7 +105,7 @@ export const Footer: React.FC = () => {
   });
   const sectionY = useTransform(scrollYProgress, [0, 0.25], [100, 0]);
   return (
-    <StyledFooter ref={sectionRef}>
+    <StyledFooter ref={sectionRef} layout={layout}>
       <StyledFooterContent className="main-col" style={{ y: sectionY }}>
         <div className="cta-section">
           <h3 className="headline balanced with-bubble">

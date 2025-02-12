@@ -30,8 +30,8 @@ const ProjectsPage = () => {
           setSelectedChips={setSelectedCategories}
         />
         <ProjectsList filteredProjects={filteredProjects} />
+        <Footer layout />
       </LayoutGroup>
-      <Footer />
     </>
   );
 };
