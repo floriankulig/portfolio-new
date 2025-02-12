@@ -26,6 +26,12 @@ const StyledProjectDescription = styled.div`
     font-size: 1.125rem;
     text-indent: clamp(2rem, 10vw, 5rem);
     line-height: 1.5;
+
+    b {
+      color: var(--text1);
+      font-weight: 700;
+      font-family: var(--jakarta);
+    }
   }
 `;
 
@@ -42,7 +48,7 @@ export const Description: React.FC<ProjectDescriptionSectionProps> = ({
     <StyledProjectDescriptionSection className="main-col">
       <StyledProjectDescription>
         <span>{label}</span>
-        <p>{description}</p>
+        <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </StyledProjectDescription>
     </StyledProjectDescriptionSection>
   );
