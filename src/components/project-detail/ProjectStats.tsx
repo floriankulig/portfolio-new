@@ -113,7 +113,7 @@ export const ProjectStats: React.FC<ProjectStatsProps> = ({ project }) => {
             ))}
           </ul>
         </Stats>
-        {client && services && (
+        {services && (
           <Stats>
             <span>Services</span>
             <ul>
