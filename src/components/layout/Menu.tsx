@@ -8,7 +8,7 @@ import { LINKS } from "ts";
 import { TimeZoneInfo } from "./header/TimeZoneInfo";
 import { useViewport } from "hooks";
 
-const StyledFullscreenMenu = styled(motion.div)<{ $open: boolean }>`
+const StyledFullscreenMenu = styled(motion.div)`
   position: fixed;
   overflow-y: auto;
   inset: 0;
@@ -18,7 +18,6 @@ const StyledFullscreenMenu = styled(motion.div)<{ $open: boolean }>`
   color: var(--bg1);
   color: var(--text1);
   will-change: transform;
-  pointer-events: ${({ $open }) => ($open ? "all" : "none")};
   display: flex;
   flex-direction: column;
   padding-block: clamp(1.5rem, 4vh, 2.5rem);
@@ -89,7 +88,13 @@ const menuOverlayVariants: Variants = {
   },
   hmexit: {
     opacity: 0,
-    transition: { delay: 0.1, ease: "linear" },
+    pointerEvents: "none",
+    transition: {
+      opacity: {
+        delay: 0.1,
+        ease: "linear",
+      },
+    },
   },
 };
 
@@ -162,7 +167,6 @@ export const Menu: React.FC<MenuProps> = ({ open, setOpen, displayName }) => {
           animate="hmanimate"
           exit="hmexit"
           variants={menuOverlayVariants}
-          $open={open}
         >
           <MenuHeader className="main-col">
             <motion.h3
