@@ -12,7 +12,7 @@ const StyledProjectsListSection = styled(motion.section)`
 const StyledProjectsList = styled(motion.ul)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
-  gap: 48px 24px;
+  gap: 56px 24px;
 `;
 
 interface ProjectsListProps {
