@@ -2,6 +2,7 @@ import { FeaturedProject, ProjectCategory } from "./types";
 import { PROJECTS } from "./projects";
 
 const EMAIL = "florian.kulig@web.de" as const;
+const LINKEDIN = "https://www.linkedin.com/in/floriankulig" as const;
 const GITHUB = "https://github.com/floriankulig" as const;
 const YEARS_OF_EXPERIENCE = new Date().getFullYear() - 2020;
 
@@ -41,6 +42,7 @@ const PROJECT_CATEGORIES: ProjectCategory[] = [
 
 export {
   EMAIL,
+  LINKEDIN,
   GITHUB,
   YEARS_OF_EXPERIENCE,
   FEATURED_PROJECTS,

@@ -11,7 +11,7 @@ import { motion, MotionProps, useScroll, useTransform } from "framer-motion";
 import { theme } from "styles";
 import { LinkButton } from "components/project-detail/LinkButton";
 import { GitHub, Linkedin } from "react-feather";
-import { EMAIL, GITHUB } from "ts/content";
+import { EMAIL, GITHUB, LINKEDIN } from "ts/content";
 import { useRef } from "react";
 
 const StyledFooter = styled(motion.footer)`
@@ -148,11 +148,10 @@ export const Footer: React.FC<FooterProps> = (props) => {
               Github
             </LinkButton>
             <LinkButton
-              link={GITHUB}
+              link={LINKEDIN}
               icon={LinkedInIcon}
               color={"#0a689a"}
               textColor={theme.bg1}
-              disabled
             >
               LinkedIn
             </LinkButton>
