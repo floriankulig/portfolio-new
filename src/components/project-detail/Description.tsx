@@ -5,6 +5,7 @@ const StyledProjectDescriptionSection = styled.section`
   min-height: 85vh;
   display: grid;
   place-items: center;
+  padding-block: 25vh;
 `;
 
 const StyledProjectDescription = styled.div`
