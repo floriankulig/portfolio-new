@@ -203,7 +203,7 @@ const TextAnimation = () => {
     "Pushing Excellence.",
     "Engineering Brilliance.",
   ];
-  const changeSeconds = 5;
+  const changeSeconds = 4.5;
   const time = useTime();
   const counter = useTransform(time, (latest) =>
     Math.floor(latest / (1000 * changeSeconds))
