@@ -130,8 +130,8 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/floriankulig/panache-booth",
     sections: {
       parallaxImages: {
-        bgImage: "",
-        mainImage: "",
+        bgImage: "swirl.jpg",
+        mainImage: "PanacheBooth Main.png",
       },
     },
   },
@@ -161,7 +161,7 @@ export const PROJECTS: Project[] = [
     sections: {
       parallaxImages: {
         bgImage: "eliptic.jpg",
-        mainImage: "",
+        mainImage: "MunBike Main.png",
       },
     },
   },
