@@ -69,6 +69,7 @@ export const PROJECTS: Project[] = [
       {
         name: "Noel Mayr",
         responsibilities: ["Backend"],
+        link: "https://github.com/Nollknolle",
       },
       {
         name: "Florian Kulig",
