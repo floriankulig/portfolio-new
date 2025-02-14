@@ -22,7 +22,7 @@ export const PROJECTS: Project[] = [
     services: ["AI-Research", "Development", "Testing"],
     sections: {
       parallaxImages: {
-        bgImage: "swirl.jpg",
+        bgImage: "plates.jpg",
         mainImage: "NeuralNavi Main.png",
       },
     },
@@ -112,7 +112,7 @@ export const PROJECTS: Project[] = [
     projectBackground:
       "What began as a university course assignment to create a basic e-commerce platform evolved into an extensive web development project. <b>Working as a team of two</b>, we transformed the initial academic requirements into a fully-featured <b>online shop with a strong focus on user experience</b> and conversion optimization.",
     featureDescription:
-      "An online shop for a fictional fashion brand with a focus on user experience and conversion optimization.",
+      "A retail shop for a fictional fashion brand with a focus on user experience and conversion optimization.",
     gradient: "linear-gradient(135deg, #A74B0A 0%, #DC9765 100%)",
     technologies: ["Angular", "Node", "SQLite", "Express"],
     keywords: ["Angular", "UX & Conversion"],
