@@ -108,7 +108,7 @@ export const PROJECTS: Project[] = [
   {
     id: "panache-booth",
     title: "Panache Booth",
-    featureImage: "",
+    featureImage: "PanacheBoothMock.jpg",
     projectBackground:
       "What began as a university course assignment to create a basic e-commerce platform evolved into an extensive web development project. <b>Working as a team of two</b>, we transformed the initial academic requirements into a fully-featured <b>online shop with a strong focus on user experience</b> and conversion optimization.",
     featureDescription:
@@ -120,7 +120,8 @@ export const PROJECTS: Project[] = [
     date: "Dec 2023 - Jan 2024",
     roles: [
       {
-        name: "Backend Legende",
+        name: "Lars Huzel",
+        link: "https://github.com/lars-1503",
       },
       {
         name: "Florian Kulig",
@@ -138,18 +139,18 @@ export const PROJECTS: Project[] = [
   {
     id: "munich-bikes",
     title: "Munich's Bicycle Traffic",
-    featureImage: "MunBikeMock.png",
+    featureImage: "MunBikeMock.jpg",
     projectBackground:
       "This data analysis project processes and visualizes bicycle traffic data from Munich's counting stations from 2008 to 2024. The project <b>transforms complex traffic data into accessible insights</b> through an interactive dashboard, making urban mobility patterns <b>understandable for non-technical stakeholders.</b>",
     featureDescription:
       "A series of visualizations, applications and analyses of Munich's cycling data from 2008 to 2024.",
-    technologies: ["Python", "Visualization", "Pandas"],
+    technologies: ["Python", "Visualization", "Pandas", "Matplotlib"],
     categories: ["data", "design"],
     keywords: ["Data-Science", "Visualization"],
     date: "Jan 2025",
     roles: [
       {
-        name: "Scientist Legende",
+        name: "Scientist Legende Dave",
       },
       {
         name: "Florian Kulig",
@@ -159,7 +160,7 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/floriankulig/data-science-vl",
     sections: {
       parallaxImages: {
-        bgImage: "",
+        bgImage: "eliptic.jpg",
         mainImage: "",
       },
     },

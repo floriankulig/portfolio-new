@@ -25,6 +25,7 @@ export interface Project {
 export interface ProjectRole {
   name: string;
   responsibilities?: string[];
+  link?: string;
 }
 
 export interface ParallaxImagesSection {
