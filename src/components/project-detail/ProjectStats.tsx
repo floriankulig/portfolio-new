@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Project, ProjectRole } from "ts/types";
 import { LinkButton } from "./LinkButton";
-import { ExternalLink, GitHub } from "react-feather";
+import { ExternalLink, GitHub, Link } from "react-feather";
 const Stats = styled.div`
   display: flex;
   flex-direction: column;
@@ -140,6 +140,28 @@ export const ProjectStats: React.FC<ProjectStatsProps> = ({ project }) => {
   );
 };
 
+const StyledRole = styled.li`
+  a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    &:hover {
+      text-decoration: underline;
+      svg {
+        stroke: var(--text2);
+      }
+    }
+    svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--text3);
+      stroke-width: 1.5;
+      transition: stroke linear 0.25s;
+    }
+  }
+`;
+
 type RolesProps = Required<Pick<Project, "roles">>;
 
 const Roles: React.FC<RolesProps> = ({ roles }) => {
@@ -157,11 +179,25 @@ const Roles: React.FC<RolesProps> = ({ roles }) => {
     <Stats>
       <span>{header}</span>
       <ul>
-        {roles.map((role, i) => (
-          <li key={`role-${i}-${role.name}`}>
-            {role.name + responsibilityDetails(role)}
-          </li>
-        ))}
+        {roles.map((role, i) => {
+          const roleBody = (
+            <>
+              {role.name + responsibilityDetails(role)}
+              {role.link && <Link />}
+            </>
+          );
+          return (
+            <StyledRole key={`role-${i}-${role.name}`}>
+              {!role.link ? (
+                roleBody
+              ) : (
+                <a href={role.link} target="_blank" rel="noopener noreferrer">
+                  {roleBody}
+                </a>
+              )}
+            </StyledRole>
+          );
+        })}
       </ul>
     </Stats>
   );
