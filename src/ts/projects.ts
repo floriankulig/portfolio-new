@@ -112,7 +112,7 @@ export const PROJECTS: Project[] = [
     projectBackground:
       "What began as a university course assignment to create a basic e-commerce platform evolved into an extensive web development project. <b>Working as a team of two</b>, we transformed the initial academic requirements into a fully-featured <b>online shop with a strong focus on user experience</b> and conversion optimization.",
     featureDescription:
-      "A retail shop for a fictional fashion brand with a focus on user experience and conversion optimization.",
+      "A fictional peer-to-peer retail shop with a focus on user experience and conversion optimization.",
     gradient: "linear-gradient(135deg, #A74B0A 0%, #DC9765 100%)",
     technologies: ["Angular", "Node", "SQLite", "Express"],
     keywords: ["Angular", "UX & Conversion"],
