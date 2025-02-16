@@ -190,7 +190,7 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
               src={"/" + image}
               alt={`Image showing a software preview of the project "${title}"`}
               fill
-              sizes="(max-width: 1200px) 95vw, 50vw"
+              sizes="(max-width: 1080px) 95vw, 50vw"
               priority
             />
           </motion.div>

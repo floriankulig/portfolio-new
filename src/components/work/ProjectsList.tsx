@@ -11,7 +11,10 @@ const StyledProjectsListSection = styled(motion.section)`
 
 const StyledProjectsList = styled(motion.ul)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
+  grid-template-columns: 1fr;
+  @media (${({ theme }) => theme.bp.medium}) {
+    grid-template-columns: 1fr 1fr;
+  }
   gap: 56px 24px;
 `;
 
