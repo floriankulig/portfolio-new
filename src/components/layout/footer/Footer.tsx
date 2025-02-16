@@ -7,12 +7,11 @@ import {
   InlineImageBubble,
   TransitionLink,
 } from "components/shared";
-import { motion, MotionProps, useScroll, useTransform } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import { theme } from "styles";
 import { LinkButton } from "components/project-detail/LinkButton";
 import { GitHub, Linkedin } from "react-feather";
 import { EMAIL, GITHUB, LINKEDIN } from "ts/content";
-import { useRef } from "react";
 
 const StyledFooter = styled(motion.footer)`
   --gap: clamp(3rem, 10vw, 5rem);
@@ -96,15 +95,9 @@ interface FooterProps extends MotionProps {}
 
 export const Footer: React.FC<FooterProps> = (props) => {
   const { asPath } = useRouter();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end end"],
-  });
-  const sectionY = useTransform(scrollYProgress, [0, 0.25], [100, 0]);
   return (
-    <StyledFooter ref={sectionRef} {...props}>
-      <StyledFooterContent className="main-col" style={{ y: sectionY }}>
+    <StyledFooter {...props}>
+      <StyledFooterContent className="main-col">
         <div className="cta-section">
           <h3 className="headline balanced with-bubble">
             Let&apos;s build
