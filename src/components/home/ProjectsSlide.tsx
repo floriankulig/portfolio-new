@@ -2,7 +2,6 @@ import { ArrowButton, TransitionLink } from "components/shared";
 import {
   MotionValue,
   motion,
-  useInView,
   useMotionValue,
   useMotionValueEvent,
   useScroll,

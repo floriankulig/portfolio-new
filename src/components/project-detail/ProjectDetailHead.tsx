@@ -11,8 +11,6 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { Project } from "ts/types";
 import { ProjectStats } from "./ProjectStats";
-import { rgba } from "polished";
-import { theme } from "styles";
 
 const StyledProjectDetailHeadSection = styled.section`
   display: flex;

@@ -100,7 +100,7 @@ const BGOverlay = styled.div`
         color: white;
         box-sizing: content-box;
         background: ${({ theme }) => rgba("#5c5a5a", 0.25)};
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px) saturate(140%);
         box-shadow: 0 0 32px ${rgba("#000", 0.15)},
           inset 0px 0px 8px ${rgba("#fff", 0.05)},
           inset 1px 2px 3px ${rgba("#fff", 0.1)},
