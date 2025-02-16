@@ -1,6 +1,4 @@
-import { ArrowButton, TransitionLink } from "components/shared";
 import {
-  MotionValue,
   motion,
   useMotionValue,
   useMotionValueEvent,
@@ -9,12 +7,13 @@ import {
   useTransform,
 } from "framer-motion";
 import { useViewport } from "hooks";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { SCROLL_SPRING } from "ts";
 import { FEATURED_PROJECTS } from "ts/content";
 import { SlidingProject } from "./SlidingProject";
 import { useOverlayContext } from "context/overlay-context";
+import { ProjectsCTA } from "./ProjectsCTA";
 
 const StickyProjectsSlideContainer = styled(motion.div)`
   position: relative;
@@ -121,63 +120,10 @@ export const ProjectsSlide = () => {
           />
         ))}
       </StickyProjectsSlide>
-      <ProjectsCTA scrollYProgress={dampedScrollY}></ProjectsCTA>
+      <ProjectsCTA
+        scrollYProgress={dampedScrollY}
+        range={[0.935, 1]}
+      ></ProjectsCTA>
     </StickyProjectsSlideContainer>
-  );
-};
-
-const StyledProjectsCTA = styled.div`
-  position: sticky;
-  top: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
-  flex-shrink: 0;
-  max-width: 400px;
-  pointer-events: none;
-  display: grid;
-  place-items: center;
-`;
-
-const StyledProjectsCTAContent = styled(motion.div)`
-  padding-bottom: 50px;
-  pointer-events: all;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  line-height: 1.5;
-  letter-spacing: -0.03em;
-  font-weight: 500;
-
-  h3 {
-    font-weight: inherit;
-    color: var(--text1);
-    font-size: 2rem;
-  }
-  p {
-    font-family: var(--jakarta);
-    color: var(--text3);
-    margin-bottom: 40px;
-  }
-`;
-
-interface ProjectsCTAProps {
-  scrollYProgress: MotionValue<number>;
-}
-const ProjectsCTA: React.FC<ProjectsCTAProps> = ({ scrollYProgress }) => {
-  const opacity = useTransform(scrollYProgress, [0.935, 1], [0, 1]);
-  const y = useTransform(scrollYProgress, [0.935, 1], [20, 0]);
-
-  return (
-    <StyledProjectsCTA>
-      <StyledProjectsCTAContent style={{ y, opacity }}>
-        <h3>Want more?</h3>
-        <p>that&lsquo;s not everything...</p>
-        <TransitionLink href="/work">
-          <ArrowButton>View Project Showcase</ArrowButton>
-        </TransitionLink>
-      </StyledProjectsCTAContent>
-    </StyledProjectsCTA>
   );
 };

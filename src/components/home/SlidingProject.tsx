@@ -13,19 +13,21 @@ import { memo, useMemo } from "react";
 import styled from "styled-components";
 import { FeaturedProject } from "ts/types";
 
-const StyledSlidingProject = styled(motion.div)`
+const StyledSlidingProject = styled(motion.div)<{ $vertical?: boolean }>`
   position: relative;
-  width: 90dvw;
-  height: 100%;
+  width: ${({ $vertical }) => ($vertical ? 100 : 90)}dvw;
+  height: ${({ $vertical }) => ($vertical ? "105vh" : "100%")};
   overflow: hidden;
-  display: flex;
-  justify-content: flex-start;
 `;
 
-const StyledBG = styled(motion.div)<{ $imageOverflow: number }>`
+interface StyledBGProps {
+  $imageOverflowX: number;
+  $imageOverflowY: number;
+}
+const StyledBG = styled(motion.div)<StyledBGProps>`
   position: relative;
-  min-width: calc(100% + ${(p) => p.$imageOverflow}px);
-  height: 100%;
+  min-width: calc(100% + ${(p) => p.$imageOverflowX}px);
+  height: calc(100% + ${(p) => p.$imageOverflowY}px);
   will-change: transform;
   backface-visibility: hidden;
   transform-style: preserve-3d;
@@ -54,7 +56,7 @@ const BGOverlay = styled.div`
   }
 
   h2 {
-    font-size: 4rem;
+    font-size: clamp(2.75rem, 10vw, 4rem);
     font-weight: 500;
     line-height: 1;
     padding-bottom: 0.2em;
@@ -74,7 +76,7 @@ const BGOverlay = styled.div`
 
     .description {
       font-family: var(--jakarta);
-      font-size: 1.5rem;
+      font-size: clamp(1.15rem, 4vw, 1.5rem);
       font-weight: 400;
       line-height: 1.3;
       max-width: 45ch;
@@ -92,14 +94,14 @@ const BGOverlay = styled.div`
       align-items: flex-end;
 
       span {
-        padding: 12px 32px;
+        font-size: clamp(0.875rem, 3vw, 1rem);
+        padding: 0.75em 2em;
         line-height: 1.5;
         border-radius: 99px;
-        font-size: 1rem;
         font-weight: 500;
         color: white;
         box-sizing: content-box;
-        background: ${({ theme }) => rgba("#5c5a5a", 0.25)};
+        background: ${rgba("#5c5a5a", 0.25)};
         backdrop-filter: blur(20px) saturate(140%);
         box-shadow: 0 0 32px ${rgba("#000", 0.15)},
           inset 0px 0px 8px ${rgba("#fff", 0.05)},
@@ -118,9 +120,11 @@ interface SlidingProjectProps {
   scrollProgress: MotionValue<number>;
   introAnimationRange: number[];
   endRange: number[];
+  inStack?: boolean;
 }
 
-const PROJECT_IMAGE_OVERFLOW = 200;
+const PROJECT_IMAGE_OVERFLOW_X = 200;
+const PROJECT_IMAGE_OVERFLOW_Y = 150;
 const PROJECT_IMAGE_OVERLAP = 0.25;
 export const PROJECT_INTRO_DISTANCE = 200;
 const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
@@ -130,14 +134,13 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
   scrollProgress,
   introAnimationRange,
   endRange,
+  inStack = false,
 }) => {
   const { viewport: windowDimensions } = useViewport();
   const {
-    id,
     title,
     featureImage: image,
     featureDescription: description,
-    technologies,
     keywords,
   } = project;
   const { slideRangeStart, imageSlideRange } = useMemo(() => {
@@ -154,11 +157,13 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
       ],
     };
   }, [introAnimationRange, images, index]);
-  const imageX = useTransform(scrollProgress, imageSlideRange, [
-    -PROJECT_IMAGE_OVERFLOW,
+  const imageParallax = useTransform(scrollProgress, imageSlideRange, [
+    -1 * (inStack ? PROJECT_IMAGE_OVERFLOW_Y : PROJECT_IMAGE_OVERFLOW_X),
     0,
   ]);
-  const projectIntroXInitial = (windowDimensions.viewPortWidth * (1 - 0.9)) / 2; // Project takes 90vw
+  const projectIntroXInitial = inStack
+    ? 0
+    : (windowDimensions.viewPortWidth * (1 - 0.9)) / 2; // Project takes 90vw
   const projectIntroX = useTransform(
     scrollProgress,
     introAnimationRange,
@@ -171,12 +176,12 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
     [PROJECT_INTRO_DISTANCE, 0],
     { ease: easeOut }
   );
-  const projectX = index === 0 ? projectIntroX : projectOthersX;
+  const projectX = index === 0 ? projectIntroX : inStack ? 0 : projectOthersX;
   const projectIntroY = useTransform(
     scrollProgress,
     [0, slideRangeStart - 0.075],
     [-PROJECT_INTRO_DISTANCE, 0],
-    { ease: easeInOut }
+    { ease: inStack ? easeInOut : easeInOut }
   );
   const projectY = index === 0 ? projectIntroY : 0;
   const projectIntroScale = useTransform(
@@ -199,15 +204,21 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
   return (
     <StyledSlidingProject
       style={{
-        x: projectX,
+        x: !inStack ? projectX : 0,
         y: projectY,
         scale: projectScale,
         borderRadius: slideBR,
       }}
+      $vertical={inStack}
     >
       <StyledBG
-        style={{ x: imageX, scale: imageScale }}
-        $imageOverflow={PROJECT_IMAGE_OVERFLOW}
+        style={{
+          x: inStack ? 0 : imageParallax,
+          y: inStack ? imageParallax : 0,
+          scale: imageScale,
+        }}
+        $imageOverflowX={inStack ? 0 : PROJECT_IMAGE_OVERFLOW_X}
+        $imageOverflowY={inStack ? PROJECT_IMAGE_OVERFLOW_Y : 0}
       >
         <Image
           src={"/" + image}

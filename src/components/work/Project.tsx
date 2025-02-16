@@ -43,7 +43,7 @@ const StyledProjectFeatureImageWrapper = styled(motion.div)`
     padding: calc(0.75 * var(--padding) - 2px);
     gap: calc(0.75 * var(--padding));
     border-radius: 99px;
-    backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px) saturate(140%);
     background: ${({ theme }) => rgba(theme.bg3, 0.1)};
     border: 1px solid ${({ theme }) => rgba(theme.bg3, 0.075)};
     bottom: var(--padding);
