@@ -1,5 +1,6 @@
 import {
   easeIn,
+  easeOut,
   motion,
   useMotionTemplate,
   useScroll,
@@ -116,6 +117,9 @@ const FeatureImageSection: React.FC<FeatureImageSectionProps> = ({
     target: sectionRef,
     offset: ["start 80%", "end 10%"],
   });
+  const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.05, 1], {
+    ease: [easeOut],
+  });
   const imageYPercent = useTransform(
     scrollYProgress,
     [0, 1],
@@ -130,7 +134,7 @@ const FeatureImageSection: React.FC<FeatureImageSectionProps> = ({
       <StyledFeatureImageContainer>
         <StyledFeatureImage
           $overlap={IMAGE_OVERLAP}
-          style={{ y: imageY, scale: 1 }}
+          style={{ y: imageY, scale: imageScale }}
         >
           <Image
             src={"/" + image}
