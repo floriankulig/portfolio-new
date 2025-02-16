@@ -226,7 +226,7 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
       parseFloat(latest.toFixed(2)) > animationTriggerThreshold && isLastWord
     );
   });
-  const y = useTransform(scrollProgress, wordFadeInRange, [100, 0]);
+  const y = useTransform(scrollProgress, wordFadeInRange, ["1.75em", "0em"]);
   const opacity = useTransform(scrollProgress, wordFadeInRange, [0, 1]);
   // Fade out animations
   const x = useTransform(scrollProgress, wordOutRange, [

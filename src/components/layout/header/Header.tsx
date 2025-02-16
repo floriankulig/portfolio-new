@@ -80,10 +80,10 @@ const MenuWrapper = styled(motion.button)`
 
 const headerVariants: Variants = {
   pageEntry: {
-    y: "-120%",
+    y: "-115%",
   },
   hidden: {
-    y: "-120%",
+    y: "-115%",
   },
   pageLoad: {
     y: "0%",
