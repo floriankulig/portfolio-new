@@ -73,6 +73,7 @@ const firstIconVariants: Variants = {
     scale: 0,
     x: -8,
     y: 8,
+    transformOrigin: "bottom left",
   },
   hovered: {
     scale: 1,
@@ -94,6 +95,7 @@ const secondIconVariants: Variants = {
     scale: 1,
     x: 0,
     y: 0,
+    transformOrigin: "top right",
   },
   hovered: {
     scale: 0,
