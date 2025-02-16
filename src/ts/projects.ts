@@ -151,7 +151,8 @@ export const PROJECTS: Project[] = [
     date: "Jan 2025",
     roles: [
       {
-        name: "Scientist Legende Dave",
+        name: "David Faiß",
+        link: "https://github.com/kivi280",
       },
       {
         name: "Florian Kulig",
