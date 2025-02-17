@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { motion } from "framer-motion";
+import { useOverlayContext } from "context/overlay-context";
 
 interface TransitionLinkProps {
   children: React.ReactNode;
@@ -14,7 +15,10 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
   onTap = () => {},
 }) => {
   const router = useRouter();
+  const { setBlockHeader } = useOverlayContext();
+
   const handleClick = () => {
+    setBlockHeader(true);
     router.push(href, undefined, { scroll: false });
     onTap();
   };

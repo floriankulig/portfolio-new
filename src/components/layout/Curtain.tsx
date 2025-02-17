@@ -2,6 +2,7 @@ import { theme } from "styles";
 import { motion, Variants, Transition } from "framer-motion";
 import styled from "styled-components";
 import { useEffect } from "react";
+import { useOverlayContext } from "context/overlay-context";
 
 export const StyledCurtainContainer = styled(motion.div)`
   position: fixed;
@@ -63,12 +64,14 @@ interface CurtainProps {
 }
 
 export const Curtain: React.FC<CurtainProps> = ({ noEnter, noExit }) => {
+  const { setBlockHeader } = useOverlayContext();
   useEffect(() => {
     document.documentElement.scrollTo({
       top: 0,
       behavior: "instant" as ScrollBehavior,
     });
-  }, []);
+    setBlockHeader(false);
+  }, [setBlockHeader]);
 
   const variants = noEnter
     ? { ...curtainVariants, pageEntry: { scaleX: 0 } }
