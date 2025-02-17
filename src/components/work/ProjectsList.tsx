@@ -5,7 +5,7 @@ import { Project } from "ts/types";
 import { Project as ProjectComponent } from "./Project";
 
 const StyledProjectsListSection = styled(motion.section)`
-  padding-bottom: 52px;
+  padding-bottom: 120px;
   padding-inline: 2.5vw;
 `;
 
