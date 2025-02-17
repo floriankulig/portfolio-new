@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useDevice, useMeasure } from "hooks";
+import { MOUSE_SPRING } from "ts";
 
 const StyledProjectsCategoryWrapper = styled(motion.div)`
   padding: clamp(4px, 1vw, 8px);
@@ -54,12 +55,6 @@ const StyledProjectsCategory = styled(motion.li)<StyledProjectsCategoryProps>`
     z-index: 0;
   }
 `;
-
-const MOUSE_SPRING = {
-  stiffness: 120,
-  damping: 15.5,
-  mass: 0.8,
-};
 
 const MOUSE_SIZE = 20;
 
