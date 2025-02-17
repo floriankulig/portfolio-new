@@ -1,3 +1,4 @@
+import { TransitionLink } from "components/shared";
 import {
   MotionValue,
   backIn,
@@ -202,40 +203,42 @@ const MemoSlidingProject: React.FC<SlidingProjectProps> = ({
   );
 
   return (
-    <StyledSlidingProject
-      style={{
-        x: !inStack ? projectX : 0,
-        y: projectY,
-        scale: projectScale,
-        borderRadius: slideBR,
-      }}
-      $vertical={inStack}
-    >
-      <StyledBG
+    <TransitionLink href={`/project/${project.id}`}>
+      <StyledSlidingProject
         style={{
-          x: inStack ? 0 : imageParallax,
-          y: inStack ? imageParallax : 0,
-          scale: imageScale,
+          x: !inStack ? projectX : 0,
+          y: projectY,
+          scale: projectScale,
+          borderRadius: slideBR,
         }}
-        $imageOverflowX={inStack ? 0 : PROJECT_IMAGE_OVERFLOW_X}
-        $imageOverflowY={inStack ? PROJECT_IMAGE_OVERFLOW_Y : 0}
+        $vertical={inStack}
       >
-        <Image
-          src={"/" + image}
-          alt={`Image showing a software preview of the project "${title}"`}
-          fill
-          sizes="100vw"
-          priority={index === 0}
-        />
-      </StyledBG>
-      <BGOverlay>
-        <h2>{title}</h2>
-        <div className="row">
-          <p className="description balanced">{description}</p>
-          <LocalTechList keywords={keywords} />
-        </div>
-      </BGOverlay>
-    </StyledSlidingProject>
+        <StyledBG
+          style={{
+            x: inStack ? 0 : imageParallax,
+            y: inStack ? imageParallax : 0,
+            scale: imageScale,
+          }}
+          $imageOverflowX={inStack ? 0 : PROJECT_IMAGE_OVERFLOW_X}
+          $imageOverflowY={inStack ? PROJECT_IMAGE_OVERFLOW_Y : 0}
+        >
+          <Image
+            src={"/" + image}
+            alt={`Image showing a software preview of the project "${title}"`}
+            fill
+            sizes="100vw"
+            priority={index === 0}
+          />
+        </StyledBG>
+        <BGOverlay>
+          <h2>{title}</h2>
+          <div className="row">
+            <p className="description balanced">{description}</p>
+            <LocalTechList keywords={keywords} />
+          </div>
+        </BGOverlay>
+      </StyledSlidingProject>
+    </TransitionLink>
   );
 };
 
