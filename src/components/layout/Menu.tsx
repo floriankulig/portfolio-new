@@ -1,12 +1,13 @@
 import { TransitionLink } from "components/shared";
 import { AnimatePresence, motion, Transition, Variants } from "framer-motion";
 import { rgba } from "polished";
-import { X } from "react-feather";
+import { GitHub, Linkedin, X } from "react-feather";
 import styled from "styled-components";
 import { theme } from "styles";
 import { LINKS } from "ts";
 import { TimeZoneInfo } from "./header/TimeZoneInfo";
 import { useViewport } from "hooks";
+import { GITHUB, LINKEDIN } from "ts/content";
 
 const StyledFullscreenMenu = styled(motion.div)`
   position: fixed;
@@ -31,6 +32,30 @@ const StyledFullscreenMenu = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  & > div {
+    width: 100%;
+  }
+  div.externals {
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1rem, 4vw, 1.125rem);
+    gap: 2em;
+    font-family: var(--jakarta);
+
+    a {
+      all: unset;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      color: var(--text2);
+      text-decoration: underline;
+      cursor: pointer;
+      opacity: 0.85;
+    }
   }
 `;
 
@@ -207,6 +232,28 @@ export const Menu: React.FC<MenuProps> = ({ open, setOpen, displayName }) => {
               ))}
             </LinkList>
           </div>
+          <motion.div
+            variants={{
+              hmanimate: {
+                transition: {
+                  delayChildren: 0.45,
+                },
+              },
+            }}
+          >
+            <motion.div
+              className="externals main-col"
+              variants={navLinkVariants}
+            >
+              <a href={GITHUB} target="_blank" rel="noopener noreferrer">
+                <GitHub size={20} strokeWidth={1.6} /> GitHub
+              </a>
+              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">
+                <Linkedin size={20} strokeWidth={1.35} />
+                LinkedIn
+              </a>
+            </motion.div>
+          </motion.div>
         </StyledFullscreenMenu>
       )}
     </AnimatePresence>
