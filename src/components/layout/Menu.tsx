@@ -90,10 +90,7 @@ const menuOverlayVariants: Variants = {
     opacity: 0,
     pointerEvents: "none",
     transition: {
-      opacity: {
-        delay: 0.1,
-        ease: "linear",
-      },
+      delay: 0.1,
     },
   },
 };
@@ -102,7 +99,7 @@ const linkListVariants: Variants = {
   hmanimate: {
     transition: {
       delayChildren: 0.25,
-      staggerChildren: 0.05,
+      staggerChildren: 0.03,
     },
   },
   hmexit: {
@@ -116,11 +113,13 @@ const linkListVariants: Variants = {
 const navLinkVariants: Variants = {
   hminitial: {
     opacity: 0,
+    filter: "blur(8px)",
     scale: 0.9,
     y: "-30%",
   },
   hmanimate: {
     opacity: 1,
+    filter: "blur(0px)",
     scale: 1,
     y: 0,
     transition: {
@@ -131,6 +130,10 @@ const navLinkVariants: Variants = {
       opacity: {
         ease: "linear",
         duration: 0.275,
+      },
+      filter: {
+        ease: "easeOut",
+        duration: 0.3,
       },
     },
   },
@@ -230,7 +233,7 @@ const StyledFullscreenNavLink = styled(motion.div)`
 
 const letterTransition: Transition = {
   ease: theme.easing,
-  duration: 0.6,
+  duration: 0.55,
 };
 
 const letterVariantsEnter: Variants = {
