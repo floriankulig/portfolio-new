@@ -91,6 +91,7 @@ const menuOverlayVariants: Variants = {
     pointerEvents: "none",
     transition: {
       delay: 0.1,
+      duration: 0.25,
     },
   },
 };
