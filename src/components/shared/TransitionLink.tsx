@@ -15,10 +15,8 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
   onTap = () => {},
 }) => {
   const router = useRouter();
-  const { setBlockHeader } = useOverlayContext();
 
   const handleClick = () => {
-    setBlockHeader(true);
     router.push(href, undefined, { scroll: false });
     onTap();
   };

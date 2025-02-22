@@ -64,14 +64,12 @@ interface CurtainProps {
 }
 
 export const Curtain: React.FC<CurtainProps> = ({ noEnter, noExit }) => {
-  const { setBlockHeader } = useOverlayContext();
   useEffect(() => {
     document.documentElement.scrollTo({
       top: 0,
       behavior: "instant" as ScrollBehavior,
     });
-    setBlockHeader(false);
-  }, [setBlockHeader]);
+  }, []);
 
   const variants = noEnter
     ? { ...curtainVariants, pageEntry: { scaleX: 0 } }
