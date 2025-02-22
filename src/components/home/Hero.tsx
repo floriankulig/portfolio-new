@@ -17,7 +17,7 @@ import styled from "styled-components";
 import { theme } from "styles";
 import { EMAIL, YEARS_OF_EXPERIENCE } from "ts/content";
 
-const StyledHeroSection = styled.section`
+const StyledHeroSection = styled(motion.section)`
   --alignment: left;
   --textColor: ${({ theme }) => lighten(0.3, theme.text2)};
   @media (min-width: 420px) {
@@ -56,6 +56,7 @@ const StyledHeroSection = styled.section`
     );
     background-clip: text;
     color: transparent;
+    /* color: var(--text1); */
 
     @media (max-width: 420px) {
       --circleX: 45%;
@@ -112,36 +113,38 @@ export const Hero = () => {
     setScrolled(latest > 0.025);
   });
   const mobileDescription = (
-    <p>
+    <>
       I&apos;m a Software Engineer with{" "}
       <b>{YEARS_OF_EXPERIENCE} years of experience.</b> While crafting intuitive
       user interfaces is my forte, my driving force is{" "}
       <b>creating solutions that deliver tangible value. </b>
-    </p>
+    </>
   );
   const description = (
-    <p>
+    <>
       Based in South-Germany, I&apos;m a Software Engineer with{" "}
       <b>{YEARS_OF_EXPERIENCE} years of hands-on development experience.</b>{" "}
       While crafting intuitive user interfaces is my forte, my driving force is{" "}
       <b>creating solutions that deliver tangible value </b>– whether it&apos;s
       streamlining workflows or enhancing user experiences.
-    </p>
+    </>
   );
   return (
     <StyledHeroSection className="main-col" ref={sectionRef}>
-      <TextAnimation />
+      <TextAnimation startDelay={2} />
       <h1>
         Creative <br /> Software Engineer
       </h1>
-      {isMobile ? mobileDescription : description}
+      <p>{isMobile ? mobileDescription : description}</p>
       <StyledButtons>
         <TransitionLink href="/work">
           <ArrowButton>View Projects</ArrowButton>
         </TransitionLink>
         <a href={`mailto:${EMAIL}?subject=Let's work together!`}>Reach out</a>
       </StyledButtons>
-      <AnimatePresence>{!scrolled && <ScrollingIndicator />}</AnimatePresence>
+      <AnimatePresence presenceAffectsLayout={false}>
+        {!scrolled && <ScrollingIndicator />}
+      </AnimatePresence>
     </StyledHeroSection>
   );
 };
@@ -196,8 +199,10 @@ const letterVariants: Variants = {
     },
   },
 };
-
-const TextAnimation = () => {
+interface TextAnimationProps {
+  startDelay?: number;
+}
+const TextAnimation: React.FC<TextAnimationProps> = ({ startDelay = 2 }) => {
   const sentences = [
     "Driving Experiences.",
     "Pushing Excellence.",
@@ -206,16 +211,20 @@ const TextAnimation = () => {
   const changeSeconds = 4.5;
   const time = useTime();
   const counter = useTransform(time, (latest) =>
-    Math.floor(latest / (1000 * changeSeconds))
+    latest - startDelay * 1000 < 0
+      ? -1
+      : Math.floor(
+          Math.max(0, latest - startDelay * 1000) / (1000 * changeSeconds)
+        )
   );
   useMotionValueEvent(counter, "change", (latest) => {
-    setSentence(sentences[latest % sentences.length]);
+    setSentence(latest === -1 ? " " : sentences[latest % sentences.length]);
   });
-  const [sentence, setSentence] = useState(sentences[0]);
+  const [sentence, setSentence] = useState(" ");
   const letters = sentence.split("");
   return (
     <StyledTextAnimation>
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="popLayout" presenceAffectsLayout>
         <motion.span
           key={sentence}
           initial="initial"
@@ -285,6 +294,7 @@ const indicatorVariants: Variants = {
     transition: {
       ease: theme.easing,
       duration: 0.45,
+      delay: 3,
       delayChildren: 0.4,
     },
   },
@@ -292,7 +302,7 @@ const indicatorVariants: Variants = {
     scale: 0,
     originY: "top",
     transition: {
-      delay: 0.15,
+      delay: 0.05,
       ease: theme.easing,
       duration: 0.35,
     },
@@ -350,8 +360,8 @@ const transitionVariants: Variants = {
     scale: 0,
   },
 };
-
-const ScrollingIndicator: React.FC = () => {
+interface ScrollIndicatorProps {}
+const ScrollingIndicator: React.FC<ScrollIndicatorProps> = () => {
   const Arrow = <ArrowDown size={32} strokeWidth={1.25} strokeLinecap="butt" />;
 
   return (
