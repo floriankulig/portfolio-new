@@ -202,7 +202,7 @@ const letterVariants: Variants = {
 interface TextAnimationProps {
   startDelay?: number;
 }
-const TextAnimation: React.FC<TextAnimationProps> = ({ startDelay = 2 }) => {
+const TextAnimation: React.FC<TextAnimationProps> = ({ startDelay = 1 }) => {
   const sentences = [
     "Driving Experiences.",
     "Pushing Excellence.",
