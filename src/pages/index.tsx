@@ -5,6 +5,7 @@ import {
   ProjectsSlide,
   ThinkDifferent,
   ProjectsStack,
+  Approach,
 } from "components/home";
 import { Curtain } from "components/layout/Curtain";
 import { Footer } from "components/layout/footer/Footer";
@@ -24,6 +25,7 @@ const Home = () => {
       ) : (
         <ProjectsSlide />
       )}
+      <Approach />
       <Banner />
       <ThinkDifferent />
       <Footer />
