@@ -41,6 +41,7 @@ const StyledApproachSectionRight = styled.div`
     letter-spacing: -0.01em;
 
     b {
+      font-weight: 500;
       color: var(--text2);
     }
   }
