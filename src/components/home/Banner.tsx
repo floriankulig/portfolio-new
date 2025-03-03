@@ -19,7 +19,7 @@ const StyledBannerSection = styled.section`
   flex-direction: column;
   background: var(--bg2);
 `;
-const MIN_SCROLL_SPEED = 2.5;
+const MIN_SCROLL_SPEED = 3;
 export const Banner: React.FC = () => {
   const [direction, setDirection] = useState(1);
   const { scrollY } = useScroll();
@@ -81,7 +81,7 @@ const BannerText: React.FC<BannerTextProps> = ({ text, direction }) => {
         direction *
           Math.max(
             MIN_SCROLL_SPEED,
-            Math.min(Math.abs(scrollVelocity.get()), 1250) / 125
+            Math.min(Math.abs(scrollVelocity.get()), 1250) / 100
           )
     );
   });
