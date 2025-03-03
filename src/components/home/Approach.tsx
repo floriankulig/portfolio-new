@@ -1,3 +1,5 @@
+import { TextGradientOnView } from "components/shared";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 const StyledApproachSection = styled.section`
@@ -42,7 +44,7 @@ const StyledApproachSectionRight = styled.div`
 
     b {
       font-weight: 500;
-      color: var(--text2);
+      /* color: var(--text2); */
     }
   }
   @media (max-width: 960px) {
@@ -62,11 +64,18 @@ export const Approach = () => {
         <p>
           As a frontend developer, I always prioritize user experience and
           usabilty. I strive for a{" "}
-          <b>modular, well-tested, and easily maintainable</b> codebase using
-          contemporary frameworks like React.{" "}
-          <b>Responsive design and accessibility</b> are the bare minimum for
-          me. Extensive testing and project reviews enable me to always ship{" "}
-          <b>the best possible product.</b>
+          <TextGradientOnView delay={0.25}>
+            modular, well-tested, and easily maintainable
+          </TextGradientOnView>{" "}
+          codebase using contemporary frameworks like React.{" "}
+          <TextGradientOnView delay={0.5}>
+            Responsive design and accessibility
+          </TextGradientOnView>{" "}
+          are the bare minimum for me. Extensive testing and project reviews
+          enable me to always ship{" "}
+          <TextGradientOnView delay={0.75}>
+            the best possible product.
+          </TextGradientOnView>
         </p>
       </StyledApproachSectionRight>
     </StyledApproachSection>

@@ -8,5 +8,6 @@ export { ExternalButton } from "./ExternalButton";
 export { CopyToClipboard } from "./CopyToClipboard";
 export { Snackbar } from "./Snackbar";
 export { AnimatedLetters } from "./AnimatedText";
+export { TextGradientOnView } from "./TextGradientOnView";
 export { InlineImageBubble } from "./InlineImageBubble";
 export { Underline, ContactCircle } from "./Shapes";
