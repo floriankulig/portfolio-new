@@ -1,3 +1,4 @@
+import { once } from "events";
 import { motion, Variants } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
@@ -45,6 +46,7 @@ export const TextGradientOnView: React.FC<TextGradientOnViewProps> = ({
       animate="tg-start"
       whileInView="tg-end"
       variants={textGradientVariants}
+      viewport={{ once: true }}
       custom={{ gradientColor, delay }}
     >
       {children}
