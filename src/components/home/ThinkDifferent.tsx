@@ -18,6 +18,7 @@ import { theme } from "styles";
 const StyledThinkDifferentSection = styled(motion.section)`
   display: flex;
   align-items: center;
+  padding-bottom: 25vh;
 `;
 const StyledThinkDifferentAnimation = styled.div`
   height: 500vh;
@@ -156,7 +157,7 @@ const WordAnimation: React.FC<WordAnimationProps> = ({
   // subtract half of the last word width to center the last word
   const xWordWidth = useTransform(scrollProgress, [0.55, 0.85], [0, 0.5]);
   const x = useMotionTemplate`calc(${xProgress}% + ${xWordWidth}em)`;
-  const y = useTransform(scrollProgress, [0.85, 1], ["0vh", "10vh"]);
+  const y = useTransform(scrollProgress, [0.85, 1], ["0vh", "15vh"]);
 
   return (
     <motion.span style={{ x, y }}>
