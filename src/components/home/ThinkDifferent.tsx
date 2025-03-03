@@ -264,7 +264,7 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
 const StyledLastWordAnimation = styled(motion.div)`
   border: 0.035em solid var(--text1);
   transform-origin: 0 50%;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(0.05em);
   position: absolute;
   border-radius: 0.075em;
 
