@@ -8,8 +8,9 @@ import {
   useTransform,
   Variants,
 } from "framer-motion";
+import { useViewport } from "hooks";
 import { darken, lighten } from "polished";
-import { use, useRef } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
 import { EMAIL } from "ts/content";
@@ -43,7 +44,10 @@ const StyledEmailMockup = styled(motion.div)`
   z-index: 1;
   width: 100%;
   min-height: 100vh;
-  padding-block: max(10vh, clamp(80px, 10vw, 120px));
+  padding-block: 10vh;
+  @media (${({ theme }) => theme.bp.medium}) {
+    padding-block: max(10vh, clamp(80px, 10vw, 120px));
+  }
   background: var(--bg1);
   background: linear-gradient(
     178deg,
@@ -126,6 +130,7 @@ const textVariants: Variants = {
 const mockupTransformRange = [0, 0.6];
 export const ContactIntro = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const { isMobile } = useViewport();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
@@ -138,7 +143,7 @@ export const ContactIntro = () => {
   const mockupScale = useTransform(
     sprungScrollY,
     mockupTransformRange,
-    [1, 0.7],
+    [1, isMobile ? 0.9 : 0.7],
     { ease: easeInOut }
   );
   const mockupY = useTransform(
@@ -150,7 +155,7 @@ export const ContactIntro = () => {
   const mockupBorderRadius = useTransform(
     sprungScrollY,
     mockupTransformRange,
-    ["0", "2em"],
+    ["0", isMobile ? "1.25em" : "2em"],
     { ease: easeInOut }
   );
 
