@@ -2,13 +2,14 @@ import {
   easeInOut,
   easeOut,
   motion,
+  useMotionTemplate,
   useScroll,
   useSpring,
   useTransform,
   Variants,
 } from "framer-motion";
 import { darken, lighten } from "polished";
-import { useRef } from "react";
+import { use, useRef } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
 import { EMAIL } from "ts/content";
@@ -31,7 +32,7 @@ const Heading = styled(motion.h3)`
   left: 0;
   text-align: center;
   color: var(--bg1);
-  font-size: clamp(1.5rem, 8vw, 3.5rem);
+  font-size: clamp(1.5rem, 8vw, 5rem);
   padding-block-start: 15vh;
 `;
 
@@ -122,7 +123,7 @@ const textVariants: Variants = {
   },
 };
 
-const mockupTransformRange = [0, 0.5];
+const mockupTransformRange = [0, 0.6];
 export const ContactIntro = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -156,6 +157,15 @@ export const ContactIntro = () => {
   const headingY = useTransform(scrollYProgress, [0.7, 1], ["0%", "60%"]);
   const headingOpacity = useTransform(scrollYProgress, [0.7, 1], [1, 0.5]);
 
+  const shadowColorOpacity = useTransform(
+    scrollYProgress,
+    [0.2, 0.3],
+    [0, 0.9]
+  );
+  const shadow = useMotionTemplate`
+    0 0 max(8vw, 80px) rgba(0, 0, 0, ${shadowColorOpacity})
+  `;
+
   return (
     <StyledContactIntroSection ref={sectionRef}>
       <StyledContactIntroSectionAnimation>
@@ -164,6 +174,7 @@ export const ContactIntro = () => {
           style={{
             scale: mockupScale,
             y: mockupY,
+            boxShadow: shadow,
             borderRadius: mockupBorderRadius,
           }}
         >
