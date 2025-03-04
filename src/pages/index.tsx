@@ -7,6 +7,7 @@ import {
   ProjectsStack,
   Approach,
 } from "components/home";
+import { ContactIntro } from "components/home/ContactIntro";
 import { Curtain } from "components/layout/Curtain";
 import { Footer } from "components/layout/footer/Footer";
 import { Header } from "components/layout/header";
@@ -28,6 +29,7 @@ const Home = () => {
       <Approach />
       <Banner />
       <ThinkDifferent />
+      <ContactIntro />
       <Footer />
     </>
   );
