@@ -19,6 +19,7 @@ const StyledThinkDifferentSection = styled(motion.section)`
   display: flex;
   align-items: center;
   padding-bottom: 25vh;
+  background: var(--bg2);
 `;
 const StyledThinkDifferentAnimation = styled.div`
   height: 500vh;
@@ -68,7 +69,7 @@ export const ThinkDifferent: React.FC = () => {
   return (
     <StyledThinkDifferentSection
       ref={sectionRef}
-      style={{ backgroundColor: sectionBackground }}
+      // style={{ backgroundColor: sectionBackground }}
     >
       <StyledThinkDifferentAnimation>
         <StyledThinkDifferentAnimationContent>
