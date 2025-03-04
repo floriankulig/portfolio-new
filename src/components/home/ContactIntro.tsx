@@ -7,7 +7,7 @@ import {
   useTransform,
   Variants,
 } from "framer-motion";
-import { darken } from "polished";
+import { darken, lighten } from "polished";
 import { useRef } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
@@ -44,7 +44,11 @@ const StyledEmailMockup = styled(motion.div)`
   min-height: 100vh;
   padding-block: max(10vh, clamp(80px, 10vw, 120px));
   background: var(--bg1);
-  background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+  background: linear-gradient(
+    178deg,
+    ${({ theme }) => theme.bg1} 0% ${({ theme }) => lighten(0.05, theme.bg1)}
+      100%
+  );
   display: flex;
   flex-direction: column;
   gap: clamp(1.5rem, 5dvw, 2.5rem);
