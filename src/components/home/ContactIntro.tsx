@@ -127,7 +127,7 @@ const textVariants: Variants = {
   },
 };
 
-const mockupTransformRange = [0, 0.6];
+const mockupTransformRange = [0, 0.7];
 export const ContactIntro = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { isMobile } = useViewport();
