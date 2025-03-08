@@ -103,6 +103,15 @@ const TextMock = styled(motion.div)<{ $margTop?: boolean; $width: string }>`
   margin-top: ${(p) => p.$margTop && "calc(1.25rem/1.618)"};
 `;
 
+const emailMockupVariants: Variants = {
+  inView: {
+    transition: {
+      delayChildren: 0.1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
 const textBoxVariants: Variants = {
   initial: {
     scaleX: 0,
@@ -182,6 +191,9 @@ export const ContactIntro = () => {
             boxShadow: shadow,
             borderRadius: mockupBorderRadius,
           }}
+          initial="initial"
+          whileInView="inView"
+          variants={emailMockupVariants}
         >
           <motion.div variants={textBoxVariants} className="textBox">
             <motion.p variants={textVariants}>{EMAIL}</motion.p>
