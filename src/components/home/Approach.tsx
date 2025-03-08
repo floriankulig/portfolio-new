@@ -64,18 +64,16 @@ export const Approach = () => {
         <p>
           As a frontend developer, I always prioritize user experience and
           usabilty. I strive for a{" "}
-          <TextGradientOnView delay={0}>
+          <TextGradientOnView>
             modular, well-tested, and easily maintainable
           </TextGradientOnView>{" "}
           codebase using contemporary frameworks like React.{" "}
-          <TextGradientOnView delay={0.25}>
+          <TextGradientOnView>
             Responsive design and accessibility
           </TextGradientOnView>{" "}
           are the bare minimum for me. Extensive testing and project reviews
           enable me to always ship{" "}
-          <TextGradientOnView delay={0.5}>
-            the best possible product.
-          </TextGradientOnView>
+          <TextGradientOnView>the best possible product.</TextGradientOnView>
         </p>
       </StyledApproachSectionRight>
     </StyledApproachSection>

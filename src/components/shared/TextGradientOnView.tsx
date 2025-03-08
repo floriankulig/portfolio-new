@@ -19,8 +19,8 @@ const textGradientVariants: Variants = {
   "tg-end": ({ gradientColor, delay }) => ({
     backgroundImage: `linear-gradient(90deg, ${gradientColor} 100%, transparent 100%)`,
     transition: {
-      duration: 0.75,
-      delay: 0.25 + delay,
+      duration: 0.6,
+      delay: 0.15 + delay,
       ease: theme.easing,
     },
   }),
