@@ -87,12 +87,6 @@ const BannerText: React.FC<BannerTextProps> = ({ text, direction }) => {
   });
 
   const ref = useRef<HTMLDivElement>(null);
-  const singleText = (
-    <StyledBannerSingleText ref={ref}>
-      {text}
-      <span className="divider">-</span>
-    </StyledBannerSingleText>
-  );
 
   useEffect(() => {
     if (!ref.current) return;
@@ -103,7 +97,10 @@ const BannerText: React.FC<BannerTextProps> = ({ text, direction }) => {
   return (
     <StyledBannerText style={{ x: textX }}>
       {Array.from({ length: 8 }).map((_, i) => (
-        <React.Fragment key={i}>{singleText}</React.Fragment>
+        <StyledBannerSingleText key={i} ref={i === 0 ? ref : undefined}>
+          {text}
+          <span className="divider">-</span>
+        </StyledBannerSingleText>
       ))}
     </StyledBannerText>
   );
