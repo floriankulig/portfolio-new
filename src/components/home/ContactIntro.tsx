@@ -192,6 +192,7 @@ export const ContactIntro = () => {
             borderRadius: mockupBorderRadius,
           }}
           initial="initial"
+          animate="initial"
           whileInView="inView"
           variants={emailMockupVariants}
         >
