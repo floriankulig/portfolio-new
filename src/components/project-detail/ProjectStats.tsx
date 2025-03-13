@@ -83,6 +83,7 @@ export const ProjectStats: React.FC<ProjectStatsProps> = ({ project }) => {
     services,
     roles,
     gradient,
+    clientLink,
   } = project;
   const dateSection = (
     <Stats>
@@ -97,14 +98,7 @@ export const ProjectStats: React.FC<ProjectStatsProps> = ({ project }) => {
     <StyledProjectStatsSection>
       <div className="left">
         {dateFirst && dateSection}
-        {client && (
-          <Stats>
-            <span>Client</span>
-            <ul>
-              <li>{client}</li>
-            </ul>
-          </Stats>
-        )}
+        {client && <Client client={client} clientLink={clientLink} />}
         <Stats className="technologies">
           <span>Technologies</span>
           <ul>
@@ -140,7 +134,7 @@ export const ProjectStats: React.FC<ProjectStatsProps> = ({ project }) => {
   );
 };
 
-const StyledRole = styled.li`
+const StyledLinkedStat = styled.li`
   a {
     display: flex;
     align-items: center;
@@ -157,10 +151,38 @@ const StyledRole = styled.li`
       height: 16px;
       stroke: var(--text3);
       stroke-width: 1.5;
-      transition: stroke linear 0.25s;
+      transition: stroke linear 0.2s;
     }
   }
 `;
+
+const Client: React.FC<Pick<Project, "client" | "clientLink">> = ({
+  client,
+  clientLink,
+}) => {
+  const clientBody = (
+    <>
+      {client}
+      {clientLink && <Link />}
+    </>
+  );
+  return (
+    <Stats>
+      <span>Client</span>
+      <ul>
+        <StyledLinkedStat>
+          {!clientLink ? (
+            clientBody
+          ) : (
+            <a href={clientLink} target="_blank" rel="noopener noreferrer">
+              {clientBody}
+            </a>
+          )}
+        </StyledLinkedStat>
+      </ul>
+    </Stats>
+  );
+};
 
 type RolesProps = Required<Pick<Project, "roles">>;
 
@@ -187,7 +209,7 @@ const Roles: React.FC<RolesProps> = ({ roles }) => {
             </>
           );
           return (
-            <StyledRole key={`role-${i}-${role.name}`}>
+            <StyledLinkedStat key={`role-${i}-${role.name}`}>
               {!role.link ? (
                 roleBody
               ) : (
@@ -195,7 +217,7 @@ const Roles: React.FC<RolesProps> = ({ roles }) => {
                   {roleBody}
                 </a>
               )}
-            </StyledRole>
+            </StyledLinkedStat>
           );
         })}
       </ul>

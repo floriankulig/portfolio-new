@@ -13,6 +13,7 @@ export interface Project {
   github?: string;
   categories: Array<(typeof PROJECT_CATEGORIES)[number]["id"]>;
   client?: string;
+  clientLink?: string;
   services?: string[];
   date: string;
   roles?: ProjectRole[];

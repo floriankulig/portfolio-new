@@ -44,6 +44,7 @@ export const PROJECTS: Project[] = [
     keywords: ["React", "Firebase"],
     date: "June 2023",
     client: "Zolnhofer",
+    clientLink: "https://www.zolnhofer.de/start.html",
     services: ["Concept", "Design", "Development"],
     sections: {
       parallaxImages: {
