@@ -170,6 +170,10 @@ export const ContactIntro = () => {
 
   const headingY = useTransform(scrollYProgress, [0.7, 1], ["0%", "60%"]);
   const headingOpacity = useTransform(scrollYProgress, [0.7, 1], [1, 0.5]);
+  const headingBlur = useTransform(scrollYProgress, [0.8, 1], ["0px", "8px"]);
+  const headingFilter = useMotionTemplate`
+    blur(${headingBlur})
+  `;
 
   const shadowColorOpacity = useTransform(
     scrollYProgress,
@@ -229,7 +233,13 @@ export const ContactIntro = () => {
             </Text>
           </motion.div>
         </StyledEmailMockup>
-        <Heading style={{ y: headingY, opacity: headingOpacity }}>
+        <Heading
+          style={{
+            y: headingY,
+            opacity: headingOpacity,
+            filter: headingFilter,
+          }}
+        >
           Convincing?
         </Heading>
       </StyledContactIntroSectionAnimation>
