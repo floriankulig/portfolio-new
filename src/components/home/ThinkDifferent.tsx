@@ -57,7 +57,7 @@ export const ThinkDifferent: React.FC = () => {
   });
   const partOneSection = [0, 0.25];
   const partOneProgress = useTransform(scrollYProgress, partOneSection, [0, 1]);
-  const partTwoSection = [0.25, 0.95];
+  const partTwoSection = [0.25, 0.875];
   const partTwoProgress = useTransform(scrollYProgress, partTwoSection, [0, 1]);
 
   const sectionBackground = useTransform(
