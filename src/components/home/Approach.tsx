@@ -1,9 +1,8 @@
 import { TextGradientOnView } from "components/shared";
-import { motion } from "framer-motion";
 import styled from "styled-components";
 
 const StyledApproachSection = styled.section`
-  padding-block: 30vh;
+  padding-block: 40vh;
   background: var(--bg2);
   padding-inline: 2.5vw;
   display: flex;
