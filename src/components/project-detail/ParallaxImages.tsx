@@ -30,7 +30,7 @@ const BGImageWrapper = styled(motion.div)<{ $overlap: number }>`
 
 const MainImage = styled(motion.div)`
   position: relative;
-  box-shadow: 0 0 32px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.15), 0 0 5em rgba(0, 0, 0, 0.05);
 `;
 
 interface ParallaxImagesProps {
@@ -67,7 +67,7 @@ export const ParallaxImages: React.FC<ParallaxImagesProps> = ({
         />
       </BGImageWrapper>
       <MainImage>
-        <BlurAround size={5}>
+        <BlurAround size={5} blur={false}>
           <Image
             src={`/${mainImage}`}
             alt={`${projectName}'s Main Image`}
