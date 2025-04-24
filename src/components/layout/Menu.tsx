@@ -22,9 +22,11 @@ const StyledFullscreenMenu = styled(motion.div)`
   will-change: transform;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding-block: clamp(1.5rem, 4vh, 2.5rem);
+  scrollbar-gutter: stable both-edges;
 
-  & > div.content {
+  scroll & > div.content {
     position: relative;
     width: 100%;
     height: 100%;
