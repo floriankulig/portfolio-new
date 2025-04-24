@@ -240,7 +240,7 @@ export const ContactIntro = () => {
             filter: headingFilter,
           }}
         >
-          Convincing?
+          Convinced?
         </Heading>
       </StyledContactIntroSectionAnimation>
     </StyledContactIntroSection>
