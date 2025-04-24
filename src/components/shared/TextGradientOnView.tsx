@@ -4,9 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "styles";
 
-const StyledTextGradientOnView = styled(motion.b)<
-  Pick<TextGradientOnViewProps, "baseColor" | "gradientColor">
->`
+const StyledTextGradientOnView = styled(motion.b)<{ $baseColor: string }>`
   background-clip: text;
   background-color: ${({ baseColor }) => baseColor};
   color: transparent;

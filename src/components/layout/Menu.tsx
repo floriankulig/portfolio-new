@@ -8,6 +8,7 @@ import { LINKS } from "ts";
 import { TimeZoneInfo } from "./header/TimeZoneInfo";
 import { useViewport } from "hooks";
 import { GITHUB, LINKEDIN } from "ts/content";
+import { useRouter } from "next/router";
 
 const StyledFullscreenMenu = styled(motion.div)`
   position: fixed;
@@ -188,6 +189,8 @@ export const Menu: React.FC<MenuProps> = ({ open, setOpen, displayName }) => {
   const {
     viewport: { viewPortWidth },
   } = useViewport();
+  const { asPath: routeName } = useRouter();
+
   return (
     <AnimatePresence>
       {open && (
@@ -199,7 +202,7 @@ export const Menu: React.FC<MenuProps> = ({ open, setOpen, displayName }) => {
         >
           <MenuHeader className="main-col">
             <motion.h3
-              layoutId="hm-name"
+              layoutId={`${routeName}-hm-name`}
               className="name"
               layoutDependency={open}
             >
@@ -211,7 +214,7 @@ export const Menu: React.FC<MenuProps> = ({ open, setOpen, displayName }) => {
                 displayFullCounty={420 < viewPortWidth}
               />
               <CloseMenuButton
-                layoutId="hm-menu"
+                layoutId={`${routeName}-hm-menu`}
                 layoutDependency={open}
                 animate
                 whileTap={{ scale: 0.9 }}

@@ -2,6 +2,7 @@ import { memo, use, useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { formatTimeForGermany } from "helpers";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 const StyledMeta = styled.div`
   color: var(--text3);
@@ -27,6 +28,8 @@ export const TimeZoneInfo: React.FC<TimeZoneInfoProps> = ({
   displayCounty,
   layoutDependency,
 }) => {
+  const { asPath: routeName } = useRouter();
+
   const [timeData, setTimeData] = useState(() => {
     const initialDate = new Date();
     const formattedTime = formatTimeForGermany(initialDate);
@@ -71,13 +74,13 @@ export const TimeZoneInfo: React.FC<TimeZoneInfoProps> = ({
     <StyledMeta className="timezone-meta">
       <motion.span
         layoutDependency={layoutDependency}
-        layoutId="timezone-location"
+        layoutId={`${routeName}-timezone-location`}
       >
         {location}
       </motion.span>
       <motion.span
         layoutDependency={layoutDependency}
-        layoutId="timezone-time"
+        layoutId={`${routeName}-timezone-time`}
         className="time"
       >
         {timeData.hours}
@@ -86,7 +89,7 @@ export const TimeZoneInfo: React.FC<TimeZoneInfoProps> = ({
       </motion.span>{" "}
       <motion.span
         layoutDependency={layoutDependency}
-        layoutId="timezone-meridiem"
+        layoutId={`${routeName}-timezone-meridiem`}
       >
         {timeData.meridiem}
       </motion.span>

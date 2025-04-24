@@ -21,6 +21,7 @@ import { theme } from "styles";
 import { useOverlayContext } from "context/overlay-context";
 import { Menu } from "react-feather";
 import { TransitionLink } from "components/shared";
+import { useRouter } from "next/router";
 
 const SHOW_LINKS_WIDTH = 600;
 
@@ -98,6 +99,8 @@ export const Header: React.FC = () => {
     isMobile,
     viewport: { viewPortWidth },
   } = useViewport(721);
+  const { asPath: routeName } = useRouter();
+
   const name = isMobile ? "FK" : "Florian Kulig";
 
   const { blockHeader } = useOverlayContext();
@@ -156,7 +159,7 @@ export const Header: React.FC = () => {
       >
         <motion.div
           className="name"
-          layoutId="hm-name"
+          layoutId={`${routeName}-hm-name`}
           layoutDependency={menuOpen}
         >
           <TransitionLink href="/">{name}</TransitionLink>
@@ -195,7 +198,7 @@ export const Header: React.FC = () => {
                 whileTap={{ scale: 0.925 }}
                 onTap={() => onOpenMenu()}
                 layoutDependency={menuOpen}
-                layoutId="hm-menu"
+                layoutId={`${routeName}-hm-menu`}
                 layoutScroll
               >
                 <Menu />
