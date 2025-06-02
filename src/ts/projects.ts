@@ -69,12 +69,12 @@ export const PROJECTS: Project[] = [
     roles: [
       {
         name: "Noel Mayr",
-        responsibilities: ["Backend"],
+        // responsibilities: ["Backend"],
         link: "https://github.com/Nollknolle",
       },
       {
         name: "Florian Kulig",
-        responsibilities: ["Frontend", "Design"],
+        // responsibilities: ["Frontend", "Design"],
       },
     ],
     externalLink: "https://testiply.vercel.app",
