@@ -61,8 +61,8 @@ export const Approach = () => {
       <StyledApproachSectionRight>
         <div></div>
         <p>
-          As a frontend developer, I always prioritize user experience and
-          usabilty. I strive for a{" "}
+          As a software engineer, I always prioritize user experience and
+          usability. I strive for a{" "}
           <TextGradientOnView>
             modular, well-tested, and easily maintainable
           </TextGradientOnView>{" "}
