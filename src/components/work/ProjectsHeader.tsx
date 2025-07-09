@@ -15,9 +15,15 @@ const StyledProjectsHeader = styled.header`
     letter-spacing: -0.055em;
     line-height: 1;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: 0.2em;
     margin-bottom: 0.3em;
+    & > img {
+      height: 1em;
+      /* aspect-ratio: 1; */
+    }
+
     & > span {
       display: flex;
       gap: 0.2em;
@@ -72,7 +78,8 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({
   return (
     <StyledProjectsHeader className="main-col">
       <h1>
-        👨🏽‍💻 Projects.{" "}
+        <img src="working_mac.png" alt="Emoji working on mac." />
+        Projects.{" "}
         <span>
           <WordExchange withAnimatePresence>{secondaryText}</WordExchange>
         </span>
