@@ -10,12 +10,7 @@ export const PROJECTS: Project[] = [
     featureDescription:
       "An AI-powered driver CoPilot that improves decision-making for efficient and economic driving.",
     gradient: "linear-gradient(135deg, #A8EDEA 0%, #FED6E3 100%)",
-    technologies: [
-      "Python",
-      "PyTorch",
-      "Computer Vision",
-      "OBD-II Diagnostics",
-    ],
+    technologies: ["Python", "PyTorch", "Deep Learning", "Computer Vision"],
     categories: ["data", "development"],
     keywords: ["In-Car Use", "Deep Learning"],
     date: "Oct 2024 - Jul 2025",
@@ -27,6 +22,8 @@ export const PROJECTS: Project[] = [
       },
     },
     github: "https://github.com/floriankulig/neural-navi",
+    externalLink:
+      "https://github.com/floriankulig/neural-navi/raw/refs/heads/master/paper_dhbw.pdf",
     stillDeveloping: true,
   },
   {

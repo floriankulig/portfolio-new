@@ -61,6 +61,7 @@ interface LinkButtonProps {
   disabled?: boolean;
   children: React.ReactNode;
   icon?: React.ReactNode;
+  sameSite?: boolean;
 }
 
 const transition: Transition = {
@@ -112,6 +113,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
   disabled,
   children,
   icon,
+  sameSite = false,
 }) => {
   const variantDefinitions = {
     whileTap: "pressed",
@@ -125,7 +127,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
       $color={disabled ? rgba(theme.text3, 0.25) : color}
       $textColor={disabled ? rgba(theme.bg3, 0.25) : textColor}
       href={!disabled ? link : undefined}
-      target="_blank"
+      target={sameSite ? "_self" : "_blank"}
       rel="noopener noreferrer"
       {...appliedVariants}
       style={{ pointerEvents: disabled ? "none" : "auto" }}

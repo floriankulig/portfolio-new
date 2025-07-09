@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Project, ProjectRole } from "ts/types";
 import { LinkButton } from "./LinkButton";
-import { ExternalLink, GitHub, Link } from "react-feather";
+import { ExternalLink, FileText, GitHub, Link } from "react-feather";
 const Stats = styled.div`
   display: flex;
   flex-direction: column;
@@ -227,6 +227,7 @@ const Roles: React.FC<RolesProps> = ({ roles }) => {
 
 const GitHubIcon = <GitHub />;
 const ExternalIcon = <ExternalLink />;
+const FileTextIcon = <FileText />;
 
 type ProjectLinksProps = Pick<Project, "github" | "externalLink" | "gradient">;
 
@@ -235,6 +236,11 @@ const ProjectLinks: React.FC<ProjectLinksProps> = ({
   externalLink,
   gradient,
 }) => {
+  const externalIsFile =
+    externalLink?.endsWith(".pdf") || externalLink?.endsWith(".docx");
+  const externalLinkIcon = externalIsFile ? FileTextIcon : ExternalIcon;
+  const externalLinkText = externalIsFile ? "Paper" : "Visit Site";
+  const externalLinkColor = externalIsFile ? "#F40F02" : gradient;
   return (
     <ul className="links">
       {github && (
@@ -246,8 +252,13 @@ const ProjectLinks: React.FC<ProjectLinksProps> = ({
       )}
       {externalLink && (
         <li>
-          <LinkButton link={externalLink} color={gradient} icon={ExternalIcon}>
-            Visit Site
+          <LinkButton
+            link={externalLink}
+            color={externalLinkColor}
+            icon={externalLinkIcon}
+            sameSite={externalIsFile}
+          >
+            {externalLinkText}
           </LinkButton>
         </li>
       )}
