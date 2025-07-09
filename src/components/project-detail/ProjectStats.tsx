@@ -239,7 +239,7 @@ const ProjectLinks: React.FC<ProjectLinksProps> = ({
   const externalIsFile =
     externalLink?.endsWith(".pdf") || externalLink?.endsWith(".docx");
   const externalLinkIcon = externalIsFile ? FileTextIcon : ExternalIcon;
-  const externalLinkText = externalIsFile ? "Paper" : "Visit Site";
+  const externalLinkText = externalIsFile ? "Thesis" : "Visit Site";
   const externalLinkColor = externalIsFile ? "#F40F02" : gradient;
   return (
     <ul className="links">
