@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     ],
     categories: ["data", "development"],
     keywords: ["In-Car Use", "Deep Learning"],
-    date: "Oct 2024 - Present",
+    date: "Oct 2024 - Jul 2025",
     services: ["AI-Research", "Development", "Testing"],
     sections: {
       parallaxImages: {
