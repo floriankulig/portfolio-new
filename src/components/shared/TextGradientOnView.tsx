@@ -6,7 +6,7 @@ import { theme } from "styles";
 
 const StyledTextGradientOnView = styled(motion.b)<{ $baseColor: string }>`
   background-clip: text;
-  background-color: ${({ baseColor }) => baseColor};
+  background-color: ${({ $baseColor }) => $baseColor};
   color: transparent;
 `;
 
@@ -39,7 +39,7 @@ export const TextGradientOnView: React.FC<TextGradientOnViewProps> = ({
 }) => {
   return (
     <StyledTextGradientOnView
-      baseColor={baseColor}
+      $baseColor={baseColor}
       initial="tg-start"
       animate="tg-start"
       whileInView="tg-end"
