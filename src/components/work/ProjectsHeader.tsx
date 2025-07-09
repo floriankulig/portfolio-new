@@ -46,7 +46,13 @@ export const ProjectsHeader: React.FC<ProjectsHeaderProps> = ({
   setSelectedChips,
 }) => {
   const toggleSelection = (chipID: string) => {
-    setSelectedChips([chipID]);
+    setSelectedChips((prev) => {
+      if (prev.includes(chipID)) {
+        return [];
+      } else {
+        return [chipID];
+      }
+    });
   };
 
   const selectedCategories = PROJECT_CATEGORIES.filter((c) =>
