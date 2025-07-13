@@ -80,7 +80,7 @@ const BGOverlay = styled.div`
       font-size: clamp(1.15rem, 4vw, 1.5rem);
       font-weight: 400;
       line-height: 1.3;
-      max-width: 45ch;
+      max-width: 38ch;
       white-space: pre-line;
       color: var(--bg1);
       text-shadow: 0 0 2em ${rgba("#000", 0.8)};

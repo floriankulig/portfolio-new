@@ -4,7 +4,7 @@ export const PROJECTS: Project[] = [
   {
     id: "neural-navi",
     title: "Neural Navi",
-    featureImage: "NeuralNaviMock.jpg",
+    featureImage: "NeuralNaviMock.png",
     projectBackground:
       "For this project, I combined my <b>long-standing passion for automotive engineering</b> with the academic requirements of my university studies. What started as a student research project quickly evolved into a comprehensive system for capturing and analyzing driving data to produce machine learning model outputs. The goal is to develop <b>a copilot that intelligently helps drivers make informed decisions</b> to make driving safer.",
     featureDescription:
@@ -24,7 +24,6 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/floriankulig/neural-navi",
     externalLink:
       "https://github.com/floriankulig/neural-navi/raw/refs/heads/master/paper_dhbw.pdf",
-    stillDeveloping: true,
   },
   {
     id: "jvis",
@@ -84,6 +83,32 @@ export const PROJECTS: Project[] = [
     },
   },
   {
+    id: "chd-classifier",
+    title: "CHD Classifier Evaluation",
+    featureImage: "CHDClassifierMock.png",
+    projectBackground:
+      "Coronary heart disease (CHD) is a leading cause of death globally, making early risk assessment critical for preventive healthcare. This project served as an opportunity to <b>deepen my ML fundamentals</b> through comprehensive, hands-on application. The goal was building an <b>end-to-end ML pipeline</b> while mastering core concepts like <b>model evaluation, hyperparameter optimization, and feature engineering</b> to develop practical ML skills.",
+    featureDescription:
+      "An evaluation of machine learning models for classifying coronary heart disease using optimizations.",
+    technologies: [
+      "Jupyter Notebook",
+      "Machine Learning",
+      "Scikit-Learn",
+      "Feature Engineering",
+    ],
+    categories: ["data", "design"],
+    keywords: ["Machine Learning", "Jupyter Notebook"],
+    date: "May 2025",
+    gradient: "linear-gradient(135deg, #67D1AC 0%, #D1F3AE 100%)",
+    github: "https://github.com/floriankulig/chd-classifier",
+    sections: {
+      parallaxImages: {
+        bgImage: "plates.jpg",
+        mainImage: "CHDClassifier Main.png",
+      },
+    },
+  },
+  {
     id: "sorting-algorithms",
     title: "Sorting Algorithm Visualizer",
     featureImage: "SortVisMock.png",
@@ -101,6 +126,36 @@ export const PROJECTS: Project[] = [
       parallaxImages: {
         bgImage: "twister.jpg",
         mainImage: "SortVis Main.png",
+      },
+    },
+  },
+  {
+    id: "munich-bikes",
+    title: "Munich's Bicycle Traffic",
+    featureImage: "MunBikeMock.jpg",
+    projectBackground:
+      "This data analysis project processes and visualizes bicycle traffic data from Munich's counting stations from 2008 to 2024. The project <b>transforms complex traffic data into accessible insights</b> through an interactive dashboard, making urban mobility patterns <b>understandable for non-technical stakeholders.</b>",
+    featureDescription:
+      "A series of visualizations, applications and analyses of Munich's cycling data from 2008 to 2024.",
+    technologies: ["Python", "Visualization", "Pandas", "Matplotlib"],
+    categories: ["data", "design"],
+    keywords: ["Data-Science", "Visualization"],
+    date: "Jan 2025",
+    roles: [
+      {
+        name: "David Faiß",
+        link: "https://github.com/kivi280",
+      },
+      {
+        name: "Florian Kulig",
+      },
+    ],
+    gradient: "linear-gradient(135deg, #3357C1 0%, #3392C1 100%)",
+    github: "https://github.com/floriankulig/data-science-vl",
+    sections: {
+      parallaxImages: {
+        bgImage: "eliptic.jpg",
+        mainImage: "MunBike Main.png",
       },
     },
   },
@@ -131,37 +186,6 @@ export const PROJECTS: Project[] = [
       parallaxImages: {
         bgImage: "swirl.jpg",
         mainImage: "PanacheBooth Main.png",
-      },
-    },
-  },
-
-  {
-    id: "munich-bikes",
-    title: "Munich's Bicycle Traffic",
-    featureImage: "MunBikeMock.jpg",
-    projectBackground:
-      "This data analysis project processes and visualizes bicycle traffic data from Munich's counting stations from 2008 to 2024. The project <b>transforms complex traffic data into accessible insights</b> through an interactive dashboard, making urban mobility patterns <b>understandable for non-technical stakeholders.</b>",
-    featureDescription:
-      "A series of visualizations, applications and analyses of Munich's cycling data from 2008 to 2024.",
-    technologies: ["Python", "Visualization", "Pandas", "Matplotlib"],
-    categories: ["data", "design"],
-    keywords: ["Data-Science", "Visualization"],
-    date: "Jan 2025",
-    roles: [
-      {
-        name: "David Faiß",
-        link: "https://github.com/kivi280",
-      },
-      {
-        name: "Florian Kulig",
-      },
-    ],
-    gradient: "linear-gradient(135deg, #3357C1 0%, #3392C1 100%)",
-    github: "https://github.com/floriankulig/data-science-vl",
-    sections: {
-      parallaxImages: {
-        bgImage: "eliptic.jpg",
-        mainImage: "MunBike Main.png",
       },
     },
   },

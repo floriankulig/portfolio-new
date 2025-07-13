@@ -9,7 +9,7 @@ const YEARS_OF_EXPERIENCE = new Date().getFullYear() - 2020;
 const FEATURED_PROJECTS_IDS: Array<(typeof PROJECTS)[number]["id"]> = [
   "neural-navi",
   "jvis",
-  "sorting-algorithms",
+  "chd-classifier",
 ];
 const FEATURED_PROJECTS: FeaturedProject[] = FEATURED_PROJECTS_IDS.map((id) => {
   const project = PROJECTS.find((project) => project.id === id);
