@@ -23,18 +23,45 @@ const StyledMoreInfoComingSection = styled.section`
     text-align: center;
     color: var(--text3);
     font-family: var(--jakarta);
+
+    a {
+      color: var(--text2);
+      text-decoration: underline;
+    }
   }
 `;
 interface MoreInfoComingProps {
   stillDeveloping?: boolean;
+  githubLink?: string;
+  externalLink?: string;
 }
 export const MoreInfoComing: React.FC<MoreInfoComingProps> = ({
   stillDeveloping,
+  githubLink,
+  externalLink,
 }) => {
   return (
     <StyledMoreInfoComingSection>
       <h3>More Information Coming Soon...</h3>
       {stillDeveloping && <p>This project is still being developed.</p>}
+      {!!githubLink && (
+        <p>
+          For now, read more in the{" "}
+          <a href={githubLink} target="_blank" rel="noopener noreferrer">
+            projects' documentation
+          </a>
+          {externalLink && !externalLink.endsWith(".pdf") ? (
+            <>
+              &nbsp; or &nbsp;
+              <a href={externalLink} target="_blank" rel="noopener noreferrer">
+                explore the app.
+              </a>
+            </>
+          ) : (
+            "."
+          )}
+        </p>
+      )}
     </StyledMoreInfoComingSection>
   );
 };

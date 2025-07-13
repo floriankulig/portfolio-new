@@ -37,7 +37,8 @@ export const getStaticProps = (async (context) => {
 const ProjectDetailPage = ({
   project,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { id, sections, title, stillDeveloping } = project;
+  const { id, sections, title, stillDeveloping, github, externalLink } =
+    project;
   return (
     <>
       <Curtain />
@@ -62,7 +63,11 @@ const ProjectDetailPage = ({
           parallaxImages={sections?.parallaxImages}
         />
       )}
-      <MoreInfoComing stillDeveloping={stillDeveloping} />
+      <MoreInfoComing
+        stillDeveloping={stillDeveloping}
+        githubLink={github}
+        externalLink={externalLink}
+      />
       <Footer />
     </>
   );
