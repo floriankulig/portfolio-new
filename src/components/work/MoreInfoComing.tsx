@@ -48,7 +48,7 @@ export const MoreInfoComing: React.FC<MoreInfoComingProps> = ({
         <p>
           For now, read more in the{" "}
           <a href={githubLink} target="_blank" rel="noopener noreferrer">
-            projects' documentation
+            projects&apos; documentation
           </a>
           {externalLink && !externalLink.endsWith(".pdf") ? (
             <>
