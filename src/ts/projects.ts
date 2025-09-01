@@ -6,7 +6,7 @@ export const PROJECTS: Project[] = [
     title: "Neural Navi",
     featureImage: "NeuralNaviMock.png",
     projectBackground:
-      "For this project, I combined my <b>long-standing passion for automotive engineering</b> with the academic requirements of my university studies. What started as a student research project quickly evolved into a comprehensive system for capturing and analyzing driving data to produce machine learning model outputs. The goal is to develop <b>a copilot that intelligently helps drivers make informed decisions</b> to make driving safer.",
+      "For this project, I combined my <b>long-standing passion for automotive engineering</b> with the academic requirements of my university studies. What started as a student research project quickly evolved into a comprehensive system for capturing and analyzing driving data to produce machine learning model outputs. The goal was to develop <b>a copilot that intelligently helps drivers make informed decisions</b> to make driving safer.",
     featureDescription:
       "An AI-powered driver CoPilot that improves decision-making for efficient and economic driving.",
     gradient: "linear-gradient(135deg, #A8EDEA 0%, #FED6E3 100%)",
