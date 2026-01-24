@@ -1,15 +1,21 @@
 import { Curtain } from "components/layout/Curtain";
 import { Header } from "components/layout/header";
+import { LinkButton } from "components/project-detail/LinkButton";
 import { InlineImageBubble } from "components/shared";
 import { rgba } from "polished";
+import { Linkedin } from "react-feather";
 import styled from "styled-components";
+import theme from "styles/theme";
+import { LINKEDIN } from "ts/content";
 
 const StyledAboutPage = styled.section`
   height: 100vh;
   padding-inline: ${({ theme }) => theme.mainColPadding};
   padding-block: 64px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   h1 {
     font-size: clamp(2rem, 11svw, 6rem);
@@ -32,7 +38,23 @@ const StyledAboutPage = styled.section`
     flex-wrap: wrap;
     gap: 0 0.25em; */
   }
+
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    @media (width < 540px) {
+      flex-direction: column;
+      gap: 4px;
+    }
+    span.text {
+      font-size: clamp(1rem, 4vw, 1.25rem);
+      color: var(--text2);
+    }
+  }
 `;
+const LinkedInIcon = <Linkedin strokeWidth={1.5} />;
 
 const AboutPage = () => {
   return (
@@ -49,6 +71,18 @@ const AboutPage = () => {
           />
           in Progress...
         </h1>
+        <p>
+          <span className="text">For now, </span>
+          <LinkButton
+            link={LINKEDIN}
+            icon={LinkedInIcon}
+            color={"#1272a5"}
+            textColor={theme.bg1}
+          >
+            LinkedIn
+          </LinkButton>{" "}
+          <span className="text">might be worth a visit.</span>
+        </p>
       </StyledAboutPage>
     </>
   );
