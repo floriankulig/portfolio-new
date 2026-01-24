@@ -131,7 +131,7 @@ export const Hero = () => {
   );
   return (
     <StyledHeroSection className="main-col" ref={sectionRef}>
-      <TextAnimation startDelay={2} />
+      <TextAnimation startDelay={0.75} />
       <h1>
         Creative <br /> Software Engineer
       </h1>
@@ -214,8 +214,8 @@ const TextAnimation: React.FC<TextAnimationProps> = ({ startDelay = 0.1 }) => {
     latest - startDelay * 1000 < 0
       ? -1
       : Math.floor(
-          Math.max(0, latest - startDelay * 1000) / (1000 * changeSeconds)
-        )
+          Math.max(0, latest - startDelay * 1000) / (1000 * changeSeconds),
+        ),
   );
   useMotionValueEvent(counter, "change", (latest) => {
     setSentence(latest === -1 ? " " : sentences[latest % sentences.length]);
