@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface DeviceInfo {
   isTouchDevice: boolean;
@@ -49,11 +49,12 @@ export const useDevice = () => {
 
   useEffect(() => {
     const updateDeviceInfo = async () => {
-      // Check touch capability
+      // Check if primary input is touch (not mouse/trackpad)
+      // Using media queries is more reliable than checking maxTouchPoints,
+      // which can incorrectly report touch capability on Windows desktops
       const isTouchDevice =
-        "ontouchstart" in window ||
-        navigator.maxTouchPoints > 0 ||
-        (navigator as any).msMaxTouchPoints > 0;
+        window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
+        ("ontouchstart" in window && navigator.maxTouchPoints > 0);
 
       // Screen dimensions
       const screenWidth = window.innerWidth;
@@ -66,7 +67,7 @@ export const useDevice = () => {
       // Device type detection
       const isMobile =
         /iPhone|iPad|iPod|Android|webOS|BlackBerry|Windows Phone/i.test(
-          navigator.userAgent
+          navigator.userAgent,
         );
       const isTablet = /iPad|Android(?!.*Mobile)/i.test(navigator.userAgent);
       const isDesktop = !isMobile && !isTablet;
@@ -77,7 +78,7 @@ export const useDevice = () => {
 
       // Prefers reduced motion
       const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
+        "(prefers-reduced-motion: reduce)",
       ).matches;
 
       // Battery status
