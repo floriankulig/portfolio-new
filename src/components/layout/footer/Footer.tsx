@@ -143,7 +143,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
             <LinkButton
               link={LINKEDIN}
               icon={LinkedInIcon}
-              color={"#0a689b"}
+              color={"#0a689a"}
               textColor={theme.bg1}
             >
               LinkedIn
