@@ -1,17 +1,17 @@
-import styled from "styled-components";
-import { BuiltByMessage } from "./BuiltByMessage";
-import { useRouter } from "next/router";
-import { LINKS } from "ts";
+import { LinkButton } from "components/project-detail/LinkButton";
 import {
   ArrowButton,
   InlineImageBubble,
   TransitionLink,
 } from "components/shared";
 import { motion, MotionProps } from "framer-motion";
-import { theme } from "styles";
-import { LinkButton } from "components/project-detail/LinkButton";
+import { useRouter } from "next/router";
 import { GitHub, Linkedin } from "react-feather";
+import styled from "styled-components";
+import { theme } from "styles";
+import { LINKS } from "ts";
 import { EMAIL, GITHUB, LINKEDIN } from "ts/content";
+import { BuiltByMessage } from "./BuiltByMessage";
 
 const StyledFooter = styled(motion.footer)`
   --gap: clamp(3rem, 10vw, 5rem);
@@ -143,7 +143,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
             <LinkButton
               link={LINKEDIN}
               icon={LinkedInIcon}
-              color={"#0a689a"}
+              color={"#0a689b"}
               textColor={theme.bg1}
             >
               LinkedIn
