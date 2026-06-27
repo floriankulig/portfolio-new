@@ -61,18 +61,20 @@ export const Approach = () => {
       <StyledApproachSectionRight>
         <div></div>
         <p>
-          As a software engineer, I always prioritize user experience and
-          usability. I strive for a{" "}
+          I build systems that have to hold up under real-world constraints –
+          limited compute, real-time latency, and safety-critical hardware. I
+          care about{" "}
           <TextGradientOnView>
-            modular, well-tested, and easily maintainable
+            modular, reproducible pipelines
           </TextGradientOnView>{" "}
-          codebase using contemporary frameworks like React.{" "}
+          and{" "}
           <TextGradientOnView>
-            Responsive design and accessibility
-          </TextGradientOnView>{" "}
-          are the bare minimum for me. Extensive testing and project reviews
-          enable me to always ship{" "}
-          <TextGradientOnView>the best possible product.</TextGradientOnView>
+            efficient inference on edge devices
+          </TextGradientOnView>
+          , and I measure what I ship.{" "}
+          <TextGradientOnView>
+            Concrete numbers over adjectives.
+          </TextGradientOnView>
         </p>
       </StyledApproachSectionRight>
     </StyledApproachSection>

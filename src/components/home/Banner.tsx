@@ -30,8 +30,8 @@ export const Banner: React.FC = () => {
   });
   return (
     <StyledBannerSection>
-      <BannerText direction={direction} text="I'm a developer" />
-      <BannerText direction={direction * -1} text="Not a frameworker" />
+      <BannerText direction={direction} text="Machine learning" />
+      <BannerText direction={direction * -1} text="for real systems" />
     </StyledBannerSection>
   );
 };
@@ -81,8 +81,8 @@ const BannerText: React.FC<BannerTextProps> = ({ text, direction }) => {
         direction *
           Math.max(
             MIN_SCROLL_SPEED,
-            Math.min(Math.abs(scrollVelocity.get()), 1250) / 100
-          )
+            Math.min(Math.abs(scrollVelocity.get()), 1250) / 100,
+          ),
     );
   });
 
