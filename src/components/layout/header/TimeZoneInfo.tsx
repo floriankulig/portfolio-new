@@ -1,8 +1,8 @@
-import { memo, use, useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { formatTimeForGermany } from "helpers";
-import styled from "styled-components";
 import { useRouter } from "next/router";
+import { memo, useCallback, useEffect, useState } from "react";
+import styled from "styled-components";
 
 const StyledMeta = styled.div`
   color: var(--text3);
@@ -67,7 +67,7 @@ export const TimeZoneInfo: React.FC<TimeZoneInfoProps> = ({
     return () => clearTimeout(timeout);
   }, [updateTime]);
 
-  const county = displayCounty ? (displayFullCounty ? "Bavaria" : "BY") : null;
+  const county = displayCounty ? (displayFullCounty ? "Munich" : "MUC") : null;
   const location = (county ? county + ", " : "") + "Germany";
 
   return (
