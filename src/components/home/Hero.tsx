@@ -63,6 +63,10 @@ const StyledHeroSection = styled(motion.section)`
       letter-spacing: -0.045em;
       font-size: 15vw;
     }
+
+    span {
+      font-size: 0.8em;
+    }
   }
 
   p {
@@ -114,26 +118,29 @@ export const Hero = () => {
   });
   const mobileDescription = (
     <>
-      I&apos;m a Software Engineer with{" "}
-      <b>{YEARS_OF_EXPERIENCE} years of experience.</b> While crafting intuitive
-      user interfaces is my forte, my driving force is{" "}
-      <b>creating solutions that deliver tangible value. </b>
+      I&apos;m a software engineer with{" "}
+      <b>{YEARS_OF_EXPERIENCE} years of experience.</b> I build{" "}
+      <b>machine-learning systems that run on real hardware</b> – perception,
+      edge inference, and embedded control for autonomous machines.
     </>
   );
   const description = (
     <>
-      Based in South-Germany, I&apos;m a Software Engineer with{" "}
-      <b>{YEARS_OF_EXPERIENCE} years of hands-on development experience.</b>{" "}
-      While crafting intuitive user interfaces is my forte, my driving force is{" "}
-      <b>creating solutions that deliver tangible value </b>– whether it&apos;s
-      streamlining workflows or enhancing user experiences.
+      Based in southern Germany, I&apos;m a software engineer with{" "}
+      <b>{YEARS_OF_EXPERIENCE} years of experience</b> across software and data
+      engineering. I build{" "}
+      <b>machine-learning systems that run on real hardware</b> – perception,
+      edge inference, and embedded control for autonomous machines – and
+      I&apos;ve <b>led an 8-engineer team.</b>
     </>
   );
   return (
     <StyledHeroSection className="main-col" ref={sectionRef}>
       <TextAnimation startDelay={0.75} />
       <h1>
-        Creative <br /> Software Engineer
+        ML <span>/</span> Robotics
+        <br />
+        Software Engineer
       </h1>
       <p>{isMobile ? mobileDescription : description}</p>
       <StyledButtons>
@@ -204,9 +211,9 @@ interface TextAnimationProps {
 }
 const TextAnimation: React.FC<TextAnimationProps> = ({ startDelay = 0.1 }) => {
   const sentences = [
-    "Driving Experiences.",
     "Pushing Excellence.",
-    "Engineering Brilliance.",
+    "Building autonomy.",
+    "Engineering Intelligence.",
   ];
   const changeSeconds = 4.5;
   const time = useTime();
