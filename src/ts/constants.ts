@@ -1,5 +1,4 @@
 import { Spring, Transition } from "framer-motion";
-import { url } from "inspector";
 
 export const EASING = [0.6, 0.01, -0.05, 0.95] as any;
 
