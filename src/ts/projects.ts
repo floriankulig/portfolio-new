@@ -6,15 +6,21 @@ export const PROJECTS: Project[] = [
     title: "Neural Navi",
     featureImage: "NeuralNaviMock.png",
     projectBackground:
-      "For this project, I combined my <b>long-standing passion for automotive engineering</b> with the academic requirements of my university studies. What started as a student research project quickly evolved into a comprehensive system for capturing and analyzing driving data to produce machine learning model outputs. The goal was to develop <b>a copilot that intelligently helps drivers make informed decisions</b> to make driving safer.",
+      "A student research project (graded 1.1) that I took from concept to a working edge system. I reverse-engineered the vehicle's ECU (CAN / OBD-II) to capture live telemetry and fused it with computer vision in an <b>end-to-end deep-learning model</b> for real-time risk and braking prediction. The full pipeline runs on the edge: a <b>quantized model on a Raspberry Pi</b> at <b>under 8 ms inference latency</b> and <b>94%+ braking-prediction accuracy</b>. Supervised by a CV/ADAS project manager at the Bosch Center for AI and additionally mentored by the faculty dean, who issued a recommendation letter.",
     featureDescription:
-      "An AI-powered driver CoPilot that improves decision-making for efficient and economic driving.",
+      "A driver-assistance system with multimodal, real-time risk analysis — running end-to-end on a Raspberry Pi.",
     gradient: "linear-gradient(135deg, #A8EDEA 0%, #FED6E3 100%)",
-    technologies: ["Python", "PyTorch", "Deep Learning", "Computer Vision"],
+    technologies: [
+      "PyTorch",
+      "Computer Vision",
+      "Model Quantization",
+      "CAN / OBD-II",
+      "Raspberry Pi",
+    ],
     categories: ["data", "development"],
-    keywords: ["In-Car Use", "Deep Learning"],
+    keywords: ["Edge Inference", "Multimodal Fusion"],
     date: "Oct 2024 - Jul 2025",
-    services: ["AI-Research", "Development", "Testing"],
+    services: ["Research", "Development", "Testing"],
     sections: {
       parallaxImages: {
         bgImage: "plates.jpg",
@@ -24,6 +30,26 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/floriankulig/neural-navi",
     externalLink:
       "https://github.com/floriankulig/neural-navi/raw/refs/heads/master/paper_dhbw.pdf",
+  },
+  {
+    id: "minibev",
+    title: "MiniBEV",
+    featureImage: "MiniBEVMock.png",
+    projectBackground:
+      "An ongoing, self-directed exploration of efficient bird's-eye-view perception on the nuScenes mini split. I fuse several camera views into a unified 3D scene representation and experiment with <b>alternative architectures (state-space models, JEPA)</b>, pushing inference efficiency through <b>custom kernels</b>.",
+    featureDescription:
+      "A compact bird's-eye-view model that fuses multiple cameras into a 3D representation of the environment.",
+    gradient: "linear-gradient(135deg, #ffa527 0%, #3695d8 100%)",
+    technologies: [
+      "PyTorch",
+      "Computer Vision",
+      "Multi-Camera Fusion",
+      "GPU Kernels",
+    ],
+    categories: ["data", "development"],
+    keywords: ["Bird's-Eye View", "Computer Vision"],
+    date: "2025 - ongoing",
+    stillDeveloping: true,
   },
   {
     id: "jvis",
@@ -49,6 +75,79 @@ export const PROJECTS: Project[] = [
       },
     },
   },
+  {
+    id: "hsc",
+    title: "HSC Mobile Wood Processing Center",
+    featureImage: "Zolnhofer HSC.jpg",
+    projectBackground:
+      "Embedded control software for a mobile firewood-processing machine, running across a <b>CAN bus and a PLC</b>. Written in <b>Pascal, C and Structured Text</b> with safety-critical, real-time requirements. Four units are in operation worldwide.",
+    featureDescription:
+      "Safety-critical embedded software for an industrial mobile wood-processing machine — four units deployed worldwide.",
+    gradient: "linear-gradient(135deg, #B0703A 0%, #5C6B73 100%)",
+    technologies: ["Structured Text", "C", "Pascal", "CAN Bus", "PLC"],
+    categories: ["development"],
+    keywords: ["Embedded", "Safety-Critical"],
+    date: "2023",
+    client: "Zolnhofer",
+    clientLink: "https://www.zolnhofer.de/start.html",
+  },
+  {
+    id: "chd-classifier",
+    title: "CHD Classifier Evaluation",
+    featureImage: "CHDClassifierMock.png",
+    projectBackground:
+      "Coronary heart disease (CHD) is a leading cause of death globally, making early risk assessment critical for preventive healthcare. This project served as an opportunity to <b>deepen my ML fundamentals</b> through comprehensive, hands-on application. The goal was building an <b>end-to-end ML pipeline</b> while mastering core concepts like <b>model evaluation, hyperparameter optimization, and feature engineering</b> to develop practical ML skills.",
+    featureDescription:
+      "An evaluation of machine learning models for classifying coronary heart disease using optimizations.",
+    technologies: [
+      "Jupyter Notebook",
+      "Machine Learning",
+      "Scikit-Learn",
+      "Feature Engineering",
+    ],
+    categories: ["data", "design"],
+    keywords: ["Machine Learning", "Jupyter Notebook"],
+    date: "May 2025",
+    gradient: "linear-gradient(135deg, #67D1AC 0%, #D1F3AE 100%)",
+    github: "https://github.com/floriankulig/chd-classifier",
+    sections: {
+      parallaxImages: {
+        bgImage: "plates.jpg",
+        mainImage: "CHDClassifier Main.png",
+      },
+    },
+  },
+  {
+    id: "munich-bikes",
+    title: "Munich's Bicycle Traffic",
+    featureImage: "MunBikeMock.jpg",
+    projectBackground:
+      "This data analysis project processes and visualizes bicycle traffic data from Munich's counting stations from 2008 to 2024. The project <b>transforms complex traffic data into accessible insights</b> through an interactive dashboard, making urban mobility patterns <b>understandable for non-technical stakeholders.</b>",
+    featureDescription:
+      "A series of visualizations, applications and analyses of Munich's cycling data from 2008 to 2024.",
+    technologies: ["Python", "Visualization", "Pandas", "Matplotlib"],
+    categories: ["data", "design"],
+    keywords: ["Data-Science", "Visualization"],
+    date: "Jan 2025",
+    roles: [
+      {
+        name: "David Faiß",
+        link: "https://github.com/kivi280",
+      },
+      {
+        name: "Florian Kulig",
+      },
+    ],
+    gradient: "linear-gradient(135deg, #3357C1 0%, #3392C1 100%)",
+    github: "https://github.com/floriankulig/data-science-vl",
+    sections: {
+      parallaxImages: {
+        bgImage: "eliptic.jpg",
+        mainImage: "MunBike Main.png",
+      },
+    },
+  },
+
   {
     id: "testiply",
     title: "Testiply",
@@ -83,83 +182,6 @@ export const PROJECTS: Project[] = [
     },
   },
   {
-    id: "chd-classifier",
-    title: "CHD Classifier Evaluation",
-    featureImage: "CHDClassifierMock.png",
-    projectBackground:
-      "Coronary heart disease (CHD) is a leading cause of death globally, making early risk assessment critical for preventive healthcare. This project served as an opportunity to <b>deepen my ML fundamentals</b> through comprehensive, hands-on application. The goal was building an <b>end-to-end ML pipeline</b> while mastering core concepts like <b>model evaluation, hyperparameter optimization, and feature engineering</b> to develop practical ML skills.",
-    featureDescription:
-      "An evaluation of machine learning models for classifying coronary heart disease using optimizations.",
-    technologies: [
-      "Jupyter Notebook",
-      "Machine Learning",
-      "Scikit-Learn",
-      "Feature Engineering",
-    ],
-    categories: ["data", "design"],
-    keywords: ["Machine Learning", "Jupyter Notebook"],
-    date: "May 2025",
-    gradient: "linear-gradient(135deg, #67D1AC 0%, #D1F3AE 100%)",
-    github: "https://github.com/floriankulig/chd-classifier",
-    sections: {
-      parallaxImages: {
-        bgImage: "plates.jpg",
-        mainImage: "CHDClassifier Main.png",
-      },
-    },
-  },
-  {
-    id: "sorting-algorithms",
-    title: "Sorting Algorithm Visualizer",
-    featureImage: "SortVisMock.png",
-    projectBackground:
-      "My first coding project. I set out to create an <b>interactive visualization tool for sorting algorithms</b>. The goal of this project is twofold: to <b>master the fundamentals of programming</b> and to create an educational tool which makes complex algorithms more accessible through visualization.",
-    featureDescription:
-      "An application that visualizes the most popular sorting algorithms, including documentation of their methodology.",
-    technologies: ["Python", "Visualization", "Tkinter"],
-    categories: ["development"],
-    keywords: ["Python", "Visualization"],
-    date: "March 2020",
-    gradient: "linear-gradient(135deg, #3357C1 0%, #3392C1 100%)",
-    github: "https://github.com/floriankulig/SortingVisualizer",
-    sections: {
-      parallaxImages: {
-        bgImage: "twister.jpg",
-        mainImage: "SortVis Main.png",
-      },
-    },
-  },
-  {
-    id: "munich-bikes",
-    title: "Munich's Bicycle Traffic",
-    featureImage: "MunBikeMock.jpg",
-    projectBackground:
-      "This data analysis project processes and visualizes bicycle traffic data from Munich's counting stations from 2008 to 2024. The project <b>transforms complex traffic data into accessible insights</b> through an interactive dashboard, making urban mobility patterns <b>understandable for non-technical stakeholders.</b>",
-    featureDescription:
-      "A series of visualizations, applications and analyses of Munich's cycling data from 2008 to 2024.",
-    technologies: ["Python", "Visualization", "Pandas", "Matplotlib"],
-    categories: ["data", "design"],
-    keywords: ["Data-Science", "Visualization"],
-    date: "Jan 2025",
-    roles: [
-      {
-        name: "David Faiß",
-        link: "https://github.com/kivi280",
-      },
-      {
-        name: "Florian Kulig",
-      },
-    ],
-    gradient: "linear-gradient(135deg, #3357C1 0%, #3392C1 100%)",
-    github: "https://github.com/floriankulig/data-science-vl",
-    sections: {
-      parallaxImages: {
-        bgImage: "eliptic.jpg",
-        mainImage: "MunBike Main.png",
-      },
-    },
-  },
-  {
     id: "panache-booth",
     title: "Panache Booth",
     featureImage: "PanacheBoothMock.jpg",
@@ -186,6 +208,27 @@ export const PROJECTS: Project[] = [
       parallaxImages: {
         bgImage: "swirl.jpg",
         mainImage: "PanacheBooth Main.png",
+      },
+    },
+  },
+  {
+    id: "sorting-algorithms",
+    title: "Sorting Algorithm Visualizer",
+    featureImage: "SortVisMock.png",
+    projectBackground:
+      "My first coding project. I set out to create an <b>interactive visualization tool for sorting algorithms</b>. The goal of this project is twofold: to <b>master the fundamentals of programming</b> and to create an educational tool which makes complex algorithms more accessible through visualization.",
+    featureDescription:
+      "An application that visualizes the most popular sorting algorithms, including documentation of their methodology.",
+    technologies: ["Python", "Visualization", "Tkinter"],
+    categories: ["development"],
+    keywords: ["Python", "Visualization"],
+    date: "March 2020",
+    gradient: "linear-gradient(135deg, #3357C1 0%, #3392C1 100%)",
+    github: "https://github.com/floriankulig/SortingVisualizer",
+    sections: {
+      parallaxImages: {
+        bgImage: "twister.jpg",
+        mainImage: "SortVis Main.png",
       },
     },
   },

@@ -1,5 +1,5 @@
-import { FeaturedProject, ProjectCategory } from "./types";
 import { PROJECTS } from "./projects";
+import { FeaturedProject, ProjectCategory } from "./types";
 
 const EMAIL = "florian.kulig@web.de" as const;
 const LINKEDIN = "https://www.linkedin.com/in/floriankulig" as const;
@@ -8,8 +8,8 @@ const YEARS_OF_EXPERIENCE = new Date().getFullYear() - 2020;
 
 const FEATURED_PROJECTS_IDS: Array<(typeof PROJECTS)[number]["id"]> = [
   "neural-navi",
-  "jvis",
-  "chd-classifier",
+  "minibev",
+  "hsc",
 ];
 const FEATURED_PROJECTS: FeaturedProject[] = FEATURED_PROJECTS_IDS.map((id) => {
   const project = PROJECTS.find((project) => project.id === id);
@@ -42,10 +42,10 @@ const PROJECT_CATEGORIES: ProjectCategory[] = [
 
 export {
   EMAIL,
-  LINKEDIN,
-  GITHUB,
-  YEARS_OF_EXPERIENCE,
   FEATURED_PROJECTS,
-  PROJECTS,
+  GITHUB,
+  LINKEDIN,
   PROJECT_CATEGORIES,
+  PROJECTS,
+  YEARS_OF_EXPERIENCE,
 };
