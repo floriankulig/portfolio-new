@@ -131,7 +131,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
             ))}
           </StyledLinks>
           <StyledLinks>
-            <h4>Socials</h4>
+            <h4>Media</h4>
             <LinkButton
               link={GITHUB}
               icon={GitHubIcon}
