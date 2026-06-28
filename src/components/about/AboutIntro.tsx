@@ -43,7 +43,7 @@ const StyledIntro = styled.header`
 
 export const AboutIntro = () => (
   <StyledIntro>
-    <h1>About Flo</h1>
+    <h1>About</h1>
     <p>
       I build complex systems - whether it&apos;s custom software, a data
       pipeline, or a machine learning model.

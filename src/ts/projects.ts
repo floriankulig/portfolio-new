@@ -122,7 +122,7 @@ export const PROJECTS: Project[] = [
     title: "Munich's Bicycle Traffic",
     featureImage: "MunBikeMock.jpg",
     projectBackground:
-      "This data analysis project processes and visualizes bicycle traffic data from Munich's counting stations from 2008 to 2024. The project <b>transforms complex traffic data into accessible insights</b> through an interactive dashboard, making urban mobility patterns <b>understandable for non-technical stakeholders.</b>",
+      "This data analysis project processes and visualizes bicycle traffic data of Munich's counting stations from 2008 to 2024. The project <b>transforms complex traffic data into accessible insights</b> through an interactive dashboard and static visualizations, making urban mobility patterns <b>understandable for non-technical stakeholders.</b>",
     featureDescription:
       "A series of visualizations, applications and analyses of Munich's cycling data from 2008 to 2024.",
     technologies: ["Python", "Visualization", "Pandas", "Matplotlib"],

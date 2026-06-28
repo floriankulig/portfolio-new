@@ -119,7 +119,7 @@ export const Hero = () => {
   const mobileDescription = (
     <>
       I&apos;m a software engineer with{" "}
-      <b>{YEARS_OF_EXPERIENCE} years of experience.</b> I build{" "}
+      <b>{YEARS_OF_EXPERIENCE} years of hands-on experience.</b> I build{" "}
       <b>machine-learning systems that run on real hardware</b> – perception,
       edge inference, and embedded control for autonomous machines.
     </>
@@ -127,8 +127,8 @@ export const Hero = () => {
   const description = (
     <>
       Based in southern Germany, I&apos;m a software engineer with{" "}
-      <b>{YEARS_OF_EXPERIENCE} years of experience</b> across software and data
-      engineering. I build{" "}
+      <b>{YEARS_OF_EXPERIENCE} years of hands-on experience</b> across software
+      and data engineering. I build{" "}
       <b>machine-learning systems that run on real hardware</b> – perception,
       edge inference, and embedded control for autonomous machines – and
       I&apos;ve <b>led an 8-engineer team.</b>
@@ -211,9 +211,9 @@ interface TextAnimationProps {
 }
 const TextAnimation: React.FC<TextAnimationProps> = ({ startDelay = 0.1 }) => {
   const sentences = [
-    "Pushing Excellence.",
+    "Pushing excellence.",
     "Building autonomy.",
-    "Engineering Intelligence.",
+    "Engineering intelligence.",
   ];
   const changeSeconds = 4.5;
   const time = useTime();

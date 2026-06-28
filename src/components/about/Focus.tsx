@@ -30,7 +30,7 @@ const TagList = styled.ul`
 `;
 
 export const Focus = () => (
-  <AboutSection label="Focus">
+  <AboutSection label="Focus / Interests">
     <TagList>
       {FOCUS.map((item) => (
         <li key={item}>{item}</li>
