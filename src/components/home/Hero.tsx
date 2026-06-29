@@ -15,7 +15,7 @@ import { useRef, useState } from "react";
 import { ArrowDown } from "react-feather";
 import styled from "styled-components";
 import { theme } from "styles";
-import { EMAIL, YEARS_OF_EXPERIENCE } from "ts/content";
+import { YEARS_OF_EXPERIENCE } from "ts/content";
 
 const StyledHeroSection = styled(motion.section)`
   --alignment: left;
@@ -65,7 +65,7 @@ const StyledHeroSection = styled(motion.section)`
     }
 
     span {
-      font-size: 0.8em;
+      font-size: 0.95em;
     }
   }
 
@@ -94,7 +94,7 @@ const StyledButtons = styled.div`
   justify-content: space-between;
   gap: clamp(1rem, 5vw, 2rem);
 
-  a {
+  span.underline {
     text-decoration: underline;
     font-weight: 500;
     padding: 0.5em 1em;
@@ -118,27 +118,27 @@ export const Hero = () => {
   });
   const mobileDescription = (
     <>
-      I&apos;m a software engineer with{" "}
-      <b>{YEARS_OF_EXPERIENCE} years of hands-on experience.</b> I build{" "}
-      <b>machine-learning systems that run on real hardware</b> – perception,
-      edge inference, and embedded control for autonomous machines.
+      I&apos;m a Software Engineer with{" "}
+      <b>{YEARS_OF_EXPERIENCE} years of experience</b>. While engineering{" "}
+      <b>highly reliable software systems</b> is my forte, my driving force is
+      creating <b>intelligent solutions</b> that deliver tangible value.
     </>
   );
   const description = (
     <>
-      Based in southern Germany, I&apos;m a software engineer with{" "}
-      <b>{YEARS_OF_EXPERIENCE} years of hands-on experience</b> across software
-      and data engineering. I build{" "}
-      <b>machine-learning systems that run on real hardware</b> – perception,
-      edge inference, and embedded control for autonomous machines – and
-      I&apos;ve <b>led an 8-engineer team.</b>
+      Based in South-Germany, I&apos;m a Software Engineer with{" "}
+      <b>{YEARS_OF_EXPERIENCE} years of hands-on development experience</b>.
+      While engineering <b>highly reliable software systems</b> is my forte, my
+      driving force is creating{" "}
+      <b>intelligent solutions that deliver tangible value</b> – from
+      data-forward applications to machine learning.
     </>
   );
   return (
     <StyledHeroSection className="main-col" ref={sectionRef}>
       <TextAnimation startDelay={0.75} />
       <h1>
-        Pragmatic
+        Creative
         <br />
         Software Engineer
       </h1>
@@ -147,7 +147,9 @@ export const Hero = () => {
         <TransitionLink href="/work">
           <ArrowButton>View Projects</ArrowButton>
         </TransitionLink>
-        <a href={`mailto:${EMAIL}?subject=Let's work together!`}>Reach out</a>
+        <TransitionLink href="/about">
+          <span className="underline">Learn more</span>
+        </TransitionLink>
       </StyledButtons>
       <AnimatePresence presenceAffectsLayout={false}>
         {!scrolled && <ScrollingIndicator />}

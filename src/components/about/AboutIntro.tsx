@@ -1,5 +1,6 @@
 import { rgba } from "polished";
 import styled from "styled-components";
+import { YEARS_OF_EXPERIENCE } from "ts/content";
 
 const StyledIntro = styled.header`
   display: flex;
@@ -23,6 +24,17 @@ const StyledIntro = styled.header`
     );
     color: transparent;
     background-clip: text;
+
+    .pronunciation {
+      padding-left: 0.25em;
+      font-family: var(--jakarta);
+      font-size: 0.4em;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      vertical-align: middle;
+      color: var(--text3);
+    }
   }
 
   p {
@@ -43,16 +55,24 @@ const StyledIntro = styled.header`
 
 export const AboutIntro = () => (
   <StyledIntro>
-    <h1>About</h1>
+    <h1>
+      About Flo <span className="pronunciation">/floʊ/</span>
+    </h1>
     <p>
-      I build complex systems - whether it&apos;s custom software, a data
-      pipeline, or a machine learning model.
+      Over the past {YEARS_OF_EXPERIENCE} years I&apos;ve grown from writing my
+      first production code before university to leading delivery for an
+      eight-person engineering team. What has stayed constant is how I work:
+      I&apos;d rather understand a problem deeply and build something that holds
+      up than ship quickly and patch later.
     </p>
     <p>
-      I&apos;m passionate about creating software that is not only functional
-      but also elegant and efficient. My journey has taken me from frontend
-      development to the cutting edge of AI and robotics, and I&apos;m always
-      looking for new challenges to tackle.
+      My pull toward machine learning isn&apos;t new. I first explored physical
+      AI systems during my thesis with Bosch on driver-assistance technology,
+      and the interest never left — but it never had room in my day-to-day work.
+      Now, I&apos;m acting on it deliberately: a Master&apos;s in Robotics,
+      Cognition and Intelligence at TU Munich, taking my expertise from
+      well-built software toward intelligent systems that operate in the real
+      world.
     </p>
   </StyledIntro>
 );

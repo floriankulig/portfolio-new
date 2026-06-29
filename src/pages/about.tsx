@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const StyledAboutPage = styled.main`
   min-height: 100svh;
-  padding-block: min(max(12vw, 100px), 140px) 6rem;
+  padding-block: min(max(10vw, 100px), 140px) 6rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;

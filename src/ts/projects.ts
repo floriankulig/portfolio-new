@@ -6,16 +6,15 @@ export const PROJECTS: Project[] = [
     title: "Neural Navi",
     featureImage: "NeuralNaviMock.png",
     projectBackground:
-      "A student research project (graded 1.1) that I took from concept to a working edge system. I reverse-engineered the vehicle's ECU (CAN / OBD-II) to capture live telemetry and fused it with computer vision in an <b>end-to-end deep-learning model</b> for real-time risk and braking prediction. The full pipeline runs on the edge: a <b>quantized model on a Raspberry Pi</b> at <b>under 8 ms inference latency</b> and <b>94%+ braking-prediction accuracy</b>. Supervised by a CV/ADAS project manager at the Bosch Center for AI and additionally mentored by the faculty dean, who issued a recommendation letter.",
+      "For this project, I combined my <b>long-standing passion for automotive engineering</b> with the academic requirements of my university studies. What started as a student research project quickly evolved into a comprehensive system for capturing and analyzing driving data to produce machine learning model outputs. The goal was to develop <b>a copilot that intelligently helps drivers make informed decisions</b> to make driving safer. Supervised by a CV/ADAS project manager at the Bosch Center for AI and additionally mentored by the faculty dean, who issued a recommendation letter.",
     featureDescription:
-      "A driver-assistance system with multimodal, real-time risk analysis — running end-to-end on a Raspberry Pi.",
+      "A driver-assistance system with multimodal, real-time risk analysis running end-to-end on a Raspberry Pi.",
     gradient: "linear-gradient(135deg, #A8EDEA 0%, #FED6E3 100%)",
     technologies: [
       "PyTorch",
       "Computer Vision",
       "Model Quantization",
       "CAN / OBD-II",
-      "Raspberry Pi",
     ],
     categories: ["data", "development"],
     keywords: ["Edge Inference", "Multimodal Fusion"],
@@ -47,8 +46,8 @@ export const PROJECTS: Project[] = [
       "GPU Kernels",
     ],
     categories: ["data", "development"],
-    keywords: ["Bird's-Eye View", "Computer Vision"],
-    date: "2025 - ongoing",
+    keywords: ["Bird's-Eye View", "Autonomous Driving"],
+    date: "May 2026 - ongoing",
     stillDeveloping: true,
   },
   {
@@ -80,14 +79,14 @@ export const PROJECTS: Project[] = [
     title: "HSC Mobile Wood Processing Center",
     featureImage: "Zolnhofer HSC.jpg",
     projectBackground:
-      "Embedded control software for a mobile firewood-processing machine, running across a <b>CAN bus and a PLC</b>. Written in <b>Pascal, C and Structured Text</b> with safety-critical, real-time requirements. Four units are in operation worldwide.",
+      "A one-of-a-kind <b>truck-mounted wood-processing center</b> — chainsaw, hydraulic splitter, crane and material handling in a single mobile unit, with only <b>four units worldwide</b>. I <b>adapt the PLC control software and CAN bus communication</b> between its subsystems: integrating new hardware, tuning hydraulic and sensor parameters, and keeping safety-critical functions like deadman switches reliable. With machinery this rare there's no documentation or support to lean on — every change starts with reverse-engineering how the crane, splitter and saw interact. Weekend work for a family business run by relatives.",
     featureDescription:
       "Safety-critical embedded software for an industrial mobile wood-processing machine — four units deployed worldwide.",
     gradient: "linear-gradient(135deg, #B0703A 0%, #5C6B73 100%)",
-    technologies: ["Structured Text", "C", "Pascal", "CAN Bus", "PLC"],
+    technologies: ["PLC", "CAN Bus", "Structured Text", "C"],
     categories: ["development"],
     keywords: ["Embedded", "Safety-Critical"],
-    date: "2023",
+    date: "Jan 2026 - ongoing",
     client: "Zolnhofer",
     clientLink: "https://www.zolnhofer.de/start.html",
   },
