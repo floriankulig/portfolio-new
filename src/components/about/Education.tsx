@@ -8,7 +8,10 @@ export const Education = () => (
         title="M.Sc. Robotics, Cognition, Intelligence"
         meta="Technical University of Munich · from Oct 2026"
       >
-        <p>Focusing on ML, CV and autonomous systems.</p>
+        <p>
+          Focusing on ML, CV, high-performance deep-learning and autonomous
+          systems.
+        </p>
       </Entry>
       <Entry
         title="B.Sc. Computer Science"

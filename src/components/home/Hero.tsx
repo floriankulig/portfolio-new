@@ -138,7 +138,7 @@ export const Hero = () => {
     <StyledHeroSection className="main-col" ref={sectionRef}>
       <TextAnimation startDelay={0.75} />
       <h1>
-        ML <span>/</span> Robotics
+        Pragmatic
         <br />
         Software Engineer
       </h1>
