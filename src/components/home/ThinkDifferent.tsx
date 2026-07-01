@@ -45,6 +45,7 @@ const StyledThinkDifferentAnimationContent = styled.div`
       background: var(--text1);
       background-clip: text;
       color: transparent;
+      will-change: transform, opacity;
     }
   }
 `;
@@ -63,7 +64,7 @@ export const ThinkDifferent: React.FC = () => {
   const sectionBackground = useTransform(
     scrollYProgress,
     [0, 1],
-    [theme.bg2, theme.bg1]
+    [theme.bg2, theme.bg1],
   );
 
   return (
@@ -89,23 +90,23 @@ const PartOne: React.FC<AnimationPartProps> = ({ scrollProgress }) => {
   const opacity = useTransform(
     scrollProgress,
     [0, 0.2, 0.875, 1],
-    [0, 1, 1, 0]
+    [0, 1, 1, 0],
   );
   const scale = useTransform(
     scrollProgress,
     [0, 0.35, 0.85, 1],
-    [0.95, 1, 1, 1.025]
+    [0.95, 1, 1, 1.025],
   );
   const gradientX = useTransform(scrollProgress, [0.25, 0.9], [10, 80]);
   const gradientY = useTransform(scrollProgress, [0.25, 0.9], [0, 15]);
   const gradientOpacity = useTransform(
     scrollProgress,
     [0.25, 0.6, 0.9],
-    [0.3, 0.55, 0.3]
+    [0.3, 0.55, 0.3],
   );
   const backgroundImage = useMotionTemplate`radial-gradient(circle at ${gradientX}% ${gradientY}%, ${rgba(
     theme.bg2,
-    gradientOpacity.get()
+    gradientOpacity.get(),
   )}, transparent 35%)`;
   return (
     <motion.div
@@ -153,7 +154,7 @@ const WordAnimation: React.FC<WordAnimationProps> = ({
   const xProgress = useTransform(
     scrollProgress,
     [introAnimationEnd / numberOfWords, introAnimationEnd].concat([0.55, 0.85]), // start after the first word
-    [50, 3].concat([-3, -50])
+    [50, 3].concat([-3, -50]),
   );
   // subtract half of the last word width to center the last word
   const xWordWidth = useTransform(scrollProgress, [0.55, 0.85], [0, 0.5]);
@@ -212,7 +213,7 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
         Math.max(index * slideRangePerWindow - wordOverlap, 0),
         Math.min(
           (index + 1) * slideRangePerWindow + wordOverlap,
-          introAnimationEnd - wordOverlap
+          introAnimationEnd - wordOverlap,
         ),
       ],
     };
@@ -225,7 +226,7 @@ const WordFadeUp: React.FC<WordFadeUpProps> = ({
 
   useMotionValueEvent(scrollProgress, "change", (latest) => {
     setLastWordAnimationVisible(
-      parseFloat(latest.toFixed(2)) > animationTriggerThreshold && isLastWord
+      parseFloat(latest.toFixed(2)) > animationTriggerThreshold && isLastWord,
     );
   });
   const y = useTransform(scrollProgress, wordFadeInRange, ["1.75em", "0em"]);
