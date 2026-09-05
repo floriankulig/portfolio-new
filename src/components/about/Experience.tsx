@@ -4,11 +4,14 @@ import { Entries, Entry } from "./Entry";
 export const Experience = () => (
   <AboutSection label="Experience">
     <Entries>
-      <Entry title="Software Engineering Intern — BMW" meta="Oct 2026 — Today">
+      <Entry title="Research Engineering Intern — BMW" meta="Oct 2026 — Today">
         <p>
-          - <b>L2++ and L4 autonomous driving</b> software development in C++
-          and Python. <br />- <b>Deep learning research</b> for perception{" "}
+          – Researching{" "}
+          <b>end-to-end deep learning for transformer-based 3D perception</b>,
           <br />
+          targeting embedded production deployment on a custom compute stack.
+          <br />– Building <b>high-throughput SiL / HiL pipelines</b> for
+          end-to-end driving models.
         </p>
       </Entry>
       <Entry title="Software Engineer — Capgemini" meta="Oct 2025 — Oct 2026">
