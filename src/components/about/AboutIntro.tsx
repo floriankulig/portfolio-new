@@ -42,7 +42,7 @@ const StyledIntro = styled.header`
     font-size: clamp(1rem, 2.4vw, 1.25rem);
     line-height: 1.6;
     color: ${({ theme }) => rgba(theme.text2, 0.85)};
-    max-width: 60ch;
+    max-width: 70ch;
     word-break: keep-all;
     text-wrap: pretty;
 
@@ -59,20 +59,22 @@ export const AboutIntro = () => (
       About Flo <span className="pronunciation">/floʊ/</span>
     </h1>
     <p>
-      Over the past {YEARS_OF_EXPERIENCE} years I&apos;ve grown from writing my
+      Over the past {YEARS_OF_EXPERIENCE} years, I&apos;ve grown from writing my
       first production code before university to leading delivery for an
       eight-person engineering team. What has stayed constant is how I work:
       I&apos;d rather understand a problem deeply and build something that holds
       up than ship quickly and patch later.
     </p>
     <p>
-      My pull toward machine learning isn&apos;t new. I first explored physical
-      AI systems during my thesis with Bosch on driver-assistance technology,
-      and the interest never left — but it never had room in my day-to-day work.
-      Now, I&apos;m acting on it deliberately: a Master&apos;s in Robotics,
-      Cognition and Intelligence at TU Munich, taking my expertise from
-      well-built software toward intelligent systems that operate in the real
-      world.
+      My pull toward machine learning started during my thesis with Bosch,
+      reverse-engineering a vehicle&apos;s control systems to build a real-time
+      driver-assistance model on embedded hardware. That direction is no longer
+      just a side interest — at BMW, I work directly on 3D perception for
+      end-to-end automated driving, directly on the vehicle&apos;s custom
+      compute stack. My Master&apos;s in Robotics, Cognition and Intelligence at
+      TU Munich is where I&apos;m turning that experience into depth: moving
+      from well-built software toward intelligent systems that operate reliably
+      in the real world.
     </p>
   </StyledIntro>
 );
