@@ -14,7 +14,7 @@ export const Experience = () => (
           end-to-end driving models.
         </p>
       </Entry>
-      <Entry title="Software Engineer — Capgemini" meta="Oct 2025 — Oct 2026">
+      <Entry title="Software Engineer — Capgemini" meta="Oct 2025 — Sep 2026">
         <p>
           - <b>Leading a team of 8 developers</b> on an EU-wide VAT-fraud
           detection platform, focused on architecture & testing. <br />-
